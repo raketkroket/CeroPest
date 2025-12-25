@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacyverklaring - PestControl Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .dropdown { 
+      display: none; 
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      min-width: 14rem; 
+      background: white; 
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+      border-radius: 0.5rem; 
+      padding: 0.5rem 0; 
+      z-index: 50; 
+    }
+    .dropdown.active { display: block; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-red-900 text-white py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">06 - 12 34 56 78</a>
+        </div>
+        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
+          <div class="relative">
+            <button id="services-btn" class="text-gray-700 hover:text-[#242c2e] font-medium flex items-center gap-1">
+              Diensten <span class="text-xs">▾</span>
+            </button>
+            <div id="services-dropdown" class="dropdown">
+              <a href="diensten.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Alle diensten</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Rattenbestrijding</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Kakkerlakken</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Vlooienbestrijding</a>
+              <a href="bedwantsen.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Bedwantsen</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Overige ongedierte</a>
+            </div>
+          </div>
+          <a href="particulieren.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Particulieren</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Bedrijven</a>
+          <a href="spoedservice.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Spoedservice</a>
+          <a href="faq.html" class="text-gray-700 hover:text-[#242c2e] font-medium">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-2 rounded-lg hover:bg-[#19201f] font-semibold">Offerte aanvragen</a>
+        </div>
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
+        <div class="flex flex-col gap-4">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="diensten.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Diensten</a>
+          <a href="privacy.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Privacy</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#19201f] font-semibold text-center">Offerte aanvragen</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PRIVACY PAGE CONTENT -->
+  <main class="flex-1">
+    <section class="bg-gradient-to-br from-[#242c2e] to-[#19201f] text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Privacyverklaring</h1>
+        <p class="text-xl text-gray-300 max-w-3xl">Hoe wij omgaan met uw persoonlijke gegevens</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-600 mb-8">Laatst bijgewerkt: December 2025</p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Inleiding</h2>
+          <p class="text-gray-700 mb-6">
+            PestControl Pro respecteert de privacy van alle bezoekers van de website en klanten.
+            Wij gaan zorgvuldig om met uw persoonlijke gegevens en houden ons aan de Algemene Verordening
+            Gegevensbescherming (AVG).
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Welke gegevens verzamelen wij?</h2>
+          <p class="text-gray-700 mb-4">Wij verzamelen de volgende persoonlijke gegevens:</p>
+          <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+            <li>Naam en contactgegevens (adres, telefoonnummer, e-mailadres)</li>
+            <li>Informatie over het ongedierte probleem</li>
+            <li>Adres waar de dienst wordt uitgevoerd</li>
+            <li>Correspondentie en communicatie met u</li>
+            <li>Factuur- en betaalgegevens</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Waarom verzamelen wij uw gegevens?</h2>
+          <p class="text-gray-700 mb-4">Wij gebruiken uw persoonlijke gegevens voor de volgende doeleinden:</p>
+          <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+            <li>Het uitvoeren van onze diensten en behandelingen</li>
+            <li>Contact met u opnemen over uw aanvraag of afspraak</li>
+            <li>Het verwerken van betalingen en facturatie</li>
+            <li>Het bijhouden van behandelgeschiedenis en garanties</li>
+            <li>Het verbeteren van onze dienstverlening</li>
+            <li>Het voldoen aan wettelijke verplichtingen</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Hoe lang bewaren wij uw gegevens?</h2>
+          <p class="text-gray-700 mb-6">
+            Wij bewaren uw persoonlijke gegevens niet langer dan noodzakelijk voor de doeleinden waarvoor
+            ze zijn verzameld. Voor fiscale doeleinden bewaren wij factuurgegevens zeven jaar.
+            Klantgegevens bewaren wij maximaal drie jaar na de laatste behandeling.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Delen wij uw gegevens?</h2>
+          <p class="text-gray-700 mb-6">Wij verkopen uw gegevens nooit aan derden. We delen uw gegevens alleen met:</p>
+          <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+            <li>Onze medewerkers die de diensten uitvoeren</li>
+            <li>Onze boekhouder voor facturatie</li>
+            <li>Partijen die technische ondersteuning bieden voor onze website</li>
+            <li>Instanties waar wij wettelijk toe verplicht zijn</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Beveiliging van uw gegevens</h2>
+          <p class="text-gray-700 mb-6">
+            Wij nemen passende technische en organisatorische maatregelen om uw persoonlijke gegevens
+            te beschermen tegen verlies, misbruik of ongeautoriseerde toegang. Onze website maakt gebruik
+            van een beveiligde verbinding (SSL) en onze databases zijn goed beveiligd.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Uw rechten</h2>
+          <p class="text-gray-700 mb-4">U heeft de volgende rechten met betrekking tot uw persoonlijke gegevens:</p>
+          <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+            <li>Recht op inzage: u kunt opvragen welke gegevens wij van u hebben</li>
+            <li>Recht op correctie: u kunt onjuiste gegevens laten aanpassen</li>
+            <li>Recht op verwijdering: u kunt verzoeken om verwijdering van uw gegevens</li>
+            <li>Recht op beperking: u kunt verzoeken om beperking van de verwerking</li>
+            <li>Recht op bezwaar: u kunt bezwaar maken tegen verwerking</li>
+            <li>Recht op overdraagbaarheid: u kunt uw gegevens in een gangbaar formaat opvragen</li>
+          </ul>
+          <p class="text-gray-700 mb-6">
+            Om gebruik te maken van deze rechten kunt u contact met ons opnemen via
+            info@pestcontrolpro.nl of telefonisch via 06 - 12 34 56 78.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Cookies</h2>
+          <p class="text-gray-700 mb-6">
+            Onze website maakt gebruik van functionele cookies die noodzakelijk zijn voor de werking
+            van de website. Deze cookies verzamelen geen persoonlijke informatie.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Wijzigingen</h2>
+          <p class="text-gray-700 mb-6">
+            Wij behouden ons het recht voor om wijzigingen aan te brengen in deze privacyverklaring.
+            Wij raden u aan om deze privacyverklaring regelmatig te raadplegen.
+          </p>
+
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">10. Contact</h2>
+          <p class="text-gray-700 mb-6">
+            Voor vragen over deze privacyverklaring of over hoe wij met uw gegevens omgaan, kunt u
+            contact met ons opnemen:
+          </p>
+          <div class="bg-gray-50 p-6 rounded-lg mb-6">
+            <p class="text-gray-700 mb-2"><strong>PestControl Pro</strong></p>
+            <p class="text-gray-700 mb-2">E-mail: info@pestcontrolpro.nl</p>
+            <p class="text-gray-700">Telefoon: 06 - 12 34 56 78</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>PestControl Pro</span>
+          </div>
+          <p class="text-gray-300 mb-4">
+            Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.
+          </p>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-white">06 - 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@pestcontrolpro.nl" class="hover:text-white">info@pestcontrolpro.nl</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 beschikbaar</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Diensten</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-white">Rattenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Muizenbestrijding</a></li>
+            <li><a href="kakkerlakken.html" class="hover:text-white">Kakkerlakkenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Vlooienbestrijding</a></li>
+            <li><a href="bedwantsen.html" class="hover:text-white">Bedwantsenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Overige ongedierte</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Informatie</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="overons.html" class="hover:text-white">Over ons</a></li>
+            <li><a href="#" class="hover:text-white">Werkwijze</a></li>
+            <li><a href="particulieren.html" class="hover:text-white">Voor particulieren</a></li>
+            <li><a href="bedrijven.html" class="hover:text-white">Voor bedrijven</a></li>
+            <li><a href="spoedservice.html" class="hover:text-white">Spoedservice</a></li>
+            <li><a href="#" class="hover:text-white">Werkgebied</a></li>
+            <li><a href="reviews.html" class="hover:text-white">Reviews</a></li>
+            <li><a href="faq.html" class="hover:text-white">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="contact.html" class="hover:text-white">Contactpagina</a></li>
+            <li><a href="offerte.html" class="hover:text-white">Offerte aanvragen</a></li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold mb-2">Werkgebied</h4>
+            <div class="flex items-start gap-2 text-gray-300 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              <span>Amsterdam, Utrecht, Rotterdam en omgeving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
+        <div class="flex gap-6">
+          <a href="privacy.html" class="hover:text-white">Privacy</a>
+          <a href="voorwaarden.html" class="hover:text-white">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let mobileOpen = false;
+    mobileBtn.addEventListener('click', () => {
+      mobileOpen = !mobileOpen;
+      if (mobileOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      }
+      lucide.createIcons();
+    });
+
+    // Desktop services dropdown
+    const servicesBtn = document.getElementById('services-btn');
+    const servicesDropdown = document.getElementById('services-dropdown');
+    servicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesDropdown.classList.toggle('active');
+    });
+    document.addEventListener('click', () => servicesDropdown.classList.remove('active'));
+  </script>
+</body>
+</html>

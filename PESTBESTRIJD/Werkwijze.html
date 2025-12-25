@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onze Werkwijze - PestControl Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .dropdown { 
+      display: none; 
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      min-width: 14rem; 
+      background: white; 
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+      border-radius: 0.5rem; 
+      padding: 0.5rem 0; 
+      z-index: 50; 
+    }
+    .dropdown.active { display: block; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-red-900 text-white py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-emerald-100">06 - 12 34 56 78</a>
+        </div>
+        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo exactly like the first code -->
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="OverOns.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="Werkwijze.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
+          <div class="relative">
+            <button id="services-btn" class="text-gray-700 hover:text-[#242c2e] font-medium flex items-center gap-1">
+              Diensten <span class="text-xs">▾</span>
+            </button>
+            <div id="services-dropdown" class="dropdown">
+              <a href="Diensten.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Alle diensten</a>
+              <a href="Ratten.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Rattenbestrijding</a>
+              <a href="Muizen.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Muizenbestrijding</a>
+              <a href="Kakkerlakken.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Kakkerlakken</a>
+              <a href="Vlooien.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Vlooienbestrijding</a>
+              <a href="Bedwantsen.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Bedwantsenbestrijding</a>
+              <a href="Overige.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Overige ongedierte</a>
+            </div>
+          </div>
+          <a href="Particulieren.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Particulieren</a>
+          <a href="Bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Bedrijven</a>
+          <a href="Spoedservice.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Spoedservice</a>
+          <a href="FAQ.html" class="text-gray-700 hover:text-[#242c2e] font-medium">FAQ</a>
+          <a href="Contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="Offerte.html" class="bg-[#242c2e] text-white px-6 py-2 rounded-lg hover:bg-[#19201f] font-semibold">Offerte aanvragen</a>
+        </div>
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
+        <div class="flex flex-col gap-4">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="OverOns.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="Werkwijze.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
+          <a href="Diensten.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Diensten</a>
+          <a href="Contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="Offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#19201f] font-semibold text-center">Offerte aanvragen</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- WERKWIJZE PAGE CONTENT -->
+  <main class="flex-1">
+    <section class="bg-gradient-to-br from-[#242c2e] to-[#19201f] text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Onze Werkwijze</h1>
+        <p class="text-xl text-gray-300 max-w-3xl">Van eerste contact tot definitieve oplossing: zo werken wij</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-16">
+          <!-- Stap 1 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="md:w-1/3">
+              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="phone" class="w-10 h-10 text-[#242c2e]"></i>
+              </div>
+              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 1</div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Contact opnemen</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                U neemt telefonisch of via ons contactformulier contact met ons op. Beschrijf uw probleem zo gedetailleerd mogelijk: welk ongedierte, waar in of rond de woning, en sinds wanneer.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Wij stellen aanvullende vragen om een eerste inschatting te maken en plannen zo snel mogelijk een afspraak in voor een gratis inspectie ter plaatse.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stap 2 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="md:w-1/3">
+              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="search" class="w-10 h-10 text-[#242c2e]"></i>
+              </div>
+              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 2</div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Gratis inspectie</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Een van onze gecertificeerde specialisten komt langs voor een grondige inspectie. We onderzoeken niet alleen de zichtbare tekenen, maar zoeken ook naar toegangswegen, nestplaatsen en mogelijke oorzaken van de plaag.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Tijdens de inspectie krijgt u uitgebreid advies over de beste aanpak en preventieve maatregelen om herhaling te voorkomen.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stap 3 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="md:w-1/3">
+              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="file-text" class="w-10 h-10 text-[#242c2e]"></i>
+              </div>
+              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 3</div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Offerte en planning</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Na de inspectie ontvangt u een heldere offerte waarin we uitleggen welke behandeling noodzakelijk is, hoeveel behandelingen er nodig zijn en wat de kosten zijn. Geen verborgen kosten of verrassingen achteraf.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Bij akkoord plannen we direct de eerste behandeling in, vaak al binnen enkele dagen. Bij spoedgevallen kunnen we vaak nog dezelfde dag langskomen.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stap 4 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="md:w-1/3">
+              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="wrench" class="w-10 h-10 text-[#242c2e]"></i>
+              </div>
+              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 4</div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Professionele behandeling</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Onze specialisten voeren de behandeling uit volgens het afgesproken plan. We gebruiken veilige, effectieve en milieuvriendelijke methoden die zijn toegestaan door de overheid.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Tijdens de behandeling werken we zo discreet mogelijk. Bij bedrijven gebruiken we onopvallende voertuigen om uw reputatie te beschermen.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stap 5 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="md:w-1/3">
+              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="check-circle" class="w-10 h-10 text-[#242c2e]"></i>
+              </div>
+              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 5</div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Controle en nazorg</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Na de behandeling plannen we een controlebezoek in om te verifiëren dat het probleem definitief is opgelost. Indien nodig voeren we een herbehandeling uit zonder extra kosten.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                U ontvangt advies over preventieve maatregelen en kunt altijd bij ons terecht voor vragen. Ook na afloop van de behandeling staan we voor u klaar.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stap 6 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="md:w-1/3">
+              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="shield" class="w-10 h-10 text-[#242c2e]"></i>
+              </div>
+              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 6</div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Garantie</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Op onze diensten bieden we garantie. Mocht het probleem binnen de garantieperiode terugkeren, dan komen we kosteloos terug om het opnieuw te behandelen.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Uw tevredenheid en een definitieve oplossing zijn onze hoogste prioriteit. Daar staan we met onze naam en garantie voor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Belangrijke informatie</h2>
+        <div class="bg-white p-8 rounded-lg shadow-md space-y-6">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Veiligheid voorop</h3>
+            <p class="text-gray-700">
+              De veiligheid van u, uw gezin, huisdieren en het milieu staat altijd voorop. We werken uitsluitend met goedgekeurde middelen en methoden volgens de geldende wet- en regelgeving.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Discrete aanpak</h3>
+            <p class="text-gray-700">
+              We begrijpen dat ongedierte een gevoelig onderwerp kan zijn. Daarom werken we zo discreet mogelijk en gebruiken onopvallende voertuigen zonder bedrijfslogo op verzoek.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Transparante communicatie</h3>
+            <p class="text-gray-700">
+              We houden u tijdens het hele proces op de hoogte. U weet precies wat we gaan doen, waarom we het doen, en wat de kosten zijn. Geen verrassingen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-[#242c2e] text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Klaar om te starten?</h2>
+        <p class="text-xl mb-8 text-gray-300">Neem vandaag nog contact op voor een gratis inspectie</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:0612345678" class="bg-white text-[#242c2e] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition">Bel 06 - 12 34 56 78</a>
+          <a href="Offerte.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#242c2e] transition">Vraag offerte aan</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+          </div>
+          <p class="text-gray-300 mb-4">
+            Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.
+          </p>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-white">06 - 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@pestcontrolpro.nl" class="hover:text-white">info@pestcontrolpro.nl</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 beschikbaar</span>
+            </div>
+          </div>
+        </div>
+        <!-- Add the other footer columns here if needed -->
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white">Privacy</a>
+          <a href="#" class="hover:text-white">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let mobileOpen = false;
+    mobileBtn.addEventListener('click', () => {
+      mobileOpen = !mobileOpen;
+      if (mobileOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      }
+      lucide.createIcons();
+    });
+
+    // Desktop services dropdown
+    const servicesBtn = document.getElementById('services-btn');
+    const servicesDropdown = document.getElementById('services-dropdown');
+    servicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesDropdown.classList.toggle('active');
+    });
+    document.addEventListener('click', () => servicesDropdown.classList.remove('active'));
+  </script>
+</body>
+</html>

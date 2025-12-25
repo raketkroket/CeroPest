@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vlooienbestrijding </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .animate-in {
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+  <header class="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300">
+    <div class="bg-red-900 text-white py-3">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100 transition-colors">06 - 12 34 56 78</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <i data-lucide="clock" class="w-4 h-4"></i>
+          <span>24/7 Spoedservice beschikbaar</span>
+        </div>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto group-hover:scale-110 transition-transform duration-300">
+          
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Over ons</a>
+          <a href="werkwijze.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Werkwijze</a>
+          <div class="relative">
+            <button id="services-btn" class="text-gray-700 hover:text-[#242c2e] font-medium flex items-center gap-1 transition-colors duration-200 hover:scale-105 transform">
+              Diensten
+              <i data-lucide="chevron-down" id="services-chevron" class="w-4 h-4 transition-transform duration-300"></i>
+            </button>
+            <div id="services-dropdown" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+              <a href="diensten.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Alle diensten</a>
+              <a href="ratten.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Rattenbestrijding</a>
+              <a href="muizen.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Kakkerlakken</a>
+              <a href="vlooien.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Vlooienbestrijding</a>
+              <a href="bedwantsen.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Bedwantsen</a>
+              <a href="overige.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Overige ongedierte</a>
+            </div>
+          </div>
+          <a href="particulieren.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Particulieren</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Bedrijven</a>
+          <a href="spoedservice.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Spoedservice</a>
+          <a href="faq.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Contact</a>
+          <a href="offerte.html" class="bg-gradient-to-r from-[#242c2e] to-[#19201f] text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold">Offerte aanvragen</a>
+        </div>
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-700 hover:text-[#242c2e] transition-colors">
+          <i data-lucide="menu" id="mobile-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t animate-in fade-in slide-in-from-top-2 duration-200">
+        <div class="flex flex-col gap-4">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Over ons</a>
+          <a href="werkwijze.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Werkwijze</a>
+          <a href="diensten.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Diensten</a>
+          <a href="particulieren.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Particulieren</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Bedrijven</a>
+          <a href="spoedservice.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Spoedservice</a>
+          <a href="faq.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Contact</a>
+          <a href="offerte.html" class="bg-gradient-to-r from-[#242c2e] to-[#19201f] text-white px-6 py-3 rounded-full text-center font-semibold">Offerte aanvragen</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- VLOOIEN PAGE CONTENT -->
+  <main class="flex-1">
+    <section class="relative bg-gradient-to-br from-[#242c2e] via-[#19201f] to-[#242c2e] text-white py-24 overflow-hidden">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-3xl">
+          <div class="inline-block bg-[#19201f] px-4 py-2 rounded-full text-gray-300 text-sm font-semibold mb-6 border border-gray-600/30">
+            Professionele Ongediertebestrijding
+          </div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            Vlooienbestrijding
+          </h1>
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            Effectieve bestrijding van vlooien, veilig voor uw huisdieren
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="tel:0612345678" class="bg-white text-[#242c2e] px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 text-center">
+              <i data-lucide="phone" class="w-5 h-5"></i>
+              Bel 06 - 12 34 56 78
+            </a>
+            <a href="offerte.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#242c2e] transition-all duration-300 text-center">
+              Vraag inspectie aan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <div class="inline-block bg-gray-100 px-4 py-2 rounded-full text-[#242c2e] text-sm font-semibold">
+              Waarom kiezen voor ons?
+            </div>
+            <h2 class="text-4xl font-bold text-gray-900 leading-tight">
+              Last van vlooien? Wij helpen u snel
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Vlooien zijn kleine, bloedzuigende parasieten die veel overlast veroorzaken. Ze leven op huisdieren maar kunnen ook mensen bijten. Vlooien vermenigvuldigen zich razendsnel en zijn moeilijk te bestrijden zonder professionele hulp.
+            </p>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              CeroPest heeft ruime ervaring met vlooienbestrijding in woningen met huisdieren. We gebruiken veilige, effectieve middelen die vlooien in alle levensstadia uitschakelen zonder gevaar voor uw huisdieren.
+            </p>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              Een grondige aanpak is essentieel: we behandelen niet alleen uw huisdieren, maar ook alle plekken waar vlooien zich kunnen schuilhouden en vermenigvuldigen.
+            </p>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#242c2e] to-[#19201f] rounded-3xl transform rotate-3"></div>
+            <img
+              src="https://images.pexels.com/photos/7728897/pexels-photo-7728897.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="Vlooienbestrijding"
+              class="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-block bg-amber-100 px-4 py-2 rounded-full text-amber-700 text-sm font-semibold mb-4">
+            Herkenning en gevaren
+          </div>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Herkenning en gevaren</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 group">
+            <div class="bg-gradient-to-br from-amber-500 to-amber-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="alert-triangle" class="lucide lucide-alert-triangle w-8 h-8 text-white"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Herken vlooien aan</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
+                <span>Kleine zwarte puntjes op huisdieren</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
+                <span>Vlooienkeutels (zwarte korrels in de vacht)</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
+                <span>Jeukende beten op enkels en benen</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
+                <span>Huisdier krabt en bijt zich vaak</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
+                <span>Springende insecten op tapijt of meubels</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
+                <span>Rode bultjes op de huid in groepjes</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-red-200 group">
+           <div class="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield" class="lucide lucide-shield w-8 h-8 text-white"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Problemen door vlooien</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Jeuk en irritatie bij mens en dier</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Allergische reacties mogelijk</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Bloedverlies bij ernstige plagen</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Overdracht van ziektes en wormen</span>
+              </li>
+              <li class="flex items-start gap-3 text-gray-700">
+                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Razendsnelle vermenigvuldiging</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-block bg-gray-100 px-4 py-2 rounded-full text-[#242c2e] text-sm font-semibold mb-4">
+            Onze vlooienbestrijding
+          </div>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Onze vlooienbestrijding</h2>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
+            <div class="flex items-start gap-4">
+             <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-6 h-6 text-white"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Grondige inspectie</h3>
+                <p class="text-gray-600 leading-relaxed">We onderzoeken uw woning en huisdieren op tekenen van vlooien. We kijken naar slaapplekken, tapijten, meubels en alle andere plaatsen waar vlooien zich kunnen ophouden.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
+            <div class="flex items-start gap-4">
+              <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-6 h-6 text-white"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Behandeling van het pand</h3>
+                <p class="text-gray-600 leading-relaxed">We behandelen alle relevante oppervlakken met professionele insecticiden die vlooien in alle levensstadia doden: eieren, larven, poppen en volwassen vlooien.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
+            <div class="flex items-start gap-4">
+             <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-6 h-6 text-white"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Veilig voor huisdieren</h3>
+                <p class="text-gray-600 leading-relaxed">Onze middelen zijn veilig voor huisdieren wanneer correct toegepast. We geven duidelijke instructies over wanneer huisdieren weer binnen mogen komen.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
+            <div class="flex items-start gap-4">
+             <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-6 h-6 text-white"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Advies over huisdieren</h3>
+                <p class="text-gray-600 leading-relaxed">We adviseren u over het behandelen van uw huisdieren bij de dierenarts met anti-vlooienmiddelen. Dit is essentieel voor een succesvolle bestrijding.</p>
+              </div>
+            </div>
+          </div>
+         
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-20 bg-gradient-to-br from-[#242c2e] via-[#19201f] to-[#242c2e] text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Vlooien in huis?</h2>
+        <p class="text-xl mb-10 text-gray-300 leading-relaxed max-w-2xl mx-auto">
+          Neem snel contact op voor een effectieve behandeling
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:0612345678" class="bg-white text-[#242c2e] px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+            Bel 06 - 12 34 56 78
+          </a>
+          <a href="offerte.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#242c2e] transition-all duration-300">
+            Vraag inspectie aan
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] p-2 rounded-2xl">
+              <i data-lucide="bug" class="w-6 h-6 text-white"></i>
+            </div>
+            <span class="text-xl font-bold text-white">CeroPest</span>
+          </div>
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.
+          </p>
+          <div class="flex flex-col gap-3 text-gray-400">
+            <a href="tel:0612345678" class="flex items-center gap-2 hover:text-white transition-colors group">
+              <i data-lucide="phone" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+              <span>06 - 12 34 56 78</span>
+            </a>
+            <a href="mailto:info@pestcontrolpro.nl" class="flex items-center gap-2 hover:text-white transition-colors group">
+              <i data-lucide="mail" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+              <span>info@pestcontrolpro.nl</span>
+            </a>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 beschikbaar</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-white">Diensten</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="ratten.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Rattenbestrijding</a></li>
+            <li><a href="muizen.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Muizenbestrijding</a></li>
+            <li><a href="kakkerlakken.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Kakkerlakkenbestrijding</a></li>
+            <li><a href="vlooien.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Vlooienbestrijding</a></li>
+            <li><a href="bedwantsen.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Bedwantsenbestrijding</a></li>
+            <li><a href="overige.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Overige ongedierte</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-white">Informatie</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="overons.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Over ons</a></li>
+            <li><a href="werkwijze.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Werkwijze</a></li>
+            <li><a href="particulieren.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Voor particulieren</a></li>
+            <li><a href="bedrijven.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Voor bedrijven</a></li>
+            <li><a href="spoedservice.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Spoedservice</a></li>
+            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Werkgebied</a></li>
+            <li><a href="reviews.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Reviews</a></li>
+            <li><a href="faq.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4 text-white">Contact</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="contact.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Contactpagina</a></li>
+            <li><a href="offerte.html" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Offerte aanvragen</a></li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold mb-3 text-white">Werkgebied</h4>
+            <div class="flex items-start gap-2 text-gray-400 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              <span>Amsterdam, Utrecht, Rotterdam en omgeving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
+        <div class="flex gap-6">
+          <a href="privacy.html" class="hover:text-white">Privacy</a>
+          <a href="voorwaarden.html" class="hover:text-white">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Services dropdown
+    const servicesBtn = document.getElementById('services-btn');
+    const servicesDropdown = document.getElementById('services-dropdown');
+    const servicesChevron = document.getElementById('services-chevron');
+    servicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesDropdown.classList.toggle('hidden');
+      servicesChevron.classList.toggle('rotate-180');
+    });
+    document.addEventListener('click', () => {
+      servicesDropdown.classList.add('hidden');
+      servicesChevron.classList.remove('rotate-180');
+    });

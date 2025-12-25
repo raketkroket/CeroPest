@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Over PestControl Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .dropdown { 
+      display: none; 
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      min-width: 14rem; 
+      background: white; 
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+      border-radius: 0.5rem; 
+      padding: 0.5rem 0; 
+      z-index: 50; 
+    }
+    .dropdown.active { display: block; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-emerald-700 text-white py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-emerald-100">06 - 12 34 56 78</a>
+        </div>
+        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-2 text-2xl font-bold text-emerald-700">
+          <i data-lucide="bug" class="w-8 h-8"></i>
+          <span>PestControl Pro</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="text-gray-700 hover:text-emerald-700 font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-emerald-700 font-medium">Over ons</a>
+          <a href="#" class="text-gray-700 hover:text-emerald-700 font-medium">Werkwijze</a>
+          <div class="relative">
+            <button id="services-btn" class="text-gray-700 hover:text-emerald-700 font-medium flex items-center gap-1">
+              Diensten <span class="text-xs">▾</span>
+            </button>
+            <div id="services-dropdown" class="dropdown">
+              <a href="diensten.html" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Alle diensten</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Rattenbestrijding</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Kakkerlakken</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Vlooienbestrijding</a>
+              <a href="bedwantsen.html" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Bedwantsen</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Overige ongedierte</a>
+            </div>
+          </div>
+          <a href="#" class="text-gray-700 hover:text-emerald-700 font-medium">Particulieren</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-emerald-700 font-medium">Bedrijven</a>
+          <a href="#" class="text-gray-700 hover:text-emerald-700 font-medium">Spoedservice</a>
+          <a href="faq.html" class="text-gray-700 hover:text-emerald-700 font-medium">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-emerald-700 font-medium">Contact</a>
+          <a href="offerte.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 font-semibold">Offerte aanvragen</a>
+        </div>
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
+        <div class="flex flex-col gap-4">
+          <a href="index.html" class="text-gray-700 hover:text-emerald-700 font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-emerald-700 font-medium">Over ons</a>
+          <a href="diensten.html" class="text-gray-700 hover:text-emerald-700 font-medium">Diensten</a>
+          <a href="faq.html" class="text-gray-700 hover:text-emerald-700 font-medium">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-emerald-700 font-medium">Contact</a>
+          <a href="offerte.html" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 font-semibold text-center">Offerte aanvragen</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- OVER ONS PAGE CONTENT -->
+  <main class="flex-1">
+    <section class="bg-gradient-to-br from-emerald-800 to-emerald-950 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Over PestControl Pro</h1>
+        <p class="text-xl text-emerald-100 max-w-3xl">Uw betrouwbare partner in professionele ongediertebestrijding sinds 2010</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Wie zijn wij?</h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              PestControl Pro is een professioneel ongediertebestrijdingsbedrijf met meer dan 13 jaar ervaring.
+              Wij helpen zowel particulieren als bedrijven bij het oplossen van ongedierte problemen op een snelle, effectieve en discrete manier.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Ons team bestaat uit gecertificeerde specialisten die dagelijks werken aan het veilig en definitief verwijderen van ongedierte.
+              We gebruiken moderne technieken en milieuvriendelijke middelen om optimale resultaten te garanderen.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Met onze 24/7 spoedservice zijn we altijd bereikbaar wanneer u ons nodig heeft. We begrijpen dat ongedierte veel overlast en stress kan veroorzaken, daarom handelen we snel en professioneel.
+            </p>
+          </div>
+          <div>
+            <img src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=800"
+                 alt="Ons team van professionals"
+                 class="rounded-lg shadow-xl w-full">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Onze kernwaarden</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="shield" class="w-8 h-8 text-emerald-700"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900">Betrouwbaarheid</h3>
+            <p class="text-gray-600">Afspraken nakomen en transparante communicatie staan bij ons voorop</p>
+          </div>
+          <div class="bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="award" class="w-8 h-8 text-emerald-700"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900">Kwaliteit</h3>
+            <p class="text-gray-600">Hoogwaardige service met garantie op langdurig resultaat</p>
+          </div>
+          <div class="bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="users" class="w-8 h-8 text-emerald-700"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900">Klanttevredenheid</h3>
+            <p class="text-gray-600">Uw tevredenheid is onze hoogste prioriteit</p>
+          </div>
+          <div class="bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="target" class="w-8 h-8 text-emerald-700"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900">Vakmanschap</h3>
+            <p class="text-gray-600">Gecertificeerde specialisten met jarenlange ervaring</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Onze aanpak</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">1. Grondige inspectie</h3>
+            <p class="text-gray-700">We beginnen altijd met een uitgebreide inspectie om de oorzaak en omvang van het probleem vast te stellen.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">2. Maatwerk advies</h3>
+            <p class="text-gray-700">Op basis van de inspectie bieden we u een op maat gemaakt behandelplan met heldere uitleg.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">3. Professionele uitvoering</h3>
+            <p class="text-gray-700">Onze gecertificeerde specialisten voeren de bestrijding veilig en effectief uit met moderne technieken.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">4. Nazorg en garantie</h3>
+            <p class="text-gray-700">We bieden nazorg en garantie zodat u verzekerd bent van een blijvend resultaat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-emerald-700 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Klaar om van uw ongedierte af te komen?</h2>
+        <p class="text-xl mb-8 text-emerald-100">Neem vandaag nog contact op voor een gratis inspectie</p>
+        <a href="offerte.html" class="inline-block bg-white text-emerald-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition">
+          Vraag inspectie aan
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-xl font-bold text-emerald-400 mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>PestControl Pro</span>
+          </div>
+          <p class="text-gray-300 mb-4">
+            Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.
+          </p>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-emerald-400">06 - 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@pestcontrolpro.nl" class="hover:text-emerald-400">info@pestcontrolpro.nl</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 beschikbaar</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Diensten</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-emerald-400">Rattenbestrijding</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Muizenbestrijding</a></li>
+            <li><a href="kakkerlakken.html" class="hover:text-emerald-400">Kakkerlakkenbestrijding</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Vlooienbestrijding</a></li>
+            <li><a href="bedwantsen.html" class="hover:text-emerald-400">Bedwantsenbestrijding</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Overige ongedierte</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Informatie</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="overons.html" class="hover:text-emerald-400">Over ons</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Werkwijze</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Voor particulieren</a></li>
+            <li><a href="bedrijven.html" class="hover:text-emerald-400">Voor bedrijven</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Spoedservice</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Werkgebied</a></li>
+            <li><a href="#" class="hover:text-emerald-400">Reviews</a></li>
+            <li><a href="faq.html" class="hover:text-emerald-400">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="contact.html" class="hover:text-emerald-400">Contactpagina</a></li>
+            <li><a href="offerte.html" class="hover:text-emerald-400">Offerte aanvragen</a></li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold mb-2">Werkgebied</h4>
+            <div class="flex items-start gap-2 text-gray-300 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              <span>Amsterdam, Utrecht, Rotterdam en omgeving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-emerald-400">Privacy</a>
+          <a href="#" class="hover:text-emerald-400">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let mobileOpen = false;
+    mobileBtn.addEventListener('click', () => {
+      mobileOpen = !mobileOpen;
+      if (mobileOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      }
+      lucide.createIcons();
+    });
+
+    // Desktop services dropdown
+    const servicesBtn = document.getElementById('services-btn');
+    const servicesDropdown = document.getElementById('services-dropdown');
+    servicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesDropdown.classList.toggle('active');
+    });
+    document.addEventListener('click', () => servicesDropdown.classList.remove('active'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veelgestelde Vragen - PestControl Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 14rem; background: white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-radius: 0.5rem; padding: 0.5rem 0; z-index: 50; }
+    .dropdown.active { display: block; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER (zelfde als andere pagina's) -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-red-900 text-white py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">06 - 12 34 56 78</a>
+        </div>
+        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
+          <div class="relative">
+            <button id="services-btn" class="text-gray-700 hover:text-[#242c2e] font-medium flex items-center gap-1">
+              Diensten <span class="text-xs">▾</span>
+            </button>
+            <div id="services-dropdown" class="dropdown">
+              <a href="diensten.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Alle diensten</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Rattenbestrijding</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Kakkerlakken</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Vlooienbestrijding</a>
+              <a href="bedwantsen.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Bedwantsen</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Overige</a>
+            </div>
+          </div>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Particulieren</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Bedrijven</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Spoedservice</a>
+          <a href="faq.html" class="text-gray-700 hover:text-[#242c2e] font-medium">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-2 rounded-lg hover:bg-[#19201f] font-semibold">Offerte aanvragen</a>
+        </div>
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
+        <div class="flex flex-col gap-4">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="diensten.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Diensten</a>
+          <a href="faq.html" class="text-gray-700 hover:text-[#242c2e] font-medium">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#19201f] font-semibold text-center">Offerte aanvragen</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- FAQ PAGE CONTENT -->
+  <main class="flex-1">
+    <section class="bg-gradient-to-br from-[#242c2e] to-[#19201f] text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Veelgestelde Vragen</h1>
+        <p class="text-xl text-gray-300 max-w-3xl">Antwoorden op de meest gestelde vragen over ongediertebestrijding</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-4" id="faq-container">
+          <!-- FAQs worden hier via JavaScript toegevoegd -->
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Staat uw vraag er niet tussen?</h2>
+        <p class="text-lg text-gray-700 mb-8">Neem gerust contact met ons op. We beantwoorden graag al uw vragen.</p>
+        <a href="contact.html" class="inline-block bg-[#242c2e] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#19201f] transition">Neem contact op</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>PestControl Pro</span>
+          </div>
+          <p class="text-gray-300 mb-4">Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.</p>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-white">06 - 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@pestcontrolpro.nl" class="hover:text-white">info@pestcontrolpro.nl</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 beschikbaar</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Diensten</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-white">Rattenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Muizenbestrijding</a></li>
+            <li><a href="kakkerlakken.html" class="hover:text-white">Kakkerlakkenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Vlooienbestrijding</a></li>
+            <li><a href="bedwantsen.html" class="hover:text-white">Bedwantsenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Overige ongedierte</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Informatie</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="overons.html" class="hover:text-white">Over ons</a></li>
+            <li><a href="#" class="hover:text-white">Werkwijze</a></li>
+            <li><a href="#" class="hover:text-white">Voor particulieren</a></li>
+            <li><a href="bedrijven.html" class="hover:text-white">Voor bedrijven</a></li>
+            <li><a href="#" class="hover:text-white">Spoedservice</a></li>
+            <li><a href="#" class="hover:text-white">Werkgebied</a></li>
+            <li><a href="#" class="hover:text-white">Reviews</a></li>
+            <li><a href="faq.html" class="hover:text-white">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="contact.html" class="hover:text-white">Contactpagina</a></li>
+            <li><a href="offerte.html" class="hover:text-white">Offerte aanvragen</a></li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold mb-2">Werkgebied</h4>
+            <div class="flex items-start gap-2 text-gray-300 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              <span>Amsterdam, Utrecht, Rotterdam en omgeving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white">Privacy</a>
+          <a href="#" class="hover:text-white">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobiel menu + dropdown
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let mobileOpen = false;
+    mobileBtn.addEventListener('click', () => {
+      mobileOpen = !mobileOpen;
+      if (mobileOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      }
+      lucide.createIcons();
+    });
+
+    const servicesBtn = document.getElementById('services-btn');
+    const servicesDropdown = document.getElementById('services-dropdown');
+    servicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesDropdown.classList.toggle('active');
+    });
+    document.addEventListener('click', () => servicesDropdown.classList.remove('active'));
+
+    // FAQ Accordion
+    const faqs = [
+      { q: "Hoe snel kunnen jullie langskomen?", a: "Voor reguliere afspraken proberen we binnen 1-2 werkdagen langs te komen. Bij spoedgevallen kunnen we vaak nog dezelfde dag ter plaatse zijn. Bel ons voor een inschatting van de wachttijd." },
+      { q: "Zijn jullie middelen veilig voor kinderen en huisdieren?", a: "Ja, we gebruiken uitsluitend toegelaten middelen die veilig zijn wanneer correct toegepast. We geven altijd duidelijke instructies over wachttijden voordat kinderen en huisdieren weer in behandelde ruimtes mogen komen." },
+      { q: "Hoeveel kost een behandeling?", a: "De kosten variëren per situatie en zijn afhankelijk van het type ongedierte, de ernst van de plaag, en de grootte van de ruimte. We komen altijd eerst vrijblijvend langs voor een gratis inspectie en geven dan een heldere offerte." },
+      { q: "Krijg ik garantie op de behandeling?", a: "Ja, op onze behandelingen geven we garantie. De duur van de garantie hangt af van het type behandeling en wordt vooraf met u besproken. Binnen de garantieperiode komen we kosteloos terug als het probleem terugkeert." },
+      { q: "Moet ik zelf iets voorbereiden voor de behandeling?", a: "Dit verschilt per type behandeling. Bij de inspectie krijgt u uitgebreide instructies over eventuele voorbereidingen. Bij bedwantsen moet bijvoorbeeld textiel gewassen worden, bij andere behandelingen is weinig voorbereiding nodig." },
+      { q: "Werken jullie ook buiten kantooruren?", a: "Ja, we bieden flexibele afspraken, ook 's avonds en in het weekend. Daarnaast hebben we een 24/7 spoedservice voor acute situaties." },
+      { q: "Hoe discreet werken jullie?", a: "Zeer discreet. We gebruiken onopvallende voertuigen zonder grote logo's en werken professioneel en onopvallend. Bij bedrijven houden we rekening met openingstijden en klanten." },
+      { q: "Kan ik zelf ongedierte bestrijden?", a: "Voor kleine problemen kunnen supermarktproducten soms helpen, maar bij ernstige plagen of hardnekkig ongedierte is professionele hulp noodzakelijk. We hebben specialistische kennis en toegang tot sterkere, effectievere middelen." },
+      { q: "Hebben jullie certificaten en vergunningen?", a: "Ja, al onze specialisten zijn gecertificeerd en we werken volgens de geldende wet- en regelgeving. We zijn aangesloten bij brancheverenigingen en voldoen aan alle eisen." },
+      { q: "Hoe voorkom ik dat ongedierte terugkomt?", a: "Na de behandeling geven we uitgebreid preventief advies. Dit omvat hygiëne, voedselopslag, het afsluiten van toegangspunten en onderhoud. Voor bedrijven bieden we preventieve contracten met regelmatige monitoring aan." },
+      { q: "Wat moet ik doen als ik ongedierte zie?", a: "Neem zo snel mogelijk contact met ons op. Ongedierte vermenigvuldigt zich snel, dus vroege actie maakt bestrijding makkelijker en goedkoper. Probeer te achterhalen welk type ongedierte het is en waar u het heeft gezien." },
+      { q: "Werken jullie in mijn regio?", a: "We zijn actief in Amsterdam, Utrecht, Rotterdam en omliggende gemeenten. Neem contact op om te checken of we in uw regio werkzaam zijn." },
+      { q: "Hoe lang duurt een behandeling?", a: "Dit varieert sterk per situatie. Een muizenbestrijding kan binnen een uur, maar bedwantsenbestrijding kan meerdere uren duren. We geven bij de inspectie een indicatie van de benodigde tijd." },
+      { q: "Moet ik het huis uit tijdens de behandeling?", a: "Bij de meeste behandelingen hoeft u niet het huis uit. Bij bepaalde intensieve behandelingen of bij gebruik van bepaalde middelen kan dit wel nodig zijn. We informeren u hier vooraf over." },
+      { q: "Kunnen jullie ook preventief komen?", a: "Ja, vooral voor bedrijven bieden we preventieve contracten waarbij we regelmatig langskomen voor inspectie en monitoring. Dit voorkomt problemen voordat ze ontstaan." }
+    ];
+
+    const container = document.getElementById('faq-container');
+    faqs.forEach((faq, index) => {
+      const div = document.createElement('div');
+      div.className = 'border border-gray-200 rounded-lg overflow-hidden';
+      div.innerHTML = `
+        <button class="w-full px-6 py-4 flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition text-left" onclick="toggleFAQ(${index})">
+          <span class="text-lg font-semibold text-gray-900 pr-4">${faq.q}</span>
+          <i data-lucide="chevron-down" id="icon-${index}" class="w-5 h-5 text-gray-400 flex-shrink-0"></i>
+        </button>
+        <div id="answer-${index}" class="px-6 py-4 bg-white hidden">
+          <p class="text-gray-700 leading-relaxed">${faq.a}</p>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    window.toggleFAQ = function(index) {
+      const answer = document.getElementById('answer-' + index);
+      const icon = document.getElementById('icon-' + index);
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'chevron-up');
+        icon.classList.replace('text-gray-400', 'text-[#242c2e]');
+      } else {
+        answer.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'chevron-down');
+        icon.classList.replace('text-[#242c2e]', 'text-gray-400');
+      }
+      lucide.createIcons();
+    };
+  </script>
+</body>
+</html>

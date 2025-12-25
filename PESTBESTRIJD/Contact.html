@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - PestControl Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 14rem; background: white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-radius: 0.5rem; padding: 0.5rem 0; z-index: 50; }
+    .dropdown.active { display: block; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-red-900 text-white py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">06 - 12 34 56 78</a>
+        </div>
+        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
+          <div class="relative">
+            <button id="services-btn" class="text-gray-700 hover:text-[#242c2e] font-medium flex items-center gap-1">
+              Diensten <span class="text-xs">▾</span>
+            </button>
+            <div id="services-dropdown" class="dropdown">
+              <a href="diensten.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Alle diensten</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Rattenbestrijding</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Muizenbestrijding</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Kakkerlakken</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Vlooienbestrijding</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Bedwantsenbestrijding</a>
+              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Overige ongedierte</a>
+            </div>
+          </div>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Particulieren</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Bedrijven</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Spoedservice</a>
+          <a href="faq.html" class="text-gray-700 hover:text-[#242c2e] font-medium">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-2 rounded-lg hover:bg-[#19201f] font-semibold">Offerte aanvragen</a>
+        </div>
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
+        <div class="flex flex-col gap-4">
+          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
+          <a href="diensten.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Diensten</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Particulieren</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Bedrijven</a>
+          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium">Spoedservice</a>
+          <a href="faq.html" class="text-gray-700 hover:text-[#242c2e] font-medium">FAQ</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#19201f] font-semibold text-center">Offerte aanvragen</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTACT PAGE CONTENT -->
+  <main class="flex-1">
+    <section class="bg-gradient-to-br from-[#242c2e] to-[#19201f] text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact</h1>
+        <p class="text-xl text-gray-300 max-w-3xl">Neem contact op voor vragen, advies of een gratis inspectie</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Contactgegevens</h2>
+
+            <div class="space-y-6 mb-12">
+              <div class="flex items-start gap-4">
+                <div class="bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="phone" class="w-6 h-6 text-[#242c2e]"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-1">Telefoon</h3>
+                  <a href="tel:0612345678" class="text-[#242c2e] hover:text-[#19201f] text-lg">06 - 12 34 56 78</a>
+                  <p class="text-gray-600 text-sm mt-1">24/7 bereikbaar voor spoedgevallen</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="mail" class="w-6 h-6 text-[#242c2e]"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-1">E-mail</h3>
+                  <a href="mailto:info@pestcontrolpro.nl" class="text-[#242c2e] hover:text-[#19201f] text-lg">info@pestcontrolpro.nl</a>
+                  <p class="text-gray-600 text-sm mt-1">We reageren binnen 24 uur</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="map-pin" class="w-6 h-6 text-[#242c2e]"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-1">Werkgebied</h3>
+                  <p class="text-gray-700">Amsterdam, Utrecht, Rotterdam<br>en omliggende gemeenten</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="clock" class="w-6 h-6 text-[#242c2e]"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-1">Openingstijden</h3>
+                  <div class="text-gray-700">
+                    <p>Ma - Vr: 08:00 - 18:00</p>
+                    <p>Za: 09:00 - 17:00</p>
+                    <p>Zo: Op afspraak</p>
+                    <p class="text-[#242c2e] font-semibold mt-2">Spoedservice 24/7</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Direct hulp nodig?</h3>
+              <p class="text-gray-700 mb-4">Voor spoedgevallen kunt u ons 24/7 bellen. We zijn er snel om u te helpen.</p>
+              <a href="#" class="text-[#242c2e] hover:text-[#19201f] font-semibold">Lees meer over onze spoedservice →</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-gray-50 p-8 rounded-lg">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Vraag een offerte aan</h3>
+              <p class="text-gray-700 mb-6">Liever een offerte aanvragen? Vul ons uitgebreide offerteformulier in en we nemen zo snel mogelijk contact met u op.</p>
+              <a href="offerte.html" class="block bg-[#242c2e] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#19201f] transition text-center">Naar offerteformulier</a>
+            </div>
+
+            <div class="mt-8">
+              <img src="https://images.pexels.com/photos/4099238/pexels-photo-4099238.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Contact opnemen" class="rounded-lg shadow-lg w-full">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Veelgestelde vragen</h2>
+        <p class="text-lg text-gray-700 mb-8">Veel antwoorden vindt u op onze FAQ pagina</p>
+        <a href="faq.html" class="inline-block bg-white border-2 border-[#242c2e] text-[#242c2e] px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition">Bekijk veelgestelde vragen</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>PestControl Pro</span>
+          </div>
+          <p class="text-gray-300 mb-4">Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.</p>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-white">06 - 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@pestcontrolpro.nl" class="hover:text-white">info@pestcontrolpro.nl</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 beschikbaar</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Diensten</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-white">Rattenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Muizenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Kakkerlakkenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Vlooienbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Bedwantsenbestrijding</a></li>
+            <li><a href="#" class="hover:text-white">Overige ongedierte</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Informatie</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-white">Over ons</a></li>
+            <li><a href="#" class="hover:text-white">Werkwijze</a></li>
+            <li><a href="#" class="hover:text-white">Voor particulieren</a></li>
+            <li><a href="#" class="hover:text-white">Voor bedrijven</a></li>
+            <li><a href="#" class="hover:text-white">Spoedservice</a></li>
+            <li><a href="#" class="hover:text-white">Werkgebied</a></li>
+            <li><a href="#" class="hover:text-white">Reviews</a></li>
+            <li><a href="#" class="hover:text-white">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="#" class="hover:text-white">Contactpagina</a></li>
+            <li><a href="#" class="hover:text-white">Offerte aanvragen</a></li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold mb-2">Werkgebied</h4>
+            <div class="flex items-start gap-2 text-gray-300 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              <span>Amsterdam, Utrecht, Rotterdam en omgeving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white">Privacy</a>
+          <a href="#" class="hover:text-white">Algemene voorwaarden</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let mobileOpen = false;
+    mobileBtn.addEventListener('click', () => {
+      mobileOpen = !mobileOpen;
+      if (mobileOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      }
+      lucide.createIcons();
+    });
+
+    const servicesBtn = document.getElementById('services-btn');
+    const servicesDropdown = document.getElementById('services-dropdown');
+    servicesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesDropdown.classList.toggle('active');
+    });
+    document.addEventListener('click', () => servicesDropdown.classList.remove('active'));
+  </script>
+</body>
+</html>
