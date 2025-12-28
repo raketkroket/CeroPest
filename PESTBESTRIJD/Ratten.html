@@ -3,378 +3,329 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rattenbestrijding </title>
+  <title>Rattenbestrijding - CeroPest</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
     }
-    .animate-in {
-      animation: fadeIn 0.3s ease-out;
+    @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .img-hover { transition: transform 0.4s ease; overflow: hidden; border-radius: 0.75rem; }
+    .img-hover img { transition: transform 0.6s ease; }
+    .img-hover:hover img { transform: scale(1.1); }
+
+    .bg-subtle { 
+      background: linear-gradient(to bottom, #f9fafb 0%, #f1f5f9 100%); 
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    .slice-bottom { clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
+    .slice-top { clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%); }
+    @media (min-width: 1024px) {
+      .slice-bottom { clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
+      .slice-top { clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%); }
     }
+
+    .rotate-180 { transform: rotate(180deg); }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-  <header class="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300">
-    <div class="bg-red-900 text-white py-3">
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- HEADER MET TAAL-SWITCH -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-red-900 text-white py-2">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
-        <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300">
-          <i data-lucide="phone" class="w-4 h-4"></i>
-          <a href="tel:0612345678" class="font-semibold hover:text-gray-100 transition-colors">06 - 12 34 56 78</a>
-        </div>
         <div class="flex items-center gap-2">
-          <i data-lucide="clock" class="w-4 h-4"></i>
-          <span>24/7 Spoedservice beschikbaar</span>
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">06 - 12 34 56 78</a>
         </div>
+        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
       </div>
     </div>
+
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <a href="#" class="flex items-center gap-3 group">
-          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto group-hover:scale-110 transition-transform duration-300">
 
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
         </a>
+
+        <!-- DESKTOP MENU -->
         <div class="hidden lg:flex items-center gap-8">
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Home</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Over ons</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Werkwijze</a>
-          <div class="relative">
-            <button id="services-btn" class="text-gray-700 hover:text-[#242c2e] font-medium flex items-center gap-1 transition-colors duration-200 hover:scale-105 transform">
-              Diensten
-              <i data-lucide="chevron-down" id="services-chevron" class="w-4 h-4 transition-transform duration-300"></i>
+          <a href="index.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Over ons</a>
+          <a href="werkwijze.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Werkwijze</a>
+
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-[#1b8751] font-medium flex items-center gap-1 transition">
+              Particulieren <span class="text-xs">▾</span>
             </button>
-            <div id="services-dropdown" class="hidden absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
-              <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Alle diensten</a>
-              <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Rattenbestrijding</a>
-              <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Muizenbestrijding</a>
-              <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Kakkerlakken</a>
-              <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Vlooienbestrijding</a>
-              <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Bedwantsen</a>
-              <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e] rounded-xl mx-2 transition-all duration-200">Overige ongedierte</a>
+            <div class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
+              <a href="ratten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition bg-gray-100 font-semibold">Rattenbestrijding</a>
+              <a href="muizen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Kakkerlakkenbestrijding</a>
+              <a href="vlooien.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Wespenbestrijding</a>
+              <a href="bijen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Bijenverwijdering</a>
+              <a href="vliegende-insecten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Vliegende insecten</a>
+              <a href="overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Overige ongedierte</a>
             </div>
           </div>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Particulieren</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Bedrijven</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Spoedservice</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">FAQ</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors duration-200 hover:scale-105 transform">Contact</a>
-          <a href="#" class="bg-gradient-to-r from-[#242c2e] to-[#19201f] text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold">Offerte aanvragen</a>
+
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Bedrijven</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Contact</a>
+
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#166d42] font-semibold transition shadow-md">Offerte aanvragen</a>
+
+          <!-- Taal knoppen desktop -->
+          <div class="flex items-center gap-2 ml-4">
+            <button id="lang-nl-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm bg-gray-200">NL</button>
+            <button id="lang-en-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm opacity-60 hover:opacity-100">EN</button>
+          </div>
         </div>
-        <button id="mobile-menu-btn" class="lg:hidden text-gray-700 hover:text-[#242c2e] transition-colors">
-          <i data-lucide="menu" id="mobile-icon" class="w-6 h-6"></i>
-        </button>
+
+        <!-- MOBIEL: taal + gratis offerte knop + hamburger -->
+        <div class="lg:hidden flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <button id="lang-nl-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs bg-gray-200">NL</button>
+            <button id="lang-en-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs opacity-60 hover:opacity-100">EN</button>
+            
+            <a href="offerte.html" class="bg-[#242c2e] text-white px-4 py-2 rounded-lg font-semibold text-sm shadow-md whitespace-nowrap">
+              Gratis offerte
+            </a>
+          </div>
+
+          <button id="mobile-menu-btn" class="text-gray-800">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+          </button>
+        </div>
       </div>
-      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t animate-in fade-in slide-in-from-top-2 duration-200">
-        <div class="flex flex-col gap-4">
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Home</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Over ons</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Werkwijze</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Diensten</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Particulieren</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Bedrijven</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Spoedservice</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">FAQ</a>
-          <a href="#" class="text-gray-700 hover:text-[#242c2e] font-medium transition-colors">Contact</a>
-          <a href="#" class="bg-gradient-to-r from-[#242c2e] to-[#19201f] text-white px-6 py-3 rounded-full text-center font-semibold">Offerte aanvragen</a>
+
+      <!-- Mobiel menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <div class="py-6 px-6 space-y-4">
+          <a href="index.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Home</a>
+          <a href="overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Over ons</a>
+          <a href="werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Werkwijze</a>
+
+          <div class="border-t border-gray-200 pt-4">
+            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#1b8751]">
+              Particulieren
+              <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
+            </button>
+            <div id="mobile-services-list" class="space-y-2 pl-4 hidden">
+              <a href="ratten.html" class="block py-2 text-gray-700 hover:text-[#1b8751] font-semibold transition bg-gray-100 rounded">Rattenbestrijding</a>
+              <a href="muizen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Kakkerlakkenbestrijding</a>
+              <a href="vlooien.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Wespenbestrijding</a>
+              <a href="bijen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Bijenverwijdering</a>
+              <a href="vliegende-insecten.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Vliegende insecten</a>
+              <a href="overige.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Overige ongedierte</a>
+            </div>
+          </div>
+
+          <a href="bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Bedrijven</a>
+          <a href="contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Contact</a>
+          <a href="offerte.html" class="block mt-6 bg-[#1b8751] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#242c2e] transition shadow-md">Offerte aanvragen</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <main>
-    <section class="relative bg-gradient-to-br from-[#242c2e] via-[#19201f] to-[#242c2e] text-white py-24 overflow-hidden">
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="max-w-3xl">
-          <div class="inline-block bg-[#19201f] px-4 py-2 rounded-full text-gray-300 text-sm font-semibold mb-6 border border-gray-600/30">
-            Professionele Ongediertebestrijding
-          </div>
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Rattenbestrijding
-          </h1>
-          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-            Snelle en effectieve oplossingen voor rattenplagen. Bescherm uw gezondheid en eigendom met onze professionele diensten.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#" class="bg-white text-[#242c2e] px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center">
-              Direct contact
-            </a>
-            <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#242c2e] transition-all duration-300 text-center">
-              Meer informatie
-            </a>
-          </div>
-        </div>
+  <!-- HERO met groen accent -->
+  <section class="relative overflow-hidden min-h-[60vh] flex items-center slice-bottom" style="background-image: url('https://www.rentokil.co.uk/blog/wp-content/uploads/2024/10/brown-sewer-rat-looking-out-from-damaged-drain-pipe.jpg'); background-position: center; background-size: cover;">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-24 text-center fade-in visible">
+      <span class="inline-block mb-6 px-6 py-2 rounded-full bg-green-600/30 text-green-200 text-lg font-bold backdrop-blur-sm">
+        RATTENBESTRIJDING
+      </span>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight">
+        Rattenoverlast?<br><span class="text-green-400">Wij lossen het snel en veilig op.</span>
+      </h1>
+      <p class="text-2xl text-gray-200 max-w-3xl mx-auto mb-12">
+        Professionele rattenbestrijding met garantie. Snel, discreet en effectief.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="offerte.html" class="bg-red-600 hover:bg-green-700 text-white px-10 py-5 rounded-xl font-bold text-lg transition shadow-lg">Nest laten verwijderen</a>
+        <a href="tel:0612345678" class="border-2 border-white text-white hover:bg-white hover:text-[#242c2e] px-10 py-5 rounded-xl font-bold text-lg transition">Bel direct: 06 - 12 34 56 78</a>
       </div>
-    </section>
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <div class="inline-block bg-gray-100 px-4 py-2 rounded-full text-[#242c2e] text-sm font-semibold">
-              Waarom kiezen voor ons?
-            </div>
-            <h2 class="text-4xl font-bold text-gray-900 leading-tight">
-              Rattenplaag? Wij helpen u snel en discreet
-            </h2>
-            <p class="text-gray-600 text-lg leading-relaxed">
-              Ratten vormen een serieus risico voor uw gezondheid en eigendom. Ze verspreiden ziektes, beschadigen kabels en kunnen zelfs brand veroorzaken. Een rattenplaag moet daarom altijd direct en professioneel worden aangepakt.
-            </p>
-            <p class="text-gray-600 text-lg leading-relaxed">
-              Bij CeroPest hebben we jarenlange ervaring met het bestrijden van ratten. We gebruiken bewezen methoden en moderne technieken om ratten definitief te verwijderen en herhaling te voorkomen.
-            </p>
-            <div class="grid grid-cols-2 gap-4 pt-4">
-              <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-3xl hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200">
-                <div class="text-3xl font-bold text-[#242c2e] mb-2">24/7</div>
-                <div class="text-gray-700 font-medium">Spoedservice</div>
-              </div>
-              <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-3xl hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200">
-                <div class="text-3xl font-bold text-[#242c2e] mb-2">100%</div>
-                <div class="text-gray-700 font-medium">Garantie</div>
-              </div>
-            </div>
-          </div>
-          <div class="relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-[#242c2e] to-[#19201f] rounded-3xl transform rotate-3"></div>
-            <img
-              src="https://images.pexels.com/photos/6963944/pexels-photo-6963944.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Professionele rattenbestrijding"
-              class="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <div class="inline-block bg-amber-100 px-4 py-2 rounded-full text-amber-700 text-sm font-semibold mb-4">
-            Herkenning
-          </div>
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">Hoe herken je ratten?</h2>
-          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-            Let op deze tekenen om een rattenplaag vroegtijdig te ontdekken
-          </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 group">
-            <div class="bg-gradient-to-br from-amber-500 to-amber-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <i data-lucide="alert-triangle" class="w-8 h-8 text-white"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Veelvoorkomende tekenen</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
-                <span>Keutels (rattenkeutels zijn circa 1-2 cm lang)</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
-                <span>Loopsporen en vetvegen langs muren</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
-                <span>Knaagsporen op hout, plastic of kabels</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
-                <span>Geluiden in muren, plafonds of kruipruimtes</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
-                <span>Gaten in vloeren of muren</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-[#242c2e] rounded-full mt-2 flex-shrink-0"></div>
-                <span>Nesten van gescheurd papier of textiel</span>
-              </li>
-            </ul>
-          </div>
-          <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-red-200 group">
-            <div class="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <i data-lucide="shield" class="w-8 h-8 text-white"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Waarom ratten gevaarlijk zijn</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Verspreiding van ziektes zoals Weil ziekte</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Beschadiging van elektrische bedrading (brandgevaar)</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Besmetting van voedsel en oppervlakken</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Structurele schade aan gebouwen</span>
-              </li>
-              <li class="flex items-start gap-3 text-gray-700">
-                <div class="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
-                <span>Snelle voortplanting (12 jongen per nest)</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-20 bg-white">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <div class="inline-block bg-gray-100 px-4 py-2 rounded-full text-[#242c2e] text-sm font-semibold mb-4">
-            Onze Methode
-          </div>
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">Onze aanpak bij rattenbestrijding</h2>
-          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-            Een bewezen 5-stappen proces voor blijvende resultaten
-          </p>
-        </div>
-        <div class="space-y-6">
-          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
-            <div class="flex items-start gap-4">
-              <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <i data-lucide="check-circle" class="w-6 h-6 text-white"></i>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Grondige inspectie</h3>
-                <p class="text-gray-600 leading-relaxed">We inspecteren alle mogelijke toegangspunten, nestplaatsen en looproutes. Dit stelt ons in staat om de omvang van het probleem vast te stellen en de beste strategie te bepalen.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
-            <div class="flex items-start gap-4">
-              <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <i data-lucide="check-circle" class="w-6 h-6 text-white"></i>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Professionele bestrijding</h3>
-                <p class="text-gray-600 leading-relaxed">We plaatsen strategisch rattenvallen en/of gebruiken rodenticide (rattengif) op veilige plekken. De middelen die we gebruiken zijn toegelaten en veilig in gebruik volgens de wet.</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
-            <div class="flex items-start gap-4">
-              <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <i data-lucide="check-circle" class="w-6 h-6 text-white"></i>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Toegang afsluiten</h3>
-                <p class="text-gray-600 leading-relaxed">We adviseren over of voeren zelf uit het afsluiten van toegangspunten. Ratten kunnen door openingen vanaf 2 cm naar binnen, dus grondig werk is essentieel.</p>
-              </div>
-            </div>
-          </div>
-        
-            <div class="flex items-start gap-4">
-             
-              
-            </div>
-          </div>
-          <div class="bg-gradient-to-br from-white to-gray-50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group hover:scale-102">
-            <div class="flex items-start gap-4">
-              <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                <i data-lucide="check-circle" class="w-6 h-6 text-white"></i>
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Preventief advies</h3>
-                <p class="text-gray-600 leading-relaxed">U krijgt uitgebreid advies over preventieve maatregelen om te voorkomen dat ratten terugkeren, zoals het opslaan van voedsel en het onderhouden van uw pand.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-20 bg-gradient-to-br from-[#242c2e] via-[#19201f] to-[#242c2e] text-white relative overflow-hidden">
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">Last van ratten?</h2>
-        <p class="text-xl mb-10 text-gray-300 leading-relaxed max-w-2xl mx-auto">
-          Neem direct contact op. Hoe eerder we beginnen, hoe sneller het probleem is opgelost. We staan 24/7 voor u klaar.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:0612345678" class="bg-white text-[#242c2e] px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-            <i data-lucide="phone" class="w-5 h-5"></i>
-            Bel 06 - 12 34 56 78
-          </a>
-          <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#242c2e] transition-all duration-300">
-            Vraag inspectie aan
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-        <div>
-          <div class="flex items-center gap-3 mb-6">
-            <div class="bg-gradient-to-br from-[#242c2e] to-[#19201f] p-2 rounded-2xl">
-              <i data-lucide="bug" class="w-6 h-6 text-white"></i>
-            </div>
-            <span class="text-xl font-bold text-white">CEROPEST</span>
+  <!-- Intro sectie -->
+  <section class="py-20 bg-subtle fade-in slice-top">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">Een ernstig en snelgroeiend probleem</h2>
+          <p class="text-lg text-gray-700 mb-5 leading-relaxed">
+            Ratten brengen ziektes over, knagen aan kabels en veroorzaken enorme schade. Een rattenplaag moet altijd professioneel worden aangepakt.
+          </p>
+          <p class="text-lg text-gray-700 mb-5 leading-relaxed">
+            CeroPest gebruikt moderne vallen, lokdozen en preventieve maatregelen om ratten definitief te verwijderen. Vaak dezelfde dag nog ter plaatse.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed font-semibold">Wacht niet – ratten planten zich razendsnel voort.</p>
+        </div>
+        <div class="img-hover rounded-xl shadow-2xl overflow-hidden order-1 lg:order-2">
+          <img src="https://www.rentokil.co.uk/blog/wp-content/uploads/2024/10/brown-sewer-rat-looking-out-from-damaged-drain-pipe.jpg" alt="Professionele rattenbestrijder" class="w-full object-cover h-96">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signalen & Gevolgen met gradient -->
+  <section class="py-20 bg-gradient-signalen fade-in">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Signalen van een rattenplaag</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-green-100">
+          <i data-lucide="alert-triangle" class="w-12 h-12 text-green-600 mb-6"></i>
+          <h3 class="text-2xl font-bold mb-5">Herkenningskenmerken</h3>
+          <div class="mb-6 img-hover rounded-xl overflow-hidden">
+            <img src="https://www.gartenjournal.net/wp-content/uploads/rattenkot-1.jpg" alt="Rattenkeutels" class="w-full object-cover h-64">
           </div>
-          <p class="text-gray-400 mb-6 leading-relaxed">
+          <ul class="space-y-4 text-gray-700 text-lg">
+            <li class="flex items-start gap-3"><span class="text-green-600 font-bold text-xl">•</span> Donkere keutels (rijstkorrelgrootte)</li>
+            <li class="flex items-start gap-3"><span class="text-green-600 font-bold text-xl">•</span> Vetvegen langs muren en looppaden</li>
+            <li class="flex items-start gap-3"><span class="text-green-600 font-bold text-xl">•</span> Knaagsporen op kabels, hout of plastic</li>
+            <li class="flex items-start gap-3"><span class="text-green-600 font-bold text-xl">•</span> Geluiden in muren of plafonds</li>
+            <li class="flex items-start gap-3"><span class="text-green-600 font-bold text-xl">•</span> Nesten van gescheurd papier of isolatiemateriaal</li>
+          </ul>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-green-100">
+          <i data-lucide="heart-crack" class="w-12 h-12 text-red-600 mb-6"></i>
+          <h3 class="text-2xl font-bold mb-5">Risico's en gevolgen</h3>
+          <div class="mb-6 img-hover rounded-xl overflow-hidden">
+            <img src="https://megades.nl/wp-content/uploads/2020/04/knaagschade-aan-kabels.jpg" alt="Schade door ratten" class="w-full object-cover h-64">
+          </div>
+          <ul class="space-y-4 text-gray-700 text-lg">
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Verspreiding van ziektes (bijv. Weil, leptospirose)</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Brandgevaar door geknaagde kabels</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Besmetting van voedsel en drinkwater</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Structurele schade aan gebouwen</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Snelle voortplanting (tot 2000 nakomelingen per jaar)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aanpak -->
+  <section class="py-20 bg-subtle fade-in">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Onze professionele aanpak</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+          <i data-lucide="search" class="w-12 h-12 text-[#1b8751] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">1. Grondige inspectie</h3>
+          <p class="text-gray-700">We zoeken alle toegangspunten, nesten en looproutes.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+          <i data-lucide="shield" class="w-12 h-12 text-[#1b8751] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">2. Veilig bestrijden</h3>
+          <p class="text-gray-700">Lokdozen, vallen en professionele middelen – veilig voor mens en huisdier.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+          <i data-lucide="shield-check" class="w-12 h-12 text-[#1b8751] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">3. Nazorg & preventie</h3>
+          <p class="text-gray-700">Afsluiten van gaten en advies om herhaling te voorkomen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#242c2e] text-white fade-in">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">Ratten gespot?</h2>
+      <p class="text-xl mb-10 text-gray-200">Wacht niet – ratten planten zich razendsnel voort. Bel direct!</p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="tel:0612345678" class="bg-white text-[#242c2e] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow">Nu bellen: 06 - 12 34 56 78</a>
+        <a href="offerte.html" class="border-2 border-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white hover:text-[#242c2e] transition">Inspectie aanvragen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (zelfde rijke versie als eerder) -->
+  <footer class="bg-[#242c2e] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>CeroPest</span>
+          </div>
+          <p class="text-gray-300 mb-4">
             Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.
           </p>
-          <div class="flex flex-col gap-3 text-gray-400">
-            <a href="tel:0612345678" class="flex items-center gap-2 hover:text-white transition-colors group">
-              <i data-lucide="phone" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
-              <span>06 - 12 34 56 78</span>
-            </a>
-            <a href="mailto:info@pestcontrolpro.nl" class="flex items-center gap-2 hover:text-white transition-colors group">
-              <i data-lucide="mail" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
-              <span>info@pestcontrolpro.nl</span>
-            </a>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-white">06 - 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@ceropest.nl" class="hover:text-white">info@ceropest.nl</a>
+            </div>
             <div class="flex items-center gap-2">
               <i data-lucide="clock" class="w-4 h-4"></i>
               <span>24/7 beschikbaar</span>
             </div>
           </div>
         </div>
+
         <div>
-          <h3 class="text-lg font-bold mb-4 text-white">Diensten</h3>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Rattenbestrijding</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Muizenbestrijding</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Kakkerlakkenbestrijding</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Vlooienbestrijding</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Bedwantsenbestrijding</a></li>
+          <h3 class="text-lg font-semibold mb-4">Particulieren</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="ratten.html" class="hover:text-white">Rattenbestrijding</a></li>
+            <li><a href="muizen.html" class="hover:text-white">Muizenbestrijding</a></li>
+            <li><a href="kakkerlakken.html" class="hover:text-white">Kakkerlakkenbestrijding</a></li>
+            <li><a href="vlooien.html" class="hover:text-white">Vlooienbestrijding</a></li>
+            <li><a href="wespen.html" class="hover:text-white">Wespenbestrijding</a></li>
+            <li><a href="overige.html" class="hover:text-white">Overige ongedierte</a></li>
           </ul>
         </div>
+
         <div>
-          <h3 class="text-lg font-bold mb-4 text-white">Informatie</h3>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Over ons</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Werkwijze</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Voor particulieren</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Voor bedrijven</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">FAQ</a></li>
+          <h3 class="text-lg font-semibold mb-4">Informatie</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="overons.html" class="hover:text-white">Over ons</a></li>
+            <li><a href="werkwijze.html" class="hover:text-white">Werkwijze</a></li>
+
+            <li><a href="bedrijven.html" class="hover:text-white">Voor bedrijven</a></li>
+
           </ul>
         </div>
+
         <div>
-          <h3 class="text-lg font-bold mb-4 text-white">Contact</h3>
-          <ul class="space-y-2 text-gray-400 mb-6">
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Contactpagina</a></li>
-            <li><a href="#" class="hover:text-white transition-colors hover:translate-x-1 inline-block">Offerte aanvragen</a></li>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="contact.html" class="hover:text-white">Contactpagina</a></li>
+            <li><a href="offerte.html" class="hover:text-white">Offerte aanvragen</a></li>
           </ul>
-          <h4 class="text-sm font-semibold mb-3 text-white">Werkgebied</h4>
-          <div class="flex items-start gap-2 text-gray-400 text-sm">
-            <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
-            <span>Amsterdam, Utrecht, Rotterdam en omgeving</span>
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold mb-2">Werkgebied</h4>
+            <div class="flex items-start gap-2 text-gray-300 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              <span>Amsterdam, Utrecht, Rotterdam en omgeving</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-        <p>&copy; 2025 CEROPEST. Alle rechten voorbehouden.</p>
+
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>© <span id="year"></span> CeroPest. Alle rechten voorbehouden.</p>
         <div class="flex gap-6">
-          <a href="#" class="hover:text-white transition-colors">Privacy</a>
-          <a href="#" class="hover:text-white transition-colors">Algemene voorwaarden</a>
+          <a href="privacy.html" class="hover:text-white">Privacy</a>
+          <a href="voorwaarden.html" class="hover:text-white">Algemene voorwaarden</a>
         </div>
       </div>
     </div>
@@ -382,35 +333,50 @@
 
   <script>
     lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Services dropdown
-    const servicesBtn = document.getElementById('services-btn');
-    const servicesDropdown = document.getElementById('services-dropdown');
-    const servicesChevron = document.getElementById('services-chevron');
-    servicesBtn.addEventListener('click', () => {
-      servicesDropdown.classList.toggle('hidden');
-      servicesChevron.classList.toggle('rotate-180');
-    });
-    document.addEventListener('click', (e) => {
-      if (!servicesBtn.contains(e.target)) {
-        servicesDropdown.classList.add('hidden');
-        servicesChevron.classList.remove('rotate-180');
-      }
+    // Taal-switch: EN → gaat naar engels/rattenengels.html
+    document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = 'engels/rattenengels.html';
+      });
     });
 
-    // Mobile menu
+    // NL knoppen blijven actief (visueel gemarkeerd)
+    document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(btn => {
+      btn.classList.add('bg-gray-200');
+    });
+
+    // Mobiel menu toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileIcon = document.getElementById('mobile-icon');
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileIcon.setAttribute('data-lucide', 'menu');
-      } else {
-        mobileIcon.setAttribute('data-lucide', 'x');
-      }
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileBtn.innerHTML = isOpen 
+        ? '<i data-lucide="x" class="w-8 h-8"></i>' 
+        : '<i data-lucide="menu" class="w-8 h-8"></i>';
       lucide.createIcons();
     });
+
+    // Mobiel accordion
+    const servicesToggle = document.getElementById('mobile-services-toggle');
+    const servicesList = document.getElementById('mobile-services-list');
+    const servicesArrow = document.getElementById('mobile-services-arrow');
+    if (servicesToggle) {
+      servicesToggle.addEventListener('click', () => {
+        servicesList.classList.toggle('hidden');
+        servicesArrow.classList.toggle('rotate-180');
+      });
+    }
+
+    // Fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

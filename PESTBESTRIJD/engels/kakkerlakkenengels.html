@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cockroach Control - CeroPest</title>
+  <meta name="description" content="Professional cockroach control in Amsterdam and surrounding areas. Fast, discreet and effective removal with guarantee.">
+  <meta name="keywords" content="cockroach control Amsterdam, cockroach extermination, roach removal, emergency cockroach service">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+    @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .img-hover { transition: transform 0.4s ease; overflow: hidden; border-radius: 0.75rem; }
+    .img-hover img { transition: transform 0.6s ease; }
+    .img-hover:hover img { transform: scale(1.1); }
+
+    .bg-subtle { 
+      background: linear-gradient(to bottom, #f9fafb 0%, #f1f5f9 100%); 
+    }
+
+    .slice-bottom { clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
+    .slice-top { clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%); }
+    @media (min-width: 1024px) {
+      .slice-bottom { clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
+      .slice-top { clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%); }
+    }
+
+    .rotate-180 { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-red-900 text-white py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">+31 6 12 34 56 78</a>
+        </div>
+        <div class="hidden sm:block">24/7 Emergency service available</div>
+      </div>
+    </div>
+
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-3 flex-shrink-0">
+          <img src="../ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+        </a>
+
+        <!-- DESKTOP MENU -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="../index.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Home</a>
+          <a href="../overons.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">About us</a>
+          <a href="../werkwijze.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Our method</a>
+
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-[#1b8751] font-medium flex items-center gap-1 transition">
+              Private <span class="text-xs">▾</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
+              <a href="../rattenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Rat control</a>
+              <a href="../muizenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Mice control</a>
+              <a href="kakkerlakkenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition bg-gray-100 font-semibold">Cockroach control</a>
+              <a href="../vlooienengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Flea control</a>
+              <a href="../wespenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Wasp control</a>
+              <a href="../bijen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Bee removal</a>
+              <a href="../vliegende-insecten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Flying insects</a>
+              <a href="../overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Other pests</a>
+            </div>
+          </div>
+
+          <a href="../bedrijven.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Business</a>
+          <a href="../contact.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Contact</a>
+
+          <a href="../offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#166d42] font-semibold transition shadow-md">Request quote</a>
+
+          <!-- Language buttons desktop -->
+          <div class="flex items-center gap-2 ml-4">
+            <button id="lang-nl-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm opacity-60 hover:opacity-100">NL</button>
+            <button id="lang-en-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm bg-gray-200">EN</button>
+          </div>
+        </div>
+
+        <!-- MOBILE: language + free quote button + hamburger -->
+        <div class="lg:hidden flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <button id="lang-nl-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs opacity-60 hover:opacity-100">NL</button>
+            <button id="lang-en-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs bg-gray-200">EN</button>
+            
+            <a href="../offerte.html" class="bg-[#242c2e] text-white px-4 py-2 rounded-lg font-semibold text-sm shadow-md whitespace-nowrap">
+              Free quote
+            </a>
+          </div>
+
+          <button id="mobile-menu-btn" class="text-gray-800">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <div class="py-6 px-6 space-y-4">
+          <a href="../index.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Home</a>
+          <a href="../overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">About us</a>
+          <a href="../werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Our method</a>
+
+          <div class="border-t border-gray-200 pt-4">
+            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#1b8751]">
+              Private
+              <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
+            </button>
+            <div id="mobile-services-list" class="space-y-2 pl-4 hidden">
+              <a href="../rattenengels.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Rat control</a>
+              <a href="../muizenengels.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Mice control</a>
+              <a href="kakkerlakkenengels.html" class="block py-2 text-gray-700 hover:text-[#1b8751] font-semibold transition bg-gray-100 rounded">Cockroach control</a>
+              <a href="../vlooienengels.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Flea control</a>
+              <a href="../wespenengels.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Wasp control</a>
+              <a href="../bijen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Bee removal</a>
+
+              <a href="../overige.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Other pests</a>
+            </div>
+          </div>
+
+          <a href="../bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Business</a>
+          <a href="../contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Contact</a>
+          <a href="../offerte.html" class="block mt-6 bg-[#1b8751] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#242c2e] transition shadow-md">Request quote</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO - paars accent -->
+  <section class="relative overflow-hidden min-h-[60vh] flex items-center slice-bottom" style="background-image: url('https://www.shutterstock.com/image-photo/background-many-cockroaches-260nw-1068995486.jpg'); background-position: center; background-size: cover;">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-24 text-center fade-in visible">
+      <span class="inline-block mb-6 px-6 py-2 rounded-full bg-purple-600/30 text-purple-200 text-lg font-bold backdrop-blur-sm">
+        COCKROACH CONTROL
+      </span>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight">
+        Cockroaches in your home?<br><span class="text-purple-400">We eliminate them permanently.</span>
+      </h1>
+      <p class="text-2xl text-gray-200 max-w-3xl mx-auto mb-12">
+        Specialized and discreet treatment. Fast, safe and with guarantee.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="../offerte.html" class="bg-red-600 hover:bg-purple-700 text-white px-10 py-5 rounded-xl font-bold text-lg transition shadow-lg">Request inspection</a>
+        <a href="tel:0612345678" class="border-2 border-white text-white hover:bg-white hover:text-[#242c2e] px-10 py-5 rounded-xl font-bold text-lg transition">Call now: +31 6 12 34 56 78</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro section -->
+  <section class="py-20 bg-subtle fade-in slice-top">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">A persistent and discreet problem</h2>
+          <p class="text-lg text-gray-700 mb-5 leading-relaxed">
+            Cockroaches are extremely resilient and reproduce rapidly. DIY control is nearly impossible without professional products.
+          </p>
+          <p class="text-lg text-gray-700 mb-5 leading-relaxed">
+            CeroPest uses advanced gel and spray methods that target all life stages (including eggs). Result: a cockroach-free home or business with minimal disruption.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed font-semibold text-purple-600">Early action prevents large infestations and reputational damage.</p>
+        </div>
+        <div class="img-hover rounded-xl shadow-2xl overflow-hidden order-1 lg:order-2">
+          <img src="https://creepycrawlerspestsolutions.com/wp-content/uploads/2025/08/Cockroach_extermination_pest_control_technician.png" alt="Professional cockroach exterminator" class="w-full object-cover h-96">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signs & Risks -->
+  <section class="py-20 bg-white fade-in">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Signs you should not ignore</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+          <i data-lucide="alert-triangle" class="w-12 h-12 text-purple-600 mb-6"></i>
+          <h3 class="text-2xl font-bold mb-5">Identification signs</h3>
+          <div class="mb-6 img-hover rounded-xl overflow-hidden">
+            <img src="https://www.nativepestmanagement.com/images/blog/german-cockroach-on-wall.png" alt="Cockroach on wall" class="w-full object-cover h-64">
+          </div>
+          <ul class="space-y-4 text-gray-700 text-lg">
+            <li class="flex items-start gap-3"><span class="text-purple-600 font-bold text-xl">•</span> Brown/black insects (1-5 cm) active at night</li>
+            <li class="flex items-start gap-3"><span class="text-purple-600 font-bold text-xl">•</span> Musty odor with large numbers</li>
+            <li class="flex items-start gap-3"><span class="text-purple-600 font-bold text-xl">•</span> Dark droppings (like coffee grounds)</li>
+            <li class="flex items-start gap-3"><span class="text-purple-600 font-bold text-xl">•</span> Egg cases in dark corners</li>
+            <li class="flex items-start gap-3"><span class="text-purple-600 font-bold text-xl">•</span> Damage to food packaging</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+          <i data-lucide="heart-crack" class="w-12 h-12 text-red-600 mb-6"></i>
+          <h3 class="text-2xl font-bold mb-5">Risks and consequences</h3>
+          <div class="mb-6 img-hover rounded-xl overflow-hidden">
+            <img src="https://www.terminix.com/-/media/Feature/Terminix/Articles/cockroach-poop.jpg" alt="Cockroach droppings and eggs" class="w-full object-cover h-64">
+          </div>
+          <ul class="space-y-4 text-gray-700 text-lg">
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Spread of bacteria and pathogens</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Allergic reactions and asthma</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Contamination of food and surfaces</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Reputational damage for businesses</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Rapid spread throughout the building</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our approach -->
+  <section class="py-20 bg-subtle fade-in">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Our professional approach</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+          <i data-lucide="search" class="w-12 h-12 text-[#242c2e] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">1. Thorough inspection</h3>
+          <p class="text-gray-700">We locate all hiding places, pathways and breeding sites.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+          <i data-lucide="spray-can" class="w-12 h-12 text-[#242c2e] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">2. Targeted treatment</h3>
+          <p class="text-gray-700">Professional gel and insecticides that eliminate all life stages.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+          <i data-lucide="shield" class="w-12 h-12 text-[#242c2e] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">3. Aftercare & prevention</h3>
+          <p class="text-gray-700">Follow-up visits and advice to prevent re-infestation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#242c2e] text-white fade-in">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">Spotted cockroaches?</h2>
+      <p class="text-xl mb-10 text-gray-200">Don't wait – a small infestation quickly becomes a major problem.</p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="tel:0612345678" class="bg-white text-[#242c2e] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow">Call now: +31 6 12 34 56 78</a>
+        <a href="../offerte.html" class="border-2 border-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white hover:text-[#242c2e] transition">Request inspection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#242c2e] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>CeroPest</span>
+          </div>
+          <p class="text-gray-300 mb-4">
+            Professional pest control for private individuals and businesses. Fast, effective and discreet.
+          </p>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-white">+31 6 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@ceropest.nl" class="hover:text-white">info@ceropest.nl</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 available</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="../rattenengels.html" class="hover:text-white">Rat control</a></li>
+            <li><a href="../muizenengels.html" class="hover:text-white">Mice control</a></li>
+            <li><a href="kakkerlakkenengels.html" class="hover:text-white">Cockroach control</a></li>
+            <li><a href="../vlooienengels.html" class="hover:text-white">Flea control</a></li>
+            <li><a href="../wespenengels.html" class="hover:text-white">Wasp control</a></li>
+            <li><a href="../overige.html" class="hover:text-white">Other pests</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Information</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="../overons.html" class="hover:text-white">About us</a></li>
+            <li><a href="../werkwijze.html" class="hover:text-white">Our method</a></li>
+            <li><a href="../particulieren.html" class="hover:text-white">For private customers</a></li>
+            <li><a href="../bedrijven.html" class="hover:text-white">For businesses</a></li>
+            <li><a href="../spoedservice.html" class="hover:text-white">Emergency service</a></li>
+            <li><a href="../faq.html" class="hover:text-white">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="../contact.html" class="hover:text-white">Contact page</a></li>
+            <li><a href="../offerte.html" class="hover:text-white">Request free quote</a></li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-sm font-semibold mb-2">Service area</h4>
+            <div class="flex items-start gap-2 text-gray-300 text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              <span>Amsterdam, Utrecht, Rotterdam and surrounding areas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>© <span id="year"></span> CeroPest. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="../privacy.html" class="hover:text-white">Privacy</a>
+          <a href="../voorwaarden.html" class="hover:text-white">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Language switch: NL → go to Dutch version
+    document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = '../kakkerlakken.html';
+      });
+    });
+
+    // EN buttons active
+    document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(btn => {
+      btn.classList.add('bg-gray-200');
+    });
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileBtn.innerHTML = isOpen 
+        ? '<i data-lucide="x" class="w-8 h-8"></i>' 
+        : '<i data-lucide="menu" class="w-8 h-8"></i>';
+      lucide.createIcons();
+    });
+
+    // Mobile accordion
+    const servicesToggle = document.getElementById('mobile-services-toggle');
+    const servicesList = document.getElementById('mobile-services-list');
+    const servicesArrow = document.getElementById('mobile-services-arrow');
+    if (servicesToggle) {
+      servicesToggle.addEventListener('click', () => {
+        servicesList.classList.toggle('hidden');
+        servicesArrow.classList.toggle('rotate-180');
+      });
+    }
+
+    // Fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

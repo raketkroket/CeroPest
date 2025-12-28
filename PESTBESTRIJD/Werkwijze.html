@@ -3,263 +3,284 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onze Werkwijze - PestControl Pro</title>
+  <title>Onze Werkwijze - CeroPest | Ongediertebestrijding Amsterdam & Amstelveen</title>
+  <meta name="description" content="Ontdek onze transparante en professionele werkwijze bij ongediertebestrijding in Amsterdam, Amstelveen en omgeving. Van inspectie tot nazorg – altijd met garantie.">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <style>
-    .dropdown { 
-      display: none; 
-      position: absolute; 
-      top: 100%; 
-      left: 0; 
-      min-width: 14rem; 
-      background: white; 
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
-      border-radius: 0.5rem; 
-      padding: 0.5rem 0; 
-      z-index: 50; 
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .bg-gradient-subtle {
+      background: linear-gradient(to bottom, #f8fafc 0%, #e0f2fe 100%);
     }
-    .dropdown.active { display: block; }
+
+    .hero-slice {
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      text-shadow: #0ea5e9 0px 2px 2px ;
+      box-shadow: #0ea5e9 0px 4px 6px -1px, #0ea5e9 0px 2px 4px -1px;
+    }
+    @media (min-width: 1024px) {
+      .hero-slice { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+    }
+
+    .timeline-connector {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: #bae6fd;
+      transform: translateX(-50%);
+    }
+    @media (max-width: 1024px) {
+      .timeline-connector { left: 40px; }
+    }
+
+    .step-icon {
+      background: #e0f2fe;
+      border: 4px solid #0ea5e9;
+    }
+
+    .img-hover { overflow: hidden; border-radius: 1.5rem; }
+    .img-hover img { transition: transform 0.6s ease; }
+    .img-hover:hover img { transform: scale(1.1); }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-white">
 
-  <!-- HEADER -->
+  <!-- JOUW VASTE HEADER -->
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="bg-red-900 text-white py-2">
+    <div class="bg-[#a0514f] text-white py-2">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
         <div class="flex items-center gap-2">
           <i data-lucide="phone" class="w-4 h-4"></i>
-          <a href="tel:0612345678" class="font-semibold hover:text-emerald-100">06 - 12 34 56 78</a>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">06 - 12 34 56 78</a>
         </div>
-        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
+        <div class="hidden sm:block">Bereikbaar voor al uw vragen</div>
       </div>
     </div>
+
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <!-- Logo exactly like the first code -->
         <a href="index.html" class="flex items-center gap-3">
           <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
         </a>
+
         <div class="hidden lg:flex items-center gap-8">
-          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
-          <a href="OverOns.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
-          <a href="Werkwijze.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
-          <div class="relative">
-            <button id="services-btn" class="text-gray-700 hover:text-[#242c2e] font-medium flex items-center gap-1">
-              Diensten <span class="text-xs">▾</span>
+          <a href="index.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Home</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Over ons</a>
+          <a href="werkwijze.html" class="text-gray-700 hover:text-[#252c30] font-medium transition underline decoration-4 decoration-[#e7f9fe]">Werkwijze</a>
+
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-[#252c30] font-medium flex items-center gap-1 transition">
+              Particulieren <span class="text-xs">▾</span>
             </button>
-            <div id="services-dropdown" class="dropdown">
-              <a href="Diensten.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Alle diensten</a>
-              <a href="Ratten.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Rattenbestrijding</a>
-              <a href="Muizen.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Muizenbestrijding</a>
-              <a href="Kakkerlakken.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Kakkerlakken</a>
-              <a href="Vlooien.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Vlooienbestrijding</a>
-              <a href="Bedwantsen.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Bedwantsenbestrijding</a>
-              <a href="Overige.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#242c2e]">Overige ongedierte</a>
+            <div class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
+              <a href="ratten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Rattenbestrijding</a>
+              <a href="muizen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Kakkerlakkenbestrijding</a>
+              <a href="vlooien.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Wespenbestrijding</a>
+              <a href="bijen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Bijenverwijdering</a>
+              <a href="vliegende-insecten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Vliegende insecten</a>
+              <a href="overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Overige ongedierte</a>
             </div>
           </div>
-          <a href="Particulieren.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Particulieren</a>
-          <a href="Bedrijven.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Bedrijven</a>
-          <a href="Spoedservice.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Spoedservice</a>
-          <a href="FAQ.html" class="text-gray-700 hover:text-[#242c2e] font-medium">FAQ</a>
-          <a href="Contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
-          <a href="Offerte.html" class="bg-[#242c2e] text-white px-6 py-2 rounded-lg hover:bg-[#19201f] font-semibold">Offerte aanvragen</a>
+
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Bedrijven</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Contact</a>
+          <a href="offerte.html" class="bg-[#252c30] text-white px-6 py-3 rounded-lg hover:bg-[#1e2226] font-semibold transition shadow-md">Offerte aanvragen</a>
         </div>
-        <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
-          <i data-lucide="menu" class="w-6 h-6"></i>
+
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-800">
+          <i data-lucide="menu" class="w-8 h-8"></i>
         </button>
       </div>
-      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
-        <div class="flex flex-col gap-4">
-          <a href="index.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Home</a>
-          <a href="OverOns.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Over ons</a>
-          <a href="Werkwijze.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Werkwijze</a>
-          <a href="Diensten.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Diensten</a>
-          <a href="Contact.html" class="text-gray-700 hover:text-[#242c2e] font-medium">Contact</a>
-          <a href="Offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#19201f] font-semibold text-center">Offerte aanvragen</a>
+
+      <!-- Mobiel menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <div class="py-6 px-6 space-y-4">
+          <a href="index.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Home</a>
+          <a href="overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Over ons</a>
+          <a href="werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition underline">Werkwijze</a>
+
+          <div class="border-t border-gray-200 pt-4">
+            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#252c30]">
+              Particulieren
+              <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
+            </button>
+            <div id="mobile-services-list" class="space-y-2 pl-4 hidden">
+              <a href="ratten.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Rattenbestrijding</a>
+              <a href="muizen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Kakkerlakkenbestrijding</a>
+              <a href="vlooien.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Wespenbestrijding</a>
+              <a href="bijen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Bijenverwijdering</a>
+              <a href="vliegende-insecten.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Vliegende insecten</a>
+              <a href="overige.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Overige ongedierte</a>
+            </div>
+          </div>
+
+          <a href="bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Bedrijven</a>
+          <a href="contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Contact</a>
+          <a href="offerte.html" class="block mt-6 bg-[#252c30] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#1e2226] transition shadow-md">Offerte aanvragen</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- WERKWIJZE PAGE CONTENT -->
-  <main class="flex-1">
-    <section class="bg-gradient-to-br from-[#242c2e] to-[#19201f] text-white py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Onze Werkwijze</h1>
-        <p class="text-xl text-gray-300 max-w-3xl">Van eerste contact tot definitieve oplossing: zo werken wij</p>
+  <!-- HERO MET SCHUINE ONDERKANT + JOUW FOTO ALS ACHTERGROND -->
+  <section class="relative min-h-[70vh] flex items-center hero-slice overflow-hidden" style="background-image: url('https://kallvest.co.za/wp-content/uploads/2023/06/specilized-cleaning1-scaled.jpg'); background-position: center; background-size: cover;">
+    <div class="absolute inset-0 bg-[#252c30]/70"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-center text-white fade-in">
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
+        Onze werkwijze
+      </h1>
+      <p class="text-2xl md:text-3xl max-w-4xl mx-auto text-gray-200">
+        Transparant, professioneel en altijd met oog voor uw situatie in Amsterdam, Amstelveen en omgeving.
+      </p>
+    </div>
+  </section>
+
+  <!-- TIMELINE MET MEER FOTO'S EN LICHTBLAUWE ACCENTEN -->
+  <section class="py-20 bg-gradient-subtle relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20 fade-in">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-[#252c30] mb-6">
+          Zo gaan wij te werk
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Een duidelijke, stapsgewijze aanpak voor een ongediertevrij resultaat.
+        </p>
       </div>
-    </section>
 
-    <section class="py-20 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="space-y-16">
-          <!-- Stap 1 -->
-          <div class="flex flex-col md:flex-row gap-8 items-start">
-            <div class="md:w-1/3">
-              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
-                <i data-lucide="phone" class="w-10 h-10 text-[#242c2e]"></i>
-              </div>
-              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 1</div>
+      <div class="relative">
+        <!-- Subtiele lichtblauwe connector -->
+        <div class="timeline-connector"></div>
+
+        <!-- Stap 1 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-32 fade-in">
+          <div class="lg:text-right lg:pr-20 order-2 lg:order-1">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="phone-incoming" class="w-10 h-10"></i>
             </div>
-            <div class="md:w-2/3">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Contact opnemen</h3>
-              <p class="text-gray-700 leading-relaxed mb-4">
-                U neemt telefonisch of via ons contactformulier contact met ons op. Beschrijf uw probleem zo gedetailleerd mogelijk: welk ongedierte, waar in of rond de woning, en sinds wanneer.
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Wij stellen aanvullende vragen om een eerste inschatting te maken en plannen zo snel mogelijk een afspraak in voor een gratis inspectie ter plaatse.
-              </p>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">1. Contact & afspraak</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              U belt of vraagt een offerte aan. Wij reageren snel en plannen een inspectie in op een moment dat u uitkomt – vaak al binnen 24-48 uur in Amsterdam en Amstelveen.
+            </p>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://www.ews-group.nl/wp-content/uploads/sites/2/2025/06/EWS-Pest-Control-Michael-1024x683.jpg" alt="Telefonisch contact en afspraak maken" class="w-full h-80 object-cover">
             </div>
           </div>
+        </div>
 
-          <!-- Stap 2 -->
-          <div class="flex flex-col md:flex-row gap-8 items-start">
-            <div class="md:w-1/3">
-              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
-                <i data-lucide="search" class="w-10 h-10 text-[#242c2e]"></i>
-              </div>
-              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 2</div>
+        <!-- Stap 2 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-32 fade-in lg:flex-row-reverse">
+          <div class="lg:text-left lg:pl-20">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="search" class="w-10 h-10"></i>
             </div>
-            <div class="md:w-2/3">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Gratis inspectie</h3>
-              <p class="text-gray-700 leading-relaxed mb-4">
-                Een van onze gecertificeerde specialisten komt langs voor een grondige inspectie. We onderzoeken niet alleen de zichtbare tekenen, maar zoeken ook naar toegangswegen, nestplaatsen en mogelijke oorzaken van de plaag.
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Tijdens de inspectie krijgt u uitgebreid advies over de beste aanpak en preventieve maatregelen om herhaling te voorkomen.
-              </p>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">2. Grondige inspectie</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Onze expert komt bij u langs in Amsterdam, Amstelveen of omgeving. We onderzoeken de oorzaak, omvang en toegangspunten van de plaag – altijd discreet en respectvol.
+            </p>
+          </div>
+          <div class="lg:pr-20">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://www.bobex.be/wp-uploads/sites/5/dode-insecten-en-persoon-in-wit-pak-met-masker.jpg" alt="Grondige inspectie door expert" class="w-full h-80 object-cover">
             </div>
           </div>
+        </div>
 
-          <!-- Stap 3 -->
-          <div class="flex flex-col md:flex-row gap-8 items-start">
-            <div class="md:w-1/3">
-              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
-                <i data-lucide="file-text" class="w-10 h-10 text-[#242c2e]"></i>
-              </div>
-              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 3</div>
+        <!-- Stap 3 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-32 fade-in">
+          <div class="lg:text-right lg:pr-20 order-2 lg:order-1">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="clipboard-check" class="w-10 h-10"></i>
             </div>
-            <div class="md:w-2/3">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Offerte en planning</h3>
-              <p class="text-gray-700 leading-relaxed mb-4">
-                Na de inspectie ontvangt u een heldere offerte waarin we uitleggen welke behandeling noodzakelijk is, hoeveel behandelingen er nodig zijn en wat de kosten zijn. Geen verborgen kosten of verrassingen achteraf.
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Bij akkoord plannen we direct de eerste behandeling in, vaak al binnen enkele dagen. Bij spoedgevallen kunnen we vaak nog dezelfde dag langskomen.
-              </p>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">3. Plan op maat & uitvoering</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              U ontvangt een helder behandelplan met vaste prijs. Na akkoord gaan we direct aan de slag met veilige, milieuvriendelijke methoden – afgestemd op uw situatie.
+            </p>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://www.ongediertebestrijdersamsterdam.nl/wp-content/uploads/2022/03/zakelijke-ongedierte-bestrijding.jpg" alt="Uitvoering van het behandelplan" class="w-full h-80 object-cover">
             </div>
           </div>
+        </div>
 
-          <!-- Stap 4 -->
-          <div class="flex flex-col md:flex-row gap-8 items-start">
-            <div class="md:w-1/3">
-              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
-                <i data-lucide="wrench" class="w-10 h-10 text-[#242c2e]"></i>
-              </div>
-              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 4</div>
+        <!-- Stap 4 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center fade-in lg:flex-row-reverse">
+          <div class="lg:text-left lg:pl-20">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="shield-check" class="w-10 h-10"></i>
             </div>
-            <div class="md:w-2/3">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Professionele behandeling</h3>
-              <p class="text-gray-700 leading-relaxed mb-4">
-                Onze specialisten voeren de behandeling uit volgens het afgesproken plan. We gebruiken veilige, effectieve en milieuvriendelijke methoden die zijn toegestaan door de overheid.
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Tijdens de behandeling werken we zo discreet mogelijk. Bij bedrijven gebruiken we onopvallende voertuigen om uw reputatie te beschermen.
-              </p>
-            </div>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">4. Nazorg & preventie</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Na de behandeling controleren we het resultaat en geven we praktisch advies om nieuwe plagen te voorkomen. Wij blijven bereikbaar voor vragen of nazorg.
+            </p>
           </div>
-
-          <!-- Stap 5 -->
-          <div class="flex flex-col md:flex-row gap-8 items-start">
-            <div class="md:w-1/3">
-              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
-                <i data-lucide="check-circle" class="w-10 h-10 text-[#242c2e]"></i>
-              </div>
-              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 5</div>
-            </div>
-            <div class="md:w-2/3">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Controle en nazorg</h3>
-              <p class="text-gray-700 leading-relaxed mb-4">
-                Na de behandeling plannen we een controlebezoek in om te verifiëren dat het probleem definitief is opgelost. Indien nodig voeren we een herbehandeling uit zonder extra kosten.
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                U ontvangt advies over preventieve maatregelen en kunt altijd bij ons terecht voor vragen. Ook na afloop van de behandeling staan we voor u klaar.
-              </p>
-            </div>
-          </div>
-
-          <!-- Stap 6 -->
-          <div class="flex flex-col md:flex-row gap-8 items-start">
-            <div class="md:w-1/3">
-              <div class="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
-                <i data-lucide="shield" class="w-10 h-10 text-[#242c2e]"></i>
-              </div>
-              <div class="text-4xl font-bold text-[#242c2e] mb-2">Stap 6</div>
-            </div>
-            <div class="md:w-2/3">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Garantie</h3>
-              <p class="text-gray-700 leading-relaxed mb-4">
-                Op onze diensten bieden we garantie. Mocht het probleem binnen de garantieperiode terugkeren, dan komen we kosteloos terug om het opnieuw te behandelen.
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Uw tevredenheid en een definitieve oplossing zijn onze hoogste prioriteit. Daar staan we met onze naam en garantie voor.
-              </p>
+          <div class="lg:pr-20">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://thumbs.dreamstime.com/b/viroloog-beschermend-vuurpak-ontsmetten-beschermende-klachtenpak-leidt-tot-desinfectie-van-oppervlakken-het-openbaar-en-brengt-179769755.jpg" alt="Nazorg en preventieadvies" class="w-full h-80 object-cover">
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Belangrijke informatie</h2>
-        <div class="bg-white p-8 rounded-lg shadow-md space-y-6">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Veiligheid voorop</h3>
-            <p class="text-gray-700">
-              De veiligheid van u, uw gezin, huisdieren en het milieu staat altijd voorop. We werken uitsluitend met goedgekeurde middelen en methoden volgens de geldende wet- en regelgeving.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Discrete aanpak</h3>
-            <p class="text-gray-700">
-              We begrijpen dat ongedierte een gevoelig onderwerp kan zijn. Daarom werken we zo discreet mogelijk en gebruiken onopvallende voertuigen zonder bedrijfslogo op verzoek.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Transparante communicatie</h3>
-            <p class="text-gray-700">
-              We houden u tijdens het hele proces op de hoogte. U weet precies wat we gaan doen, waarom we het doen, en wat de kosten zijn. Geen verrassingen.
-            </p>
-          </div>
-        </div>
+  <!-- WERKGEBIED -->
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6 text-center fade-in">
+      <h2 class="text-4xl font-extrabold text-[#252c30] mb-8">
+        Ons werkgebied
+      </h2>
+      <p class="text-xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto">
+        CeroPest is actief in <strong>Amsterdam</strong>, <strong>Amstelveen</strong> en wijde omgeving, waaronder Haarlem, Hoofddorp, Zaandam, Diemen, Badhoevedorp, Ouderkerk aan de Amstel en meer. 
+        Dankzij onze lokale aanwezigheid zijn we snel ter plaatse voor inspectie en bestrijding.
+      </p>
+      <div class="img-hover rounded-2xl overflow-hidden shadow-xl max-w-3xl mx-auto">
+        <img src="https://lp-cms-production.imgix.net/image_browser/Amsterdam%20highlights.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=20&dpr=5" alt="Kaart van Amsterdam en omgeving" class="w-full h-96 object-cover">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="py-20 bg-[#242c2e] text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Klaar om te starten?</h2>
-        <p class="text-xl mb-8 text-gray-300">Neem vandaag nog contact op voor een gratis inspectie</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:0612345678" class="bg-white text-[#242c2e] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition">Bel 06 - 12 34 56 78</a>
-          <a href="Offerte.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#242c2e] transition">Vraag offerte aan</a>
-        </div>
+  <!-- CTA -->
+  <section class="py-20 bg-[#252c30] text-white">
+    <div class="max-w-5xl mx-auto px-6 text-center fade-in">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-8">
+        Klaar voor een ongediertevrije omgeving?
+      </h2>
+      <p class="text-xl mb-12 text-gray-200">
+        Neem vandaag nog contact op voor een vrijblijvende inspectie.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-8 justify-center">
+        <a href="offerte.html" class="bg-white text-[#252c30] px-16 py-6 rounded-2xl font-bold text-2xl hover:bg-gray-100 transition shadow-2xl">
+          Gratis offerte aanvragen
+        </a>
+        <a href="tel:0612345678" class="bg-[#a0514f] text-white px-16 py-6 rounded-2xl font-bold text-2xl hover:bg-[#8b3e3d] transition shadow-2xl">
+          Bel direct: 06 - 12 34 56 78
+        </a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-900 text-white">
+  <footer class="bg-[#252c30] text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <div class="flex items-center gap-3 mb-4">
-            <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>CeroPest</span>
           </div>
           <p class="text-gray-300 mb-4">
-            Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.
+            Uw betrouwbare partner in ongediertebestrijding in Amsterdam, Amstelveen en omgeving.
           </p>
           <div class="flex flex-col gap-2 text-gray-300">
             <div class="flex items-center gap-2">
@@ -268,22 +289,40 @@
             </div>
             <div class="flex items-center gap-2">
               <i data-lucide="mail" class="w-4 h-4"></i>
-              <a href="mailto:info@pestcontrolpro.nl" class="hover:text-white">info@pestcontrolpro.nl</a>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="clock" class="w-4 h-4"></i>
-              <span>24/7 beschikbaar</span>
+              <a href="mailto:info@ceropest.nl" class="hover:text-white">info@ceropest.nl</a>
             </div>
           </div>
         </div>
-        <!-- Add the other footer columns here if needed -->
-      </div>
-      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-white">Privacy</a>
-          <a href="#" class="hover:text-white">Algemene voorwaarden</a>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Particulieren</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="ratten.html" class="hover:text-white">Rattenbestrijding</a></li>
+            <li><a href="muizen.html" class="hover:text-white">Muizenbestrijding</a></li>
+            <li><a href="wespen.html" class="hover:text-white">Wespenbestrijding</a></li>
+            <li><a href="overige.html" class="hover:text-white">Meer diensten</a></li>
+          </ul>
         </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Bedrijven</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="bedrijven.html" class="hover:text-white">HACCP & preventie</a></li>
+            <li><a href="bedrijven.html" class="hover:text-white">Periodieke controles</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Werkgebied</h3>
+          <p class="text-gray-300 text-sm mb-4">
+            Amsterdam • Amstelveen • Haarlem • Hoofddorp • Zaandam • Diemen • Badhoevedorp • Ouderkerk aan de Amstel en omgeving
+          </p>
+          <a href="contact.html" class="text-[#a0514f] hover:underline font-medium">Neem contact op →</a>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+        <p>© <span id="year"></span> CeroPest – Ongediertebestrijding Amsterdam & omgeving. Alle rechten voorbehouden.</p>
       </div>
     </div>
   </footer>
@@ -292,30 +331,34 @@
     lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile menu toggle
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Mobile menu
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    let mobileOpen = false;
     mobileBtn.addEventListener('click', () => {
-      mobileOpen = !mobileOpen;
-      if (mobileOpen) {
-        mobileMenu.classList.remove('hidden');
-        mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
-      } else {
-        mobileMenu.classList.add('hidden');
-        mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-      }
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileBtn.innerHTML = isOpen ? '<i data-lucide="x" class="w-8 h-8"></i>' : '<i data-lucide="menu" class="w-8 h-8"></i>';
       lucide.createIcons();
     });
 
-    // Desktop services dropdown
-    const servicesBtn = document.getElementById('services-btn');
-    const servicesDropdown = document.getElementById('services-dropdown');
-    servicesBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      servicesDropdown.classList.toggle('active');
-    });
-    document.addEventListener('click', () => servicesDropdown.classList.remove('active'));
+    // Mobile accordion
+    const servicesToggle = document.getElementById('mobile-services-toggle');
+    const servicesList = document.getElementById('mobile-services-list');
+    const servicesArrow = document.getElementById('mobile-services-arrow');
+    if (servicesToggle) {
+      servicesToggle.addEventListener('click', () => {
+        servicesList.classList.toggle('hidden');
+        servicesArrow.classList.toggle('rotate-180');
+      });
+    }
   </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vlooienbestrijding - CeroPest</title>
+  <title>Wespenbestrijding - CeroPest</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <style>
@@ -25,10 +25,7 @@
       background: linear-gradient(to bottom, #f9fafb 0%, #f1f5f9 100%); 
     }
 
-    .bg-gradient-signalen {
-      background: linear-gradient(to bottom, #fff5fb 0%, #fce8f5 100%);
-    }
-
+    /* Schuine overgangen */
     .slice-bottom { clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
     .slice-top { clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%); }
     @media (min-width: 1024px) {
@@ -36,12 +33,13 @@
       .slice-top { clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%); }
     }
 
+    /* Draaiende pijl voor mobiel accordion */
     .rotate-180 { transform: rotate(180deg); }
   </style>
 </head>
 <body class="min-h-screen flex flex-col bg-gray-50">
 
-  <!-- HEADER MET TAAL-SWITCH -->
+  <!-- HEADER -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="bg-red-900 text-white py-2">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
@@ -56,12 +54,12 @@
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
 
-        <!-- Logo -->
+        <!-- Logo links -->
         <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
           <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
         </a>
 
-        <!-- DESKTOP MENU -->
+        <!-- DESKTOP: navigatie + offerte + taal rechts -->
         <div class="hidden lg:flex items-center gap-8">
           <a href="index.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Home</a>
           <a href="overons.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Over ons</a>
@@ -75,10 +73,10 @@
               <a href="ratten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Rattenbestrijding</a>
               <a href="muizen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Muizenbestrijding</a>
               <a href="kakkerlakken.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Kakkerlakkenbestrijding</a>
-              <a href="vlooien.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition bg-gray-100 font-semibold">Vlooienbestrijding</a>
-              <a href="wespen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Wespenbestrijding</a>
+              <a href="vlooien.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition bg-gray-100 font-semibold">Wespenbestrijding</a>
               <a href="bijen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Bijenverwijdering</a>
-              <a href="vliegende-insecten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Vliegende insecten</a>
+
               <a href="overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#1b8751] transition">Overige ongedierte</a>
             </div>
           </div>
@@ -86,7 +84,7 @@
           <a href="bedrijven.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Bedrijven</a>
           <a href="contact.html" class="text-gray-700 hover:text-[#1b8751] font-medium transition">Contact</a>
 
-          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-pink-600 font-semibold transition shadow-md">Offerte aanvragen</a>
+          <a href="offerte.html" class="bg-[#242c2e] text-white px-6 py-3 rounded-lg hover:bg-[#166d42] font-semibold transition shadow-md">Offerte aanvragen</a>
 
           <!-- Taal knoppen desktop -->
           <div class="flex items-center gap-2 ml-4">
@@ -95,7 +93,7 @@
           </div>
         </div>
 
-        <!-- MOBIEL: taal + gratis offerte knop + hamburger -->
+        <!-- MOBIEL: taal + kleine offerte knop + hamburger rechts -->
         <div class="lg:hidden flex items-center gap-4">
           <div class="flex items-center gap-2">
             <button id="lang-nl-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs bg-gray-200">NL</button>
@@ -120,7 +118,7 @@
           <a href="werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Werkwijze</a>
 
           <div class="border-t border-gray-200 pt-4">
-            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-pink-300">
+            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#1b8751]">
               Particulieren
               <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
             </button>
@@ -128,8 +126,8 @@
               <a href="ratten.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Rattenbestrijding</a>
               <a href="muizen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Muizenbestrijding</a>
               <a href="kakkerlakken.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Kakkerlakkenbestrijding</a>
-              <a href="vlooien.html" class="block py-2 text-gray-700 hover:text-[#1b8751] font-semibold transition bg-gray-100 rounded">Vlooienbestrijding</a>
-              <a href="wespen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Wespenbestrijding</a>
+              <a href="vlooien.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] font-semibold transition bg-gray-100 rounded">Wespenbestrijding</a>
               <a href="bijen.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Bijenverwijdering</a>
               <a href="vliegende-insecten.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Vliegende insecten</a>
               <a href="overige.html" class="block py-2 text-gray-700 hover:text-[#1b8751] transition">Overige ongedierte</a>
@@ -138,108 +136,109 @@
 
           <a href="bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Bedrijven</a>
           <a href="contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#1b8751] transition">Contact</a>
-          <a href="offerte.html" class="block mt-6 bg-[#242c2e] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#242c2e] transition shadow-md">Offerte aanvragen</a>
+          <a href="offerte.html" class="block mt-6 bg-[#1b8751] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#242c2e] transition shadow-md">Offerte aanvragen</a>
         </div>
       </div>
     </nav>
   </header>
-  <!-- HERO met licht roze accent -->
-  <section class="relative overflow-hidden min-h-[60vh] flex items-center slice-bottom" style="background-image: url('https://images.pexels.com/photos/7728897/pexels-photo-7728897.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-position: center; background-size: cover;">
+
+  <!-- HERO met nieuwe wespenzwerm foto -->
+  <section class="relative overflow-hidden min-h-[60vh] flex items-center slice-bottom" style="background-image: url('https://i0.wp.com/specterservice.com/wp-content/uploads/2025/07/Blog-Post-8-Why-Are-Wasps-So-Bad-This-Year-A-Look-at-Summer-Swarm-Season.png'); background-position: center; background-size: cover;">
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
     <div class="relative max-w-7xl mx-auto px-6 py-24 text-center fade-in visible">
-      <span class="inline-block mb-6 px-6 py-2 rounded-full bg-pink-400/30 text-pink-200 text-lg font-bold backdrop-blur-sm">
-        VLOOIENBESTRIJDING
+      <span class="inline-block mb-6 px-6 py-2 rounded-full bg-yellow-600/30 text-yellow-200 text-lg font-bold backdrop-blur-sm">
+        WESPENBESTRIJDING
       </span>
       <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight">
-        Vlooien in huis?<br><span class="text-pink-200">Wij maken uw huis weer vlooienvrij.</span>
+        Wespenoverlast?<br><span class="text-yellow-400">Wij verwijderen het nest veilig.</span>
       </h1>
       <p class="text-2xl text-gray-200 max-w-3xl mx-auto mb-12">
-        Veilige en effectieve bestrijding – ook met huisdieren in huis.
+        Professionele en snelle wespennest verwijdering. Veilig voor u, uw gezin en huisdieren.
       </p>
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-        <a href="offerte.html" class="bg-red-600 hover:bg-pink-700 text-white px-10 py-5 rounded-xl font-bold text-lg transition shadow-lg">Inspectie aanvragen</a>
+        <a href="offerte.html" class="bg-red-600 hover:bg-yellow-700 text-white px-10 py-5 rounded-xl font-bold text-lg transition shadow-lg">Nest laten verwijderen</a>
         <a href="tel:0612345678" class="border-2 border-white text-white hover:bg-white hover:text-[#242c2e] px-10 py-5 rounded-xl font-bold text-lg transition">Bel direct: 06 - 12 34 56 78</a>
       </div>
     </div>
   </section>
 
-  <!-- Intro sectie -->
+  <!-- Intro sectie met nieuwe professionele foto -->
   <section class="py-20 bg-subtle fade-in slice-top">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
-          <h2 class="text-4xl font-bold text-gray-900 mb-6">Een vervelend probleem voor mens en dier</h2>
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">Vervelende en gevaarlijke overlast</h2>
           <p class="text-lg text-gray-700 mb-5 leading-relaxed">
-            Vlooien veroorzaken jeuk en irritatie bij huisdieren én mensen. Ze vermenigvuldigen zich razendsnel en zijn moeilijk zelf te bestrijden.
+            Wespen zijn nuttig in de natuur, maar een nest bij huis veroorzaakt snel gevaarlijke situaties – vooral voor kinderen, allergische personen of bij terrassen.
           </p>
           <p class="text-lg text-gray-700 mb-5 leading-relaxed">
-            CeroPest gebruikt veilige, diervriendelijke methodes om vlooien in alle levensstadia (eitjes, larven, poppen en volwassen vlooien) te elimineren.
+            CeroPest verwijdert wespennesten veilig en effectief met professionele middelen en beschermende uitrusting. Vaak dezelfde dag nog ter plaatse.
           </p>
-          <p class="text-lg text-gray-700 leading-relaxed font-semibold">We behandelen zowel uw huis als advies voor uw huisdieren.</p>
+          <p class="text-lg text-gray-700 leading-relaxed font-semibold">Niet zelf proberen – één steek kan al riskant zijn.</p>
         </div>
         <div class="img-hover rounded-xl shadow-2xl overflow-hidden order-1 lg:order-2">
-          <img src="https://images.pexels.com/photos/7728897/pexels-photo-7728897.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Hond met jeuk door vlooien" class="w-full object-cover h-96">
+          <img src="https://www.pestfreemike.co.uk/wp-content/uploads/2023/03/wasp-control-Brentwood.jpg" alt="Professionele wespenbestrijder in beschermend pak" class="w-full object-cover h-96">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Signalen & Gevolgen met zachte roze gradient -->
-  <section class="py-20 bg-gradient-signalen fade-in">
+  <!-- Signalen & Gevolgen met nieuwe nest- en steekfoto's -->
+  <section class="py-20 bg-white fade-in">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Signalen van een vlooienplaag</h2>
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Signalen van een wespennest</h2>
       <div class="grid md:grid-cols-2 gap-10">
-        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-pink-100">
-          <i data-lucide="alert-triangle" class="w-12 h-12 text-pink-600 mb-6"></i>
+        <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+          <i data-lucide="alert-triangle" class="w-12 h-12 text-amber-600 mb-6"></i>
           <h3 class="text-2xl font-bold mb-5">Herkenningskenmerken</h3>
           <div class="mb-6 img-hover rounded-xl overflow-hidden">
-            <img src="https://www.kodiakpestcontrol.com/wp-content/uploads/2025/02/flea-on-human-skin-1.webp" alt="Vlo op huid" class="w-full object-cover h-64">
+            <img src="https://www.aandmpest.com/wp-content/uploads/2025/05/shutterstock_2489741313.jpg" alt="Wespennest in dak of zolder" class="w-full object-cover h-64">
           </div>
           <ul class="space-y-4 text-gray-700 text-lg">
-            <li class="flex items-start gap-3"><span class="text-pink-600 font-bold text-xl">•</span> Huisdier krabt, bijt of likt zich vaak</li>
-            <li class="flex items-start gap-3"><span class="text-pink-600 font-bold text-xl">•</span> Rode bultjes op enkels of benen (bij mensen)</li>
-            <li class="flex items-start gap-3"><span class="text-pink-600 font-bold text-xl">•</span> Zwarte puntjes (vlooienkeutels) in vacht of mand</li>
-            <li class="flex items-start gap-3"><span class="text-pink-600 font-bold text-xl">•</span> Springende kleine insecten op vloer of meubels</li>
-            <li class="flex items-start gap-3"><span class="text-pink-600 font-bold text-xl">•</span> Jeukende beten in groepjes van 3</li>
+            <li class="flex items-start gap-3"><span class="text-yellow-600 font-bold text-xl">•</span> Veel wespen rond huis, dakgoot of schuur</li>
+            <li class="flex items-start gap-3"><span class="text-yellow-600 font-bold text-xl">•</span> Grijzig papierachtig nest (grootte voetbal of kleiner)</li>
+            <li class="flex items-start gap-3"><span class="text-yellow-600 font-bold text-xl">•</span> Wespen vliegen in/en uit een klein gaatje</li>
+            <li class="flex items-start gap-3"><span class="text-yellow-600 font-bold text-xl">•</span> Agressief gedrag bij benadering</li>
+            <li class="flex items-start gap-3"><span class="text-yellow-600 font-bold text-xl">•</span> Nest vaak in spouwmuur, zolder of grond</li>
           </ul>
         </div>
-        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-pink-100">
+        <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
           <i data-lucide="heart-crack" class="w-12 h-12 text-red-600 mb-6"></i>
           <h3 class="text-2xl font-bold mb-5">Risico's en gevolgen</h3>
           <div class="mb-6 img-hover rounded-xl overflow-hidden">
-            <img src="https://www.ongediertebestrijden.com/wp-content/uploads/vlooienbeten-op-arm-700x400.jpg" alt="Vlooienbeten op huid" class="w-full object-cover h-64">
+            <img src="https://i.insider.com/62d02dcf06bc8f00188eb9a5?width=800&format=jpeg&auto=webp" alt="Zweling door wespensteek" class="w-full object-cover h-64">
           </div>
           <ul class="space-y-4 text-gray-700 text-lg">
-            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Ernstige jeuk en irritatie</li>
-            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Allergische reacties (vlooiendermatitis)</li>
-            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Overdracht van lintworm bij huisdieren</li>
-            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Secundaire infecties door krabben</li>
-            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Snelle verspreiding door hele huis</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Pijnlijke steken met zwelling en jeuk</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Allergische reacties (anafylaxie mogelijk)</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Meerdere steken bij verstoring nest</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Stress en onveilige tuin/terras</li>
+            <li class="flex items-start gap-3"><span class="text-red-600 font-bold text-xl">•</span> Nest groeit snel in zomer</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Aanpak -->
+  <!-- Aanpak (blijft hetzelfde, icons in donkere kleur voor consistentie) -->
   <section class="py-20 bg-subtle fade-in">
     <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Onze diervriendelijke aanpak</h2>
+      <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Onze veilige aanpak</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
-          <i data-lucide="search" class="w-12 h-12 text-pink-300 mb-6"></i>
-          <h3 class="text-2xl font-bold mb-4">1. Grondige inspectie</h3>
-          <p class="text-gray-700">We zoeken alle schuilplaatsen: manden, tapijten, kieren en meubels.</p>
+          <i data-lucide="search" class="w-12 h-12 text-[#242c2e] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">1. Inspectie & locatie nest</h3>
+          <p class="text-gray-700">We vinden het nest snel en beoordelen de situatie veilig.</p>
         </div>
         <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
-          <i data-lucide="spray-can" class="w-12 h-12 text-pink-300 mb-6"></i>
-          <h3 class="text-2xl font-bold mb-4">2. Veilige behandeling</h3>
-          <p class="text-gray-700">Professionele middelen die alle stadia van vlooien doden – veilig voor huisdieren.</p>
+          <i data-lucide="shield" class="w-12 h-12 text-[#242c2e] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">2. Professionele bescherming</h3>
+          <p class="text-gray-700">Volledig beschermende kleding en gecertificeerde middelen.</p>
         </div>
         <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
-          <i data-lucide="shield" class="w-12 h-12 text-pink-300 mb-6"></i>
-          <h3 class="text-2xl font-bold mb-4">3. Nazorg & advies</h3>
-          <p class="text-gray-700">Tips voor huisdierenbehandeling en preventie om herbesmetting te voorkomen.</p>
+          <i data-lucide="spray-can" class="w-12 h-12 text-[#242c2e] mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">3. Verwijdering & nazorg</h3>
+          <p class="text-gray-700">Nest direct behandeld en verwijderd, met advies ter preventie.</p>
         </div>
       </div>
     </div>
@@ -248,7 +247,7 @@
   <!-- CTA -->
   <section class="py-20 bg-[#242c2e] text-white fade-in">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-8">Vlooien in huis?</h2>
+      <h2 class="text-4xl font-bold mb-8">Wespennest ontdekt?</h2>
       <p class="text-xl mb-10 text-gray-200">Bel direct voor een snelle, diervriendelijke oplossing.</p>
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
         <a href="tel:0612345678" class="bg-white text-[#242c2e] px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow">Nu bellen: 06 - 12 34 56 78</a>
@@ -335,20 +334,24 @@
     </div>
   </footer>
 
+
   <script>
-    lucide.createIcons();
+   lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Taal-switch: EN → gaat naar /engels/vlooienengels.html
+    // Taal switch: EN → redirect naar Engelse versie
     document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(btn => {
       btn.addEventListener('click', () => {
-        window.location.href = 'engels/vlooienengels.html';
+        window.location.href = 'engels/wespenengels.html';
       });
     });
 
-    // NL knoppen: blijven actief (visueel)
+    // NL knoppen: actief maken (visueel)
     document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(btn => {
       btn.classList.add('bg-gray-200');
+      btn.addEventListener('click', (e) => {
+        e.preventDefault(); // voorkom refresh als nodig
+      });
     });
 
     // Mobiel menu toggle
@@ -383,4 +386,4 @@
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
-</html>
+</html> 
