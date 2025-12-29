@@ -49,85 +49,104 @@
 </head>
 <body class="min-h-screen flex flex-col bg-white">
 
-  <!-- JOUW VASTE HEADER -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="bg-[#a0514f] text-white py-2">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
-        <div class="flex items-center gap-2">
-          <i data-lucide="phone" class="w-4 h-4"></i>
-          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">06 - 12 34 56 78</a>
-        </div>
-        <div class="hidden sm:block">Bereikbaar voor al uw vragen</div>
-      </div>
-    </div>
+ <!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
 
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <a href="index.html" class="flex items-center gap-3">
-          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
-        </a>
+      <!-- Logo altijd links -->
+      <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+        <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+      </a>
 
-        <div class="hidden lg:flex items-center gap-8">
-          <a href="index.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Home</a>
-          <a href="overons.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Over ons</a>
-          <a href="werkwijze.html" class="text-gray-700 hover:text-[#252c30] font-medium transition underline decoration-4 decoration-[#e7f9fe]">Werkwijze</a>
+      <!-- DESKTOP: volledige navigatie + offerte + taal rechts -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="index.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Home" data-en="Home">Home</a>
+        <a href="overons.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Over ons" data-en="About us">Over ons</a>
+        <a href="werkwijze.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Werkwijze" data-en="Method">Werkwijze</a>
 
-          <div class="relative group">
-            <button class="text-gray-700 hover:text-[#252c30] font-medium flex items-center gap-1 transition">
-              Particulieren <span class="text-xs">▾</span>
-            </button>
-            <div class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
-              <a href="ratten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Rattenbestrijding</a>
-              <a href="muizen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Muizenbestrijding</a>
-              <a href="kakkerlakken.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Kakkerlakkenbestrijding</a>
-              <a href="vlooien.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Vlooienbestrijding</a>
-              <a href="wespen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Wespenbestrijding</a>
-              <a href="bijen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Bijenverwijdering</a>
-              <a href="vliegende-insecten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Vliegende insecten</a>
-              <a href="overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Overige ongedierte</a>
-            </div>
+        <div class="relative group">
+          <button class="text-gray-700 hover:text-[#252c30] font-medium flex items-center gap-1 transition">
+            <span data-nl="Particulieren" data-en="Private">Particulieren</span> <span class="text-xs">▾</span>
+          </button>
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
+            <a href="ratten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</a>
+            <a href="muizen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</a>
+            <a href="kakkerlakken.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Kakkerlakkenbestrijding" data-en="Cockroach control">Kakkerlakkenbestrijding</a>
+            <a href="vlooien.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Vlooienbestrijding" data-en="Flea control">Vlooienbestrijding</a>
+            <a href="wespen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</a>
+            <a href="bijen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Bijenverwijdering" data-en="Bee removal">Bijenverwijdering</a>
+            <a href="overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Overige ongedierte" data-en="Other pests">Overige ongedierte</a>
           </div>
-
-          <a href="bedrijven.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Bedrijven</a>
-          <a href="contact.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Contact</a>
-          <a href="offerte.html" class="bg-[#252c30] text-white px-6 py-3 rounded-lg hover:bg-[#1e2226] font-semibold transition shadow-md">Offerte aanvragen</a>
         </div>
 
-        <button id="mobile-menu-btn" class="lg:hidden text-gray-800">
+        <a href="bedrijven.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Bedrijven" data-en="Business">Bedrijven</a>
+        <a href="contact.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Contact" data-en="Contact">Contact</a>
+
+        <a href="offerte.html" class="bg-[#252c30] text-white px-6 py-3 rounded-lg hover:bg-[#1e2226] font-semibold transition shadow-md"
+           data-nl="Offerte aanvragen" data-en="Request quote">Offerte aanvragen</a>
+
+        <div class="flex items-center gap-2 ml-4">
+          <button id="lang-nl-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm bg-gray-200">NL</button>
+          <button id="lang-en-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm opacity-60 hover:opacity-100">EN</button>
+        </div>
+      </div>
+
+      <!-- MOBIEL: alleen zichtbaar op kleine schermen -->
+      <div class="lg:hidden flex items-center gap-4">
+        <!-- Taal + kleine offerte knop in het midden -->
+        <div class="flex items-center gap-2">
+          <button id="lang-nl-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs bg-gray-200">NL</button>
+          <button id="lang-en-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs opacity-60 hover:opacity-100">EN</button>
+          
+          <a href="offerte.html" class="bg-[#252c30] text-white px-4 py-2 rounded-lg font-semibold text-sm shadow-md whitespace-nowrap"
+             data-nl="Gratis offerte" data-en="Free quote">
+            Gratis offerte
+          </a>
+        </div>
+
+        <!-- Hamburger menu knop (alleen op mobiel) -->
+        <button id="mobile-menu-btn" class="text-gray-800">
           <i data-lucide="menu" class="w-8 h-8"></i>
         </button>
       </div>
+    </div>
 
-      <!-- Mobiel menu -->
-      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
-        <div class="py-6 px-6 space-y-4">
-          <a href="index.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Home</a>
-          <a href="overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Over ons</a>
-          <a href="werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition underline">Werkwijze</a>
+    <!-- Mobiel menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+      <div class="py-6 px-6 space-y-6">
+        <a href="index.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Home" data-en="Home">Home</a>
+        <a href="overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Over ons" data-en="About us">Over ons</a>
+        <a href="werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Werkwijze" data-en="Method">Werkwijze</a>
 
-          <div class="border-t border-gray-200 pt-4">
-            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#252c30]">
-              Particulieren
-              <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
-            </button>
-            <div id="mobile-services-list" class="space-y-2 pl-4 hidden">
-              <a href="ratten.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Rattenbestrijding</a>
-              <a href="muizen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Muizenbestrijding</a>
-              <a href="kakkerlakken.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Kakkerlakkenbestrijding</a>
-              <a href="vlooien.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Vlooienbestrijding</a>
-              <a href="wespen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Wespenbestrijding</a>
-              <a href="bijen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Bijenverwijdering</a>
-              <a href="overige.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Overige ongedierte</a>
-            </div>
+        <div class="border-t border-gray-200 pt-4">
+          <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#252c30]">
+            <span data-nl="Particulieren" data-en="Private">Particulieren</span>
+            <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
+          </button>
+          <div id="mobile-services-list" class="space-y-3 pl-4 hidden mt-3">
+            <a href="ratten.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</a>
+            <a href="muizen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</a>
+            <a href="kakkerlakken.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Kakkerlakkenbestrijding" data-en="Cockroach control">Kakkerlakkenbestrijding</a>
+            <a href="vlooien.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Vlooienbestrijding" data-en="Flea control">Vlooienbestrijding</a>
+            <a href="wespen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</a>
+            <a href="bijen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Bijenverwijdering" data-en="Bee removal">Bijenverwijdering</a>
+            <a href="overige.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Overige ongedierte" data-en="Other pests">Overige ongedierte</a>
           </div>
-
-          <a href="bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Bedrijven</a>
-          <a href="contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Contact</a>
-          <a href="offerte.html" class="block mt-6 bg-[#252c30] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#1e2226] transition shadow-md">Offerte aanvragen</a>
         </div>
+
+        <a href="bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Bedrijven" data-en="Business">Bedrijven</a>
+        <a href="contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Contact" data-en="Contact">Contact</a>
+
+        <a href="offerte.html" class="block mt-8 bg-[#252c30] text-white text-center py-5 rounded-xl font-bold text-lg px-6 hover:bg-[#1e2226] transition shadow-xl"
+           data-nl="Gratis offerte aanvragen" data-en="Request free quote">
+          Gratis offerte aanvragen
+        </a>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
+
 
   <!-- HERO MET SCHUINE ONDERKANT + JOUW FOTO ALS ACHTERGROND -->
   <section class="relative min-h-[70vh] flex items-center hero-slice overflow-hidden" style="background-image: url('https://kallvest.co.za/wp-content/uploads/2023/06/specilized-cleaning1-scaled.jpg'); background-position: center; background-size: cover;">
@@ -330,25 +349,31 @@
     lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Fade-in on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    // Taal-switch: EN → gaat naar engels/muizenengels.html
+    document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = 'engels/muizenengels.html';
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
 
-    // Mobile menu
+    // NL knoppen blijven actief (visueel gemarkeerd)
+    document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(btn => {
+      btn.classList.add('bg-gray-200');
+    });
+
+    // Mobiel menu toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
       const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileBtn.innerHTML = isOpen ? '<i data-lucide="x" class="w-8 h-8"></i>' : '<i data-lucide="menu" class="w-8 h-8"></i>';
+      mobileBtn.innerHTML = isOpen 
+        ? '<i data-lucide="x" class="w-8 h-8"></i>' 
+        : '<i data-lucide="menu" class="w-8 h-8"></i>';
       lucide.createIcons();
     });
 
-    // Mobile accordion
+    // Mobiel accordion
     const servicesToggle = document.getElementById('mobile-services-toggle');
     const servicesList = document.getElementById('mobile-services-list');
     const servicesArrow = document.getElementById('mobile-services-arrow');
@@ -358,6 +383,14 @@
         servicesArrow.classList.toggle('rotate-180');
       });
     }
+
+    // Fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

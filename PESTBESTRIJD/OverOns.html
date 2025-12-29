@@ -3,268 +3,333 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Over CeroPest</title>
+  <title>Over ons | CeroPest - Professionele ongediertebestrijding</title>
+  <meta name="description" content="Ontdek CeroPest: een moderne, resultaatgerichte specialist in ongediertebestrijding. Transparant, innovatief en duurzaam – voor particulieren en bedrijven.">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <style>
-    .dropdown { 
-      display: none; 
-      position: absolute; 
-      top: 100%; 
-      left: 0; 
-      min-width: 14rem; 
-      background: white; 
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
-      border-radius: 0.5rem; 
-      padding: 0.5rem 0; 
-      z-index: 50; 
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .title-badge {
+      background: rgba(37, 44, 48, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      padding: 2rem 5rem;
+      display: inline-block;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
-    .dropdown.active { display: block; }
+
+    .timeline-connector {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: #a0514f;
+      transform: translateX(-50%);
+    }
+    @media (max-width: 1024px) {
+      .timeline-connector { left: 40px; }
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      background: #a0514f;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    @media (max-width: 1024px) {
+      .timeline-item::before { left: 40px; transform: translateX(-50%); }
+    }
+
+    .card-hover {
+      transition: all 0.4s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .img-hover img {
+      transition: transform 0.6s ease;
+    }
+    .img-hover:hover img {
+      transform: scale(1.05);
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-white">
 
   <!-- HEADER -->
   <header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="bg-emerald-700 text-white py-2">
+    <div class="bg-[#a0514f] text-white py-2">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
         <div class="flex items-center gap-2">
           <i data-lucide="phone" class="w-4 h-4"></i>
-          <a href="tel:0612345678" class="font-semibold hover:text-emerald-100">06 - 12 34 56 78</a>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">06 - 12 34 56 78</a>
         </div>
-        <div class="hidden sm:block">24/7 Spoedservice beschikbaar</div>
+        <div class="hidden sm:block">Bereikbaar van 09:00 tot 22:00</div>
       </div>
     </div>
+
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <a href="index.html" class="flex items-center gap-2 text-2xl font-bold text-emerald-700">
-          <i data-lucide="bug" class="w-8 h-8"></i>
-          <span>PestControl Pro</span>
-        </a>
-        <div class="hidden lg:flex items-center gap-8">
-          <a href="index.html" class="text-gray-700 hover:text-emerald-700 font-medium">Home</a>
-          <a href="overons.html" class="text-gray-700 hover:text-emerald-700 font-medium">Over ons</a>
-          <a href="#" class="text-gray-700 hover:text-emerald-700 font-medium">Werkwijze</a>
-          <div class="relative">
-            <button id="services-btn" class="text-gray-700 hover:text-emerald-700 font-medium flex items-center gap-1">
-              Diensten <span class="text-xs">▾</span>
-            </button>
-            <div id="services-dropdown" class="dropdown">
-              <a href="diensten.html" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Alle diensten</a>
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Rattenbestrijding</a>
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Muizenbestrijding</a>
-              <a href="kakkerlakken.html" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Kakkerlakken</a>
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Vlooienbestrijding</a>
-              <a href="bedwantsen.html" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Bedwantsen</a>
-              <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700">Overige ongedierte</a>
-            </div>
-          </div>
-          <a href="#" class="text-gray-700 hover:text-emerald-700 font-medium">Particulieren</a>
-          <a href="bedrijven.html" class="text-gray-700 hover:text-emerald-700 font-medium">Bedrijven</a>
-          <a href="#" class="text-gray-700 hover:text-emerald-700 font-medium">Spoedservice</a>
-          <a href="faq.html" class="text-gray-700 hover:text-emerald-700 font-medium">FAQ</a>
-          <a href="contact.html" class="text-gray-700 hover:text-emerald-700 font-medium">Contact</a>
-          <a href="offerte.html" class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 font-semibold">Offerte aanvragen</a>
+        <div class="flex items-center gap-6">
+          <a href="index.html" class="flex items-center gap-3">
+            <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+          </a>
+          <a href="offerte.html" class="hidden sm:block bg-[#252c30] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1e2226] transition shadow-md">
+            Gratis offerte aanvragen
+          </a>
         </div>
-        <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Home</a>
+          <a href="bedrijven.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Bedrijven</a>
+          <a href="particulieren.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Particulieren</a>
+          <a href="werkwijze.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Werkwijze</a>
+          <a href="contact.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Contact</a>
+          <a href="overons.html" class="text-gray-700 hover:text-[#252c30] font-medium transition underline decoration-4 decoration-[#a0514f]">Over ons</a>
+        </div>
+
+        <div class="flex items-center gap-4 lg:hidden">
+          <a href="offerte.html" class="bg-[#252c30] text-white px-5 py-3 rounded-lg font-semibold text-sm hover:bg-[#1e2226] transition shadow-md">
+            Gratis offerte
+          </a>
+          <button id="mobile-menu-btn" class="text-gray-800">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+          </button>
+        </div>
       </div>
-      <div id="mobile-menu" class="hidden lg:hidden py-4 border-t">
-        <div class="flex flex-col gap-4">
-          <a href="index.html" class="text-gray-700 hover:text-emerald-700 font-medium">Home</a>
-          <a href="overons.html" class="text-gray-700 hover:text-emerald-700 font-medium">Over ons</a>
-          <a href="diensten.html" class="text-gray-700 hover:text-emerald-700 font-medium">Diensten</a>
-          <a href="faq.html" class="text-gray-700 hover:text-emerald-700 font-medium">FAQ</a>
-          <a href="contact.html" class="text-gray-700 hover:text-emerald-700 font-medium">Contact</a>
-          <a href="offerte.html" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 font-semibold text-center">Offerte aanvragen</a>
+
+      <!-- MOBIEL MENU -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <div class="py-6 px-6 space-y-4">
+          <a href="index.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Home</a>
+          <a href="bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Bedrijven</a>
+          <a href="particulieren.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Particulieren</a>
+          <a href="werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Werkwijze</a>
+          <a href="contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Contact</a>
+          <a href="overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition underline">Over ons</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- OVER ONS PAGE CONTENT -->
-  <main class="flex-1">
-    <section class="bg-gradient-to-br from-emerald-800 to-emerald-950 text-white py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Over PestControl Pro</h1>
-        <p class="text-xl text-emerald-100 max-w-3xl">Uw betrouwbare partner in professionele ongediertebestrijding sinds 2010</p>
+  <!-- HERO -->
+  <section class="relative min-h-[70vh] flex items-center bg-gradient-to-br from-[#252c30] to-[#1e2226] text-white">
+    <div class="absolute inset-0 opacity-50 bg-[url('https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=1200')] bg-cover bg-center"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-center fade-in">
+      <div class="title-badge mx-auto mb-10">
+        <h1 class="text-5xl md:text-7xl font-extrabold">Over CeroPest</h1>
       </div>
-    </section>
+      <p class="text-2xl md:text-3xl max-w-4xl mx-auto text-gray-200">
+        Een moderne, resultaatgerichte specialist in ongediertebestrijding.<br>
+        Transparant, innovatief en altijd gericht op duurzame oplossingen.
+      </p>
+    </div>
+  </section>
 
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Wie zijn wij?</h2>
-            <p class="text-gray-700 mb-4 leading-relaxed">
-              PestControl Pro is een professioneel ongediertebestrijdingsbedrijf met meer dan 13 jaar ervaring.
-              Wij helpen zowel particulieren als bedrijven bij het oplossen van ongedierte problemen op een snelle, effectieve en discrete manier.
-            </p>
-            <p class="text-gray-700 mb-4 leading-relaxed">
-              Ons team bestaat uit gecertificeerde specialisten die dagelijks werken aan het veilig en definitief verwijderen van ongedierte.
-              We gebruiken moderne technieken en milieuvriendelijke middelen om optimale resultaten te garanderen.
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-              Met onze 24/7 spoedservice zijn we altijd bereikbaar wanneer u ons nodig heeft. We begrijpen dat ongedierte veel overlast en stress kan veroorzaken, daarom handelen we snel en professioneel.
-            </p>
-          </div>
-          <div>
-            <img src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=800"
-                 alt="Ons team van professionals"
-                 class="rounded-lg shadow-xl w-full">
-          </div>
+  <!-- VISIE & MISSIE -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-[#252c30] mb-8">
+          Onze visie
+        </h2>
+        <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          CeroPest staat voor een plaagvrije omgeving door preventie, innovatie en duurzame methoden. 
+          Wij combineren geavanceerde technieken met diepgaande kennis om problemen effectief aan te pakken – altijd met respect voor mens, dier en milieu.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-12 mt-20">
+        <div class="card-hover p-10 rounded-3xl bg-gradient-to-br from-[#f8fafc] to-[#e0f2fe] text-center fade-in">
+          <i data-lucide="target" class="w-20 h-20 text-[#a0514f] mx-auto mb-6"></i>
+          <h3 class="text-2xl font-bold text-[#252c30] mb-4">Resultaatgericht</h3>
+          <p class="text-gray-700">Oplossingen die écht werken, met garantie op langdurig succes.</p>
+        </div>
+        <div class="card-hover p-10 rounded-3xl bg-gradient-to-br from-[#f8fafc] to-[#e0f2fe] text-center fade-in">
+          <i data-lucide="leaf" class="w-20 h-20 text-[#a0514f] mx-auto mb-6"></i>
+          <h3 class="text-2xl font-bold text-[#252c30] mb-4">Duurzaam & milieuvriendelijk</h3>
+          <p class="text-gray-700">Veilige methoden met minimale impact op het ecosysteem.</p>
+        </div>
+        <div class="card-hover p-10 rounded-3xl bg-gradient-to-br from-[#f8fafc] to-[#e0f2fe] text-center fade-in">
+          <i data-lucide="lightbulb" class="w-20 h-20 text-[#a0514f] mx-auto mb-6"></i>
+          <h3 class="text-2xl font-bold text-[#252c30] mb-4">Innovatief & transparant</h3>
+          <p class="text-gray-700">Moderne technieken en heldere communicatie in elke stap.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Onze kernwaarden</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="bg-white p-8 rounded-lg shadow-md text-center">
-            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i data-lucide="shield" class="w-8 h-8 text-emerald-700"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Betrouwbaarheid</h3>
-            <p class="text-gray-600">Afspraken nakomen en transparante communicatie staan bij ons voorop</p>
+  <!-- ONZE GESCHIEDENIS / TIMELINE -->
+  <section class="py-24 bg-gradient-to-br from-[#f8fafc] to-[#e0f2fe] relative timeline">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-[#252c30] text-center mb-20 fade-in">
+        Onze ontwikkeling
+      </h2>
+      <div class="timeline-connector"></div>
+
+      <div class="space-y-32">
+        <div class="timeline-item grid lg:grid-cols-2 gap-12 items-center fade-in">
+          <div class="lg:text-right lg:pr-20">
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">Oprichting & visie</h3>
+            <p class="text-lg text-gray-700">CeroPest ontstaat vanuit de behoefte aan eerlijke en effectieve ongediertebestrijding. Focus op resultaat en transparantie vanaf dag één.</p>
           </div>
-          <div class="bg-white p-8 rounded-lg shadow-md text-center">
-            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i data-lucide="award" class="w-8 h-8 text-emerald-700"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Kwaliteit</h3>
-            <p class="text-gray-600">Hoogwaardige service met garantie op langdurig resultaat</p>
+          <div class="lg:pl-20 text-5xl font-bold text-[#a0514f]">2020</div>
+        </div>
+
+        <div class="timeline-item grid lg:grid-cols-2 gap-12 items-center fade-in lg:flex-row-reverse">
+          <div class="lg:text-left lg:pl-20">
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">Uitbreiding & certificering</h3>
+            <p class="text-lg text-gray-700">Groei in Amsterdam en Amstelveen, verkrijging van relevante certificeringen en investering in duurzame methoden.</p>
           </div>
-          <div class="bg-white p-8 rounded-lg shadow-md text-center">
-            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i data-lucide="users" class="w-8 h-8 text-emerald-700"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Klanttevredenheid</h3>
-            <p class="text-gray-600">Uw tevredenheid is onze hoogste prioriteit</p>
+          <div class="lg:pr-20 text-5xl font-bold text-[#a0514f]">2022</div>
+        </div>
+
+        <div class="timeline-item grid lg:grid-cols-2 gap-12 items-center fade-in">
+          <div class="lg:text-right lg:pr-20">
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">Innovatie & specialisatie</h3>
+            <p class="text-lg text-gray-700">Introductie van slimme monitoring en milieuvriendelijke technieken voor zowel particulieren als bedrijven.</p>
           </div>
-          <div class="bg-white p-8 rounded-lg shadow-md text-center">
-            <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i data-lucide="target" class="w-8 h-8 text-emerald-700"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">Vakmanschap</h3>
-            <p class="text-gray-600">Gecertificeerde specialisten met jarenlange ervaring</p>
+          <div class="lg:pl-20 text-5xl font-bold text-[#a0514f]">2024</div>
+        </div>
+
+        <div class="timeline-item grid lg:grid-cols-2 gap-12 items-center fade-in lg:flex-row-reverse">
+          <div class="lg:text-left lg:pl-20">
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">Toekomstgericht</h3>
+            <p class="text-lg text-gray-700">Voortdurende focus op innovatie, duurzaamheid en uitbreiding van HACCP-compliant diensten.</p>
           </div>
+          <div class="lg:pr-20 text-5xl font-bold text-[#a0514f]">2025+</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="py-20 bg-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Onze aanpak</h2>
-        <div class="space-y-6">
-          <div class="bg-gray-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">1. Grondige inspectie</h3>
-            <p class="text-gray-700">We beginnen altijd met een uitgebreide inspectie om de oorzaak en omvang van het probleem vast te stellen.</p>
-          </div>
-          <div class="bg-gray-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">2. Maatwerk advies</h3>
-            <p class="text-gray-700">Op basis van de inspectie bieden we u een op maat gemaakt behandelplan met heldere uitleg.</p>
-          </div>
-          <div class="bg-gray-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">3. Professionele uitvoering</h3>
-            <p class="text-gray-700">Onze gecertificeerde specialisten voeren de bestrijding veilig en effectief uit met moderne technieken.</p>
-          </div>
-          <div class="bg-gray-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">4. Nazorg en garantie</h3>
-            <p class="text-gray-700">We bieden nazorg en garantie zodat u verzekerd bent van een blijvend resultaat.</p>
-          </div>
+  <!-- TEAM -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 text-center fade-in">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-[#252c30] mb-12">
+        Ons team van specialisten
+      </h2>
+      <p class="text-xl text-gray-700 max-w-4xl mx-auto mb-16">
+        Gecertificeerde professionals met jarenlange ervaring, toegewijd aan innovatieve en duurzame oplossingen.
+      </p>
+      <div class="rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto img-hover">
+        <!-- VERVANG MET JOUW EIGEN TEAMFOTO -->
+        <img src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Team CeroPest" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- DUURZAAMHEID & INNOVATIE -->
+  <section class="py-24 bg-gradient-to-br from-[#f8fafc] to-[#e0f2fe]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-[#252c30] text-center mb-16 fade-in">
+        Duurzaamheid en innovatie
+      </h2>
+      <div class="grid lg:grid-cols-2 gap-16 items-center fade-in">
+        <div>
+          <p class="text-xl text-gray-700 leading-relaxed mb-8">
+            Bij CeroPest kiezen we bewust voor milieuvriendelijke en biologische methoden waar mogelijk. 
+            Onze innovatieve aanpak minimaliseert het gebruik van chemicaliën en maximaliseert langdurige resultaten.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            We investeren continu in nieuwe technieken, zoals slimme monitoring en preventieve systemen, 
+            om een gezonde leef- en werkomgeving te garanderen – nu en in de toekomst.
+          </p>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-2xl img-hover">
+          <img src="https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Duurzame bestrijding" class="w-full h-full object-cover">
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="py-20 bg-emerald-700 text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Klaar om van uw ongedierte af te komen?</h2>
-        <p class="text-xl mb-8 text-emerald-100">Neem vandaag nog contact op voor een gratis inspectie</p>
-        <a href="offerte.html" class="inline-block bg-white text-emerald-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-emerald-50 transition">
-          Vraag inspectie aan
+  <!-- CTA -->
+  <section class="py-24 bg-[#252c30] text-white">
+    <div class="max-w-5xl mx-auto px-6 text-center fade-in">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-8">
+        Ontdek hoe wij u kunnen helpen
+      </h2>
+      <p class="text-xl mb-12 text-gray-200">
+        Neem contact op voor professioneel advies of een gratis inspectie.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-8 justify-center">
+        <a href="offerte.html" class="bg-[#a0514f] text-white px-16 py-6 rounded-2xl font-bold text-2xl hover:bg-[#8b3e3d] transition shadow-2xl">
+          Gratis offerte aanvragen
+        </a>
+        <a href="tel:0612345678" class="bg-white text-[#252c30] px-16 py-6 rounded-2xl font-bold text-2xl hover:bg-gray-100 transition shadow-2xl">
+          Bel direct: 06 - 12 34 56 78
         </a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-900 text-white">
+  <footer class="bg-[#252c30] text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
-          <div class="flex items-center gap-2 text-xl font-bold text-emerald-400 mb-4">
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
             <i data-lucide="bug" class="w-6 h-6"></i>
-            <span>PestControl Pro</span>
+            <span>CeroPest</span>
           </div>
           <p class="text-gray-300 mb-4">
-            Professionele ongediertebestrijding voor particulieren en bedrijven. Snel, effectief en discreet.
+            Uw betrouwbare partner in ongediertebestrijding in Amsterdam, Amstelveen en omgeving.
           </p>
           <div class="flex flex-col gap-2 text-gray-300">
             <div class="flex items-center gap-2">
               <i data-lucide="phone" class="w-4 h-4"></i>
-              <a href="tel:0612345678" class="hover:text-emerald-400">06 - 12 34 56 78</a>
+              <a href="tel:0612345678" class="hover:text-white">06 - 12 34 56 78</a>
             </div>
             <div class="flex items-center gap-2">
               <i data-lucide="mail" class="w-4 h-4"></i>
-              <a href="mailto:info@pestcontrolpro.nl" class="hover:text-emerald-400">info@pestcontrolpro.nl</a>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="clock" class="w-4 h-4"></i>
-              <span>24/7 beschikbaar</span>
+              <a href="mailto:info@ceropest.nl" class="hover:text-white">info@ceropest.nl</a>
             </div>
           </div>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-4">Diensten</h3>
+          <h3 class="text-lg font-semibold mb-4">Particulieren</h3>
           <ul class="space-y-2 text-gray-300">
-            <li><a href="#" class="hover:text-emerald-400">Rattenbestrijding</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Muizenbestrijding</a></li>
-            <li><a href="kakkerlakken.html" class="hover:text-emerald-400">Kakkerlakkenbestrijding</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Vlooienbestrijding</a></li>
-            <li><a href="bedwantsen.html" class="hover:text-emerald-400">Bedwantsenbestrijding</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Overige ongedierte</a></li>
+            <li><a href="ratten.html" class="hover:text-white">Rattenbestrijding</a></li>
+            <li><a href="muizen.html" class="hover:text-white">Muizenbestrijding</a></li>
+            <li><a href="wespen.html" class="hover:text-white">Wespenbestrijding</a></li>
+            <li><a href="overige.html" class="hover:text-white">Meer diensten</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-4">Informatie</h3>
+          <h3 class="text-lg font-semibold mb-4">Bedrijven</h3>
           <ul class="space-y-2 text-gray-300">
-            <li><a href="overons.html" class="hover:text-emerald-400">Over ons</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Werkwijze</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Voor particulieren</a></li>
-            <li><a href="bedrijven.html" class="hover:text-emerald-400">Voor bedrijven</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Spoedservice</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Werkgebied</a></li>
-            <li><a href="#" class="hover:text-emerald-400">Reviews</a></li>
-            <li><a href="faq.html" class="hover:text-emerald-400">Veelgestelde vragen</a></li>
+            <li><a href="bedrijven.html" class="hover:text-white">Preventieve contracten</a></li>
+            <li><a href="bedrijven.html" class="hover:text-white">HACCP & IPM</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-4">Contact</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li><a href="contact.html" class="hover:text-emerald-400">Contactpagina</a></li>
-            <li><a href="offerte.html" class="hover:text-emerald-400">Offerte aanvragen</a></li>
-          </ul>
-          <div class="mt-6">
-            <h4 class="text-sm font-semibold mb-2">Werkgebied</h4>
-            <div class="flex items-start gap-2 text-gray-300 text-sm">
-              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
-              <span>Amsterdam, Amstelveen en omgeving</span>
-            </div>
-          </div>
+          <h3 class="text-lg font-semibold mb-4">Werkgebied</h3>
+          <p class="text-gray-300 text-sm mb-4">
+            Amsterdam • Amstelveen • Haarlem • Hoofddorp • Zaandam • Diemen • Badhoevedorp • Ouderkerk aan de Amstel en omgeving
+          </p>
+          <a href="contact.html" class="text-[#a0514f] hover:underline font-medium">Neem contact op →</a>
         </div>
       </div>
 
-      <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-        <p>&copy; <span id="year"></span> PestControl Pro. Alle rechten voorbehouden.</p>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-emerald-400">Privacy</a>
-          <a href="#" class="hover:text-emerald-400">Algemene voorwaarden</a>
-        </div>
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+        <p>© <span id="year"></span> CeroPest – Ongediertebestrijding Amsterdam & omgeving. Alle rechten voorbehouden.</p>
       </div>
     </div>
   </footer>
@@ -273,30 +338,21 @@
     lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile menu toggle
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    let mobileOpen = false;
     mobileBtn.addEventListener('click', () => {
-      mobileOpen = !mobileOpen;
-      if (mobileOpen) {
-        mobileMenu.classList.remove('hidden');
-        mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
-      } else {
-        mobileMenu.classList.add('hidden');
-        mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-      }
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileBtn.innerHTML = isOpen ? '<i data-lucide="x" class="w-8 h-8"></i>' : '<i data-lucide="menu" class="w-8 h-8"></i>';
       lucide.createIcons();
     });
-
-    // Desktop services dropdown
-    const servicesBtn = document.getElementById('services-btn');
-    const servicesDropdown = document.getElementById('services-dropdown');
-    servicesBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      servicesDropdown.classList.toggle('active');
-    });
-    document.addEventListener('click', () => servicesDropdown.classList.remove('active'));
   </script>
 </body>
 </html>

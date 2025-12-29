@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Method - CeroPest | Pest Control Amsterdam & Amstelveen</title>
+  <meta name="description" content="Discover our transparent and professional approach to pest control in Amsterdam, Amstelveen and surrounding areas. From inspection to aftercare – always with guarantee.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .bg-gradient-subtle {
+      background: linear-gradient(to bottom, #f8fafc 0%, #e0f2fe 100%);
+    }
+
+    .hero-slice {
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    @media (min-width: 1024px) {
+      .hero-slice { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+    }
+
+    .timeline-connector {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: #bae6fd;
+      transform: translateX(-50%);
+    }
+    @media (max-width: 1024px) {
+      .timeline-connector { left: 40px; }
+    }
+
+    .step-icon {
+      background: #e0f2fe;
+      border: 4px solid #0ea5e9;
+    }
+
+    .img-hover { overflow: hidden; border-radius: 1.5rem; }
+    .img-hover img { transition: transform 0.6s ease; }
+    .img-hover:hover img { transform: scale(1.1); }
+
+    .rotate-180 { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white">
+
+  <!-- HEADER MET TAAL-SWITCH + DROPDOWN + ACCORDION -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="bg-[#a0514f] text-white py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:0612345678" class="font-semibold hover:text-gray-100">+31 6 12 34 56 78</a>
+        </div>
+        <div class="hidden sm:block">Available for all your questions</div>
+      </div>
+    </div>
+
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="../ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+        </a>
+
+        <!-- DESKTOP MENU -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="../index.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Home</a>
+          <a href="../overons.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">About us</a>
+          <a href="werkwijzeengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition underline decoration-4 decoration-[#e7f9fe]">Our method</a>
+
+          <!-- DROPDOWN: Private -->
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-[#252c30] font-medium flex items-center gap-1 transition">
+              Private <span class="text-xs">▾</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
+              <a href="../rattenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Rat control</a>
+              <a href="../muizenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Mice control</a>
+              <a href="../kakkerlakkenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Cockroach control</a>
+              <a href="../vlooienengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Flea control</a>
+              <a href="../wespenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Wasp control</a>
+              <a href="../bijenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Bee removal</a>
+              <a href="../vliegende-insecten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Flying insects</a>
+              <a href="../overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Other pests</a>
+            </div>
+          </div>
+
+          <a href="../bedrijvenengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Business</a>
+          <a href="../contactengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Contact</a>
+          <a href="../offerte.html" class="bg-[#252c30] text-white px-6 py-3 rounded-lg hover:bg-[#1e2226] font-semibold transition shadow-md">Request quote</a>
+
+          <!-- Language buttons desktop -->
+          <div class="flex items-center gap-2 ml-4">
+            <button id="lang-nl-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm opacity-60 hover:opacity-100">NL</button>
+            <button id="lang-en-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm bg-gray-200">EN</button>
+          </div>
+        </div>
+
+        <!-- MOBIEL: taal + free quote knop + hamburger -->
+        <div class="lg:hidden flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <button id="lang-nl-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs opacity-60 hover:opacity-100">NL</button>
+            <button id="lang-en-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs bg-gray-200">EN</button>
+            
+            <a href="../offerte.html" class="bg-[#252c30] text-white px-5 py-3 rounded-lg font-semibold text-sm hover:bg-[#1e2226] transition shadow-md">
+              Free quote
+            </a>
+          </div>
+
+          <button id="mobile-menu-btn" class="text-gray-800">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE MENU MET ACCORDION -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+        <div class="py-6 px-6 space-y-4">
+          <a href="../index.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Home</a>
+          <a href="../overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">About us</a>
+          <a href="werkwijzeengels.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition underline">Our method</a>
+
+          <div class="border-t border-gray-200 pt-4">
+            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#252c30]">
+              Private
+              <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
+            </button>
+            <div id="mobile-services-list" class="space-y-2 pl-4 hidden">
+              <a href="../rattenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Rat control</a>
+              <a href="../muizenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Mice control</a>
+              <a href="../kakkerlakkenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Cockroach control</a>
+              <a href="../vlooienengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Flea control</a>
+              <a href="../wespenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Wasp control</a>
+              <a href="../bijenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Bee removal</a>
+              <a href="../vliegende-insecten.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Flying insects</a>
+              <a href="../overige.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Other pests</a>
+            </div>
+          </div>
+
+          <a href="../bedrijvenengels.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Business</a>
+          <a href="../contactengels.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Contact</a>
+          <a href="../offerte.html" class="block mt-6 bg-[#252c30] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#1e2226] transition shadow-md">Request quote</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative min-h-[70vh] flex items-center hero-slice overflow-hidden" style="background-image: url('https://kallvest.co.za/wp-content/uploads/2023/06/specilized-cleaning1-scaled.jpg'); background-position: center; background-size: cover;">
+    <div class="absolute inset-0 bg-[#252c30]/70"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-center text-white fade-in">
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
+        Our method
+      </h1>
+      <p class="text-2xl md:text-3xl max-w-4xl mx-auto text-gray-200">
+        Transparent, professional and always tailored to your situation in Amsterdam, Amstelveen and surrounding areas.
+      </p>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="py-20 bg-gradient-subtle relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20 fade-in">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-[#252c30] mb-6">
+          How we work
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          A clear, step-by-step approach for a pest-free result.
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="timeline-connector"></div>
+
+        <!-- Step 1 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-32 fade-in">
+          <div class="lg:text-right lg:pr-20 order-2 lg:order-1">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="phone-incoming" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">1. Contact & appointment</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              You call or request a quote. We respond quickly and schedule an inspection at a time that suits you – often within 24-48 hours in Amsterdam and Amstelveen.
+            </p>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://www.ews-group.nl/wp-content/uploads/sites/2/2025/06/EWS-Pest-Control-Michael-1024x683.jpg" alt="Phone contact and scheduling" class="w-full h-80 object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-32 fade-in lg:flex-row-reverse">
+          <div class="lg:text-left lg:pl-20">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="search" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">2. Thorough inspection</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Our expert visits you in Amsterdam, Amstelveen or surrounding areas. We investigate the cause, extent and entry points of the infestation – always discreet and respectful.
+            </p>
+          </div>
+          <div class="lg:pr-20">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://www.bobex.be/wp-uploads/sites/5/dode-insecten-en-persoon-in-wit-pak-met-masker.jpg" alt="Thorough inspection by expert" class="w-full h-80 object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-32 fade-in">
+          <div class="lg:text-right lg:pr-20 order-2 lg:order-1">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="clipboard-check" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">3. Custom plan & execution</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              You receive a clear treatment plan with a fixed price. After approval, we start immediately with safe, environmentally friendly methods – tailored to your situation.
+            </p>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://www.ongediertebestrijdersamsterdam.nl/wp-content/uploads/2022/03/zakelijke-ongedierte-bestrijding.jpg" alt="Execution of the treatment plan" class="w-full h-80 object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center fade-in lg:flex-row-reverse">
+          <div class="lg:text-left lg:pl-20">
+            <div class="inline-flex items-center justify-center w-20 h-20 step-icon text-[#0ea5e9] rounded-full text-3xl font-bold mb-6">
+              <i data-lucide="shield-check" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-[#252c30] mb-4">4. Aftercare & prevention</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              After treatment, we check the result and provide practical advice to prevent new infestations. We remain available for questions or follow-up.
+            </p>
+          </div>
+          <div class="lg:pr-20">
+            <div class="img-hover rounded-2xl overflow-hidden shadow-xl">
+              <img src="https://thumbs.dreamstime.com/b/viroloog-beschermend-vuurpak-ontsmetten-beschermende-klachtenpak-leidt-tot-desinfectie-van-oppervlakken-het-openbaar-en-brengt-179769755.jpg" alt="Aftercare and prevention advice" class="w-full h-80 object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6 text-center fade-in">
+      <h2 class="text-4xl font-extrabold text-[#252c30] mb-8">
+        Our service area
+      </h2>
+      <p class="text-xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto">
+        CeroPest operates in <strong>Amsterdam</strong>, <strong>Amstelveen</strong> and the wider area, including Haarlem, Hoofddorp, Zaandam, Diemen, Badhoevedorp, Ouderkerk aan de Amstel and more. 
+        Thanks to our local presence, we can be on site quickly for inspection and control.
+      </p>
+      <div class="img-hover rounded-2xl overflow-hidden shadow-xl max-w-3xl mx-auto">
+        <img src="https://lp-cms-production.imgix.net/image_browser/Amsterdam%20highlights.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=20&dpr=5" alt="Map of Amsterdam and surrounding areas" class="w-full h-96 object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#252c30] text-white">
+    <div class="max-w-5xl mx-auto px-6 text-center fade-in">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-8">
+        Ready for a pest-free environment?
+      </h2>
+      <p class="text-xl mb-12 text-gray-200">
+        Contact us today for a no-obligation inspection.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-8 justify-center">
+        <a href="../offerte.html" class="bg-white text-[#252c30] px-16 py-6 rounded-2xl font-bold text-2xl hover:bg-gray-100 transition shadow-2xl">
+          Request free quote
+        </a>
+        <a href="tel:0612345678" class="bg-[#a0514f] text-white px-16 py-6 rounded-2xl font-bold text-2xl hover:bg-[#8b3e3d] transition shadow-2xl">
+          Call now: +31 6 12 34 56 78
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#252c30] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
+            <i data-lucide="bug" class="w-6 h-6"></i>
+            <span>CeroPest</span>
+          </div>
+          <p class="text-gray-300 mb-4">
+            Your reliable partner in pest control in Amsterdam, Amstelveen and surrounding areas.
+          </p>
+          <div class="flex flex-col gap-2 text-gray-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <a href="tel:0612345678" class="hover:text-white">+31 6 12 34 56 78</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:info@ceropest.nl" class="hover:text-white">info@ceropest.nl</a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Private</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="../rattenengels.html" class="hover:text-white">Rat control</a></li>
+            <li><a href="../muizenengels.html" class="hover:text-white">Mice control</a></li>
+            <li><a href="../wespenengels.html" class="hover:text-white">Wasp control</a></li>
+            <li><a href="../overige.html" class="hover:text-white">More services</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Business</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li><a href="../bedrijvenengels.html" class="hover:text-white">HACCP & prevention</a></li>
+            <li><a href="../bedrijvenengels.html" class="hover:text-white">Periodic inspections</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Service area</h3>
+          <p class="text-gray-300 text-sm mb-4">
+            Amsterdam • Amstelveen • Haarlem • Hoofddorp • Zaandam • Diemen • Badhoevedorp • Ouderkerk aan de Amstel and surrounding areas
+          </p>
+          <a href="../contactengels.html" class="text-[#a0514f] hover:underline font-medium">Contact us →</a>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
+        <p>© <span id="year"></span> CeroPest – Pest Control Amsterdam & surrounding areas. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Language switch
+    document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = '../werkwijze.html';
+      });
+    });
+
+    document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(btn => {
+      btn.classList.add('bg-gray-200');
+    });
+
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileBtn.innerHTML = isOpen ? '<i data-lucide="x" class="w-8 h-8"></i>' : '<i data-lucide="menu" class="w-8 h-8"></i>';
+      lucide.createIcons();
+    });
+
+    // Mobile accordion
+    const servicesToggle = document.getElementById('mobile-services-toggle');
+    const servicesList = document.getElementById('mobile-services-list');
+    const servicesArrow = document.getElementById('mobile-services-arrow');
+    if (servicesToggle) {
+      servicesToggle.addEventListener('click', () => {
+        servicesList.classList.toggle('hidden');
+        servicesArrow.classList.toggle('rotate-180');
+      });
+    }
+
+    // Fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
