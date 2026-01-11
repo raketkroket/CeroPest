@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -22,377 +21,507 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
   <style>
-    .parallax-bg { background-attachment: fixed; background-position: center; background-size: cover; }
-    @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
-    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .img-hover { overflow: hidden; border-radius: 1rem; }
-    .img-hover img { transition: transform 0.6s ease; }
-    .img-hover:hover img { transform: scale(1.1); }
-    .bg-gradient-subtle { background: linear-gradient(to bottom, #f8fafc 0%, #e2e8f0 100%); }
-    .bg-gradient-hero { background: linear-gradient(to bottom, #252c30 0%, #1e2226 100%); }
-
-    /* FIX: voorkom horizontaal scrollen */
-    html, body {
-      overflow-x: hidden;
+    /* Header always visible + smooth change */
+    header {
+      backdrop-filter: blur(12px);
+      transition: all 0.5s ease;
     }
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    header.scrolled a, header.scrolled span, header.scrolled button:not(.bg-gray-200) {
+      color: #252c30 !important;
+    }
+    header.scrolled .border-white\/50 {
+      border-color: #252c30 !important;
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(60px); transition: all 1.2s cubic-bezier(0.22, 0.61, 0.36, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Card image zoom + overlay */
+    .card-img-hover { overflow: hidden; border-radius: 2rem; }
+    .card-img-hover img { transition: transform 1s ease; }
+    .group:hover .card-img-hover img { transform: scale(1.2); }
+    .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(37,44,48,0.9), transparent); opacity: 0; transition: opacity 0.8s ease; }
+    .group:hover .card-overlay { opacity: 1; }
+
+    /* Button glow */
+    .btn-glow { position: relative; overflow: hidden; }
+    .btn-glow::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.5) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.6s ease;
+    }
+    .btn-glow:hover::before { opacity: 1; }
+
+    /* Floating bugs in hero */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.08; }
+      50% { transform: translateY(-50px) rotate(20deg); opacity: 0.15; }
+    }
+    .particle { animation: float linear infinite; pointer-events: none; }
+
+    /* Floating emergency CTA */
+    #floating-cta {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    #floating-cta.visible {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+
+    html { scroll-behavior: smooth; }
+    html, body { overflow-x: hidden; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col bg-white">
-<!-- HEADER -->
-<header class="bg-white shadow-md sticky top-0 z-50">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20">
 
-      <!-- Logo altijd links -->
-      <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
-        <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
-      </a>
+  <!-- HEADER – Always visible, transparent → solid on scroll -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-transparent text-white">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+          <img src="ceropest.png" alt="CeroPest Logo" class="h-12 w-auto transition-transform hover:scale-110 duration-300">
+        </a>
 
-      <!-- DESKTOP: volledige navigatie + offerte + taal rechts -->
-      <div class="hidden lg:flex items-center gap-8">
-        <a href="index.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Home" data-en="Home">Home</a>
-        <a href="overons.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Over ons" data-en="About us">Over ons</a>
-        <a href="werkwijze.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Werkwijze" data-en="Method">Werkwijze</a>
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="font-medium transition hover:scale-105">Home</a>
+          <a href="overons.html" class="font-medium transition hover:scale-105">Over ons</a>
+          <a href="werkwijze.html" class="font-medium transition hover:scale-105">Werkwijze</a>
 
-        <div class="relative group">
-          <button class="text-gray-700 hover:text-[#252c30] font-medium flex items-center gap-1 transition">
-            <span data-nl="Particulieren" data-en="Private">Particulieren</span> <span class="text-xs">▾</span>
-          </button>
-          <div class="absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-gray-100">
-            <a href="ratten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</a>
-            <a href="muizen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</a>
-            <a href="kakkerlakken.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Kakkerlakkenbestrijding" data-en="Cockroach control">Kakkerlakkenbestrijding</a>
-            <a href="vlooien.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Vlooienbestrijding" data-en="Flea control">Vlooienbestrijding</a>
-            <a href="wespen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</a>
-            <a href="bijen.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Bijenverwijdering" data-en="Bee removal">Bijenverwijdering</a>
-            <a href="overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Overige ongedierte" data-en="Other pests">Overige ongedierte</a>
+          <div class="relative group">
+            <button class="font-medium flex items-center gap-1 transition hover:scale-105">
+              <span data-nl="Particulieren" data-en="Private">Particulieren</span> <span class="text-xs">▾</span>
+            </button>
+            <div class="absolute top-full left-0 mt-4 w-64 bg-white text-gray-800 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 border">
+              <a href="ratten.html" class="block px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</a>
+              <a href="muizen.html" class="block px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Kakkerlakkenbestrijding" data-en="Cockroach control">Kakkerlakkenbestrijding</a>
+              <a href="vlooien.html" class="block px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Vlooienbestrijding" data-en="Flea control">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</a>
+              <a href="bijen.html" class="block px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Bijenverwijdering" data-en="Bee removal">Bijenverwijdering</a>
+              <a href="overige.html" class="block px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition" data-nl="Overige ongedierte" data-en="Other pests">Overige ongedierte</a>
+            </div>
+          </div>
+
+          <a href="bedrijven.html" class="font-medium transition hover:scale-105">Bedrijven</a>
+          <a href="contact.html" class="font-medium transition hover:scale-105">Contact</a>
+
+          <a href="offerte.html" class="btn-glow bg-white/20 backdrop-blur-md text-white px-8 py-4 rounded-xl font-bold transition-all duration-500 hover:scale-110 shadow-xl border border-white/30">
+            <span data-nl="Offerte aanvragen" data-en="Request quote">Offerte aanvragen</span>
+          </a>
+
+          <div class="flex items-center gap-2 ml-6">
+            <button id="lang-nl-desktop" class="px-5 py-2 rounded-lg border border-white/50 font-bold text-sm bg-white/20 backdrop-blur-md">NL</button>
+            <button id="lang-en-desktop" class="px-5 py-2 rounded-lg border border-white/50 font-bold text-sm opacity-60 hover:opacity-100">EN</button>
           </div>
         </div>
 
-        <a href="bedrijven.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Bedrijven" data-en="Business">Bedrijven</a>
-        <a href="contact.html" class="text-gray-700 hover:text-[#252c30] font-medium transition" data-nl="Contact" data-en="Contact">Contact</a>
-
-        <a href="offerte.html" class="bg-[#252c30] text-white px-6 py-3 rounded-lg hover:bg-[#1e2226] font-semibold transition shadow-md"
-           data-nl="Offerte aanvragen" data-en="Request quote">Offerte aanvragen</a>
-
-        <div class="flex items-center gap-2 ml-4">
-          <button id="lang-nl-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm bg-gray-200">NL</button>
-          <button id="lang-en-desktop" class="px-4 py-2 rounded border border-gray-300 font-medium text-sm opacity-60 hover:opacity-100">EN</button>
+        <!-- Mobile -->
+        <div class="lg:hidden flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <button id="lang-nl-mobile" class="px-4 py-2 rounded border border-white/50 font-bold text-xs bg-white/20 backdrop-blur-md">NL</button>
+            <button id="lang-en-mobile" class="px-4 py-2 rounded border border-white/50 font-bold text-xs opacity-60 hover:opacity-100">EN</button>
+            <a href="offerte.html" class="bg-white/20 backdrop-blur-md text-white px-5 py-3 rounded-lg font-bold text-sm shadow-lg whitespace-nowrap border border-white/30">
+              <span data-nl="Gratis offerte" data-en="Free quote">Gratis offerte</span>
+            </a>
+          </div>
+          <button id="mobile-menu-btn" class="text-white">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+          </button>
         </div>
       </div>
 
-      <!-- MOBIEL: alleen zichtbaar op kleine schermen -->
-      <div class="lg:hidden flex items-center gap-4">
-        <!-- Taal + kleine offerte knop in het midden -->
-        <div class="flex items-center gap-2">
-          <button id="lang-nl-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs bg-gray-200">NL</button>
-          <button id="lang-en-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs opacity-60 hover:opacity-100">EN</button>
-          
-          <a href="offerte.html" class="bg-[#252c30] text-white px-4 py-2 rounded-lg font-semibold text-sm shadow-md whitespace-nowrap"
-             data-nl="Gratis offerte" data-en="Free quote">
-            Gratis offerte
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-2xl">
+        <div class="py-8 px-6 space-y-6">
+          <a href="index.html" class="block text-xl font-medium text-gray-800 hover:text-[#252c30] transition">Home</a>
+          <a href="overons.html" class="block text-xl font-medium text-gray-800 hover:text-[#252c30] transition">Over ons</a>
+          <a href="werkwijze.html" class="block text-xl font-medium text-gray-800 hover:text-[#252c30] transition">Werkwijze</a>
+
+          <div class="border-t border-gray-200 pt-6">
+            <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-xl font-bold text-[#252c30]">
+              <span data-nl="Particulieren" data-en="Private">Particulieren</span>
+              <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
+            </button>
+            <div id="mobile-services-list" class="space-y-3 pl-4 hidden mt-4">
+              <a href="ratten.html" class="block py-3 text-gray-700 hover:text-[#252c30] transition">Rattenbestrijding</a>
+              <a href="muizen.html" class="block py-3 text-gray-700 hover:text-[#252c30] transition">Muizenbestrijding</a>
+              <a href="kakkerlakken.html" class="block py-3 text-gray-700 hover:text-[#252c30] transition">Kakkerlakkenbestrijding</a>
+              <a href="vlooien.html" class="block py-3 text-gray-700 hover:text-[#252c30] transition">Vlooienbestrijding</a>
+              <a href="wespen.html" class="block py-3 text-gray-700 hover:text-[#252c30] transition">Wespenbestrijding</a>
+              <a href="bijen.html" class="block py-3 text-gray-700 hover:text-[#252c30] transition">Bijenverwijdering</a>
+              <a href="overige.html" class="block py-3 text-gray-700 hover:text-[#252c30] transition">Overige ongedierte</a>
+            </div>
+          </div>
+
+          <a href="bedrijven.html" class="block text-xl font-medium text-gray-800 hover:text-[#252c30] transition">Bedrijven</a>
+          <a href="contact.html" class="block text-xl font-medium text-gray-800 hover:text-[#252c30] transition">Contact</a>
+
+          <a href="offerte.html" class="block mt-10 bg-[#252c30] text-white text-center py-6 rounded-2xl font-bold text-xl shadow-2xl">
+            <span data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</span>
           </a>
         </div>
-
-        <!-- Hamburger menu knop (alleen op mobiel) -->
-        <button id="mobile-menu-btn" class="text-gray-800">
-          <i data-lucide="menu" class="w-8 h-8"></i>
-        </button>
       </div>
-    </div>
-
-    <!-- Mobiel menu -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
-      <div class="py-6 px-6 space-y-6">
-        <a href="index.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Home" data-en="Home">Home</a>
-        <a href="overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Over ons" data-en="About us">Over ons</a>
-        <a href="werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Werkwijze" data-en="Method">Werkwijze</a>
-
-        <div class="border-t border-gray-200 pt-4">
-          <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#252c30]">
-            <span data-nl="Particulieren" data-en="Private">Particulieren</span>
-            <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
-          </button>
-          <div id="mobile-services-list" class="space-y-3 pl-4 hidden mt-3">
-            <a href="ratten.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</a>
-            <a href="muizen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</a>
-            <a href="kakkerlakken.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Kakkerlakkenbestrijding" data-en="Cockroach control">Kakkerlakkenbestrijding</a>
-            <a href="vlooien.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Vlooienbestrijding" data-en="Flea control">Vlooienbestrijding</a>
-            <a href="wespen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</a>
-            <a href="bijen.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Bijenverwijdering" data-en="Bee removal">Bijenverwijdering</a>
-            <a href="overige.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition" data-nl="Overige ongedierte" data-en="Other pests">Overige ongedierte</a>
-          </div>
-        </div>
-
-        <a href="bedrijven.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Bedrijven" data-en="Business">Bedrijven</a>
-        <a href="contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition" data-nl="Contact" data-en="Contact">Contact</a>
-
-        <a href="offerte.html" class="block mt-8 bg-[#252c30] text-white text-center py-5 rounded-xl font-bold text-lg px-6 hover:bg-[#1e2226] transition shadow-xl"
-           data-nl="Gratis offerte aanvragen" data-en="Request free quote">
-          Gratis offerte aanvragen
-        </a>
-      </div>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
 
   <!-- HERO -->
-  <section class="relative min-h-screen flex items-center parallax-bg bg-gradient-hero" style="background-image: url('https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+  <section class="relative min-h-screen flex items-center justify-center bg-cover bg-center overflow-hidden" style="background-image: url('https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&w=1200');">
     <div class="absolute inset-0 bg-[#252c30]/70"></div>
-    <div class="relative max-w-7xl mx-auto px-6 text-center text-white fade-in">
-      <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
+
+    <!-- Floating bugs -->
+    <div class="absolute inset-0 pointer-events-none">
+      <i data-lucide="bug" class="particle absolute text-white/10 w-20 h-20 top-10 left-5" style="animation-delay: 0s; animation-duration: 25s;"></i>
+      <i data-lucide="bug" class="particle absolute text-white/10 w-28 h-28 top-32 right-10 rotate-45" style="animation-delay: 4s; animation-duration: 30s;"></i>
+      <i data-lucide="bug" class="particle absolute text-white/10 w-16 h-16 bottom-40 left-20" style="animation-delay: 8s; animation-duration: 22s;"></i>
+      <i data-lucide="bug" class="particle absolute text-white/10 w-24 h-24 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="animation-delay: 12s; animation-duration: 35s;"></i>
+      <i data-lucide="bug" class="particle absolute text-white/10 w-18 h-18 bottom-20 right-20 rotate-90" style="animation-delay: 16s; animation-duration: 28s;"></i>
+      <i data-lucide="bug" class="particle absolute text-white/10 w-32 h-32 top-20 right-40" style="animation-delay: 20s; animation-duration: 32s;"></i>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 text-center text-white reveal">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 leading-tight">
         <span data-nl="Ongediertebestrijding in" data-en="Pest control in">Ongediertebestrijding in</span><br>
-        <span class="text-[#a0514f]" data-nl="Amsterdam, Amstelveen en omgeving" data-en="Amsterdam, Amstelveen and surrounding areas">Amsterdam, Amstelveen en omgeving</span>
+        <span class="text-[#a0514f]">Amsterdam, Amstelveen en omgeving</span>
       </h1>
-      <p class="text-2xl md:text-3xl mb-12 max-w-4xl mx-auto text-gray-200"
-         data-nl="Professionele, discrete en milieuvriendelijke bestrijding van ratten, muizen, wespen, kakkerlakken en meer."
-         data-en="Professional, discreet and environmentally friendly control of rats, mice, wasps, cockroaches and more.">
+      <p class="text-2xl md:text-3xl mb-16 max-w-5xl mx-auto text-gray-200" data-nl="Professionele, discrete en milieuvriendelijke bestrijding van ratten, muizen, wespen, kakkerlakken en meer." data-en="Professional, discreet and environmentally friendly control of rats, mice, wasps, cockroaches and more.">
         Professionele, discrete en milieuvriendelijke bestrijding van ratten, muizen, wespen, kakkerlakken en meer.
       </p>
-      <!-- GEFIXT: knoppen kleiner op mobiel -->
-      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-        <a href="offerte.html" class="bg-[#252c30] text-white px-8 py-5 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-[#1e2226] transition shadow-2xl transform hover:scale-105 whitespace-nowrap"
-           data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</a>
-        <a href="tel:0612345678" class="bg-white text-[#252c30] px-8 py-5 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-gray-100 transition shadow-2xl flex items-center justify-center gap-3">
-          <i data-lucide="phone" class="w-6 h-6 sm:w-8 sm:h-8"></i>
-          <span data-nl="Bel direct: 06 - 12 34 56 78" data-en="Call now: +31 6 12 34 56 78">Bel direct: 06 - 12 34 56 78</span>
+      <div class="flex flex-col sm:flex-row gap-8 justify-center">
+        <a href="offerte.html" class="btn-glow bg-[#252c30]/80 backdrop-blur-md text-white px-10 py-6 rounded-3xl font-black text-2xl transition-all duration-700 hover:scale-110 shadow-2xl border border-white/20">
+          <span data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</span>
+        </a>
+        <a href="tel:+31 020 3242326" class="btn-glow bg-white text-[#252c30] px-10 py-6 rounded-3xl font-black text-2xl transition-all duration-700 hover:scale-110 shadow-2xl flex items-center justify-center gap-4">
+          <i data-lucide="phone" class="w-8 h-8"></i>
+          <span data-nl="Bel direct: +31 020 3242326" data-en="Call now: +31 6 12 34 56 78">Bel direct: +31 020 3242326</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- VERTRAUWENSBLOKKEN -->
-  <section class="py-20 bg-gradient-subtle">
+  <!-- TRUST BADGES -->
+  <section class="py-28 bg-gradient-to-b from-gray-50 to-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-10 text-center">
-        <div class="fade-in">
-          <i data-lucide="shield-check" class="w-16 h-16 text-[#a0514f] mx-auto mb-6"></i>
-          <h3 class="text-2xl font-bold text-[#252c30] mb-3" data-nl="Gecertificeerd & ervaren" data-en="Certified & experienced">Gecertificeerd & ervaren</h3>
-          <p class="text-gray-600" data-nl="Erkende specialisten met jarenlange praktijk" data-en="Recognized specialists with years of experience">Erkende specialisten met jarenlange praktijk</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div class="group relative bg-white rounded-3xl p-8 shadow-2xl hover:shadow-4xl hover:-translate-y-8 transition-all duration-800 reveal">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/15 to-teal-500/15 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-800 blur-3xl"></div>
+          <div class="relative text-center">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-emerald-500/25 to-emerald-600/25 flex items-center justify-center group-hover:scale-140 group-hover:rotate-12 transition-all duration-800 shadow-xl">
+              <i data-lucide="shield" class="w-12 h-12 text-emerald-600"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-800 group-hover:text-emerald-600 transition-colors duration-500" data-nl="Gecertificeerd" data-en="Certified">Gecertificeerd</h3>
+            <p class="text-base text-gray-600 mt-2" data-nl="Erkende specialisten" data-en="Recognized specialists">Erkende specialisten</p>
+          </div>
         </div>
-        <div class="fade-in">
-          <i data-lucide="zap" class="w-16 h-16 text-[#a0514f] mx-auto mb-6"></i>
-          <h3 class="text-2xl font-bold text-[#252c30] mb-3" data-nl="Snelle service" data-en="Fast service">Snelle service</h3>
-          <p class="text-gray-600" data-nl="Vaak dezelfde dag nog ter plaatse" data-en="Often on site the same day">Vaak dezelfde dag nog ter plaatse</p>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-2xl hover:shadow-4xl hover:-translate-y-8 transition-all duration-800 reveal" style="transition-delay: 100ms;">
+          <div class="absolute inset-0 bg-gradient-to-br from-amber-500/15 to-amber-600/15 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-800 blur-3xl"></div>
+          <div class="relative text-center">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-amber-500/25 to-amber-600/25 flex items-center justify-center group-hover:scale-140 group-hover:rotate-12 transition-all duration-800 shadow-xl">
+              <i data-lucide="zap" class="w-12 h-12 text-amber-600"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-800 group-hover:text-amber-600 transition-colors duration-500" data-nl="Snel" data-en="Fast">Snel</h3>
+            <p class="text-base text-gray-600 mt-2" data-nl="< 2 uur ter plaatse" data-en="< 2 hours on-site">&lt; 2 uur ter plaatse</p>
+          </div>
         </div>
-        <div class="fade-in">
-          <i data-lucide="leaf" class="w-16 h-16 text-[#a0514f] mx-auto mb-6"></i>
-          <h3 class="text-2xl font-bold text-[#252c30] mb-3" data-nl="Milieuvriendelijk" data-en="Environmentally friendly">Milieuvriendelijk</h3>
-          <p class="text-gray-600" data-nl="Veilige methoden voor mens en natuur" data-en="Safe methods for people and nature">Veilige methoden voor mens en natuur</p>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-2xl hover:shadow-4xl hover:-translate-y-8 transition-all duration-800 reveal" style="transition-delay: 200ms;">
+          <div class="absolute inset-0 bg-gradient-to-br from-teal-500/15 to-teal-600/15 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-800 blur-3xl"></div>
+          <div class="relative text-center">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-teal-500/25 to-teal-600/25 flex items-center justify-center group-hover:scale-140 group-hover:rotate-12 transition-all duration-800 shadow-xl">
+              <i data-lucide="leaf" class="w-12 h-12 text-teal-600"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-800 group-hover:text-teal-600 transition-colors duration-500" data-nl="Milieuvriendelijk" data-en="Eco-friendly">Milieuvriendelijk</h3>
+            <p class="text-base text-gray-600 mt-2" data-nl="Veilige methoden" data-en="Safe methods">Veilige methoden</p>
+          </div>
         </div>
-        <div class="fade-in">
-          <i data-lucide="handshake" class="w-16 h-16 text-[#a0514f] mx-auto mb-6"></i>
-          <h3 class="text-2xl font-bold text-[#252c30] mb-3" data-nl="Garantie op resultaat" data-en="Guarantee on results">Garantie op resultaat</h3>
-          <p class="text-gray-600" data-nl="Nazorg tot het probleem volledig is opgelost" data-en="Aftercare until the problem is fully resolved">Nazorg tot het probleem volledig is opgelost</p>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-2xl hover:shadow-4xl hover:-translate-y-8 transition-all duration-800 reveal" style="transition-delay: 300ms;">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-blue-600/15 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-800 blur-3xl"></div>
+          <div class="relative text-center">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-blue-500/25 to-blue-600/25 flex items-center justify-center group-hover:scale-140 group-hover:rotate-12 transition-all duration-800 shadow-xl">
+              <i data-lucide="award" class="w-12 h-12 text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-800 group-hover:text-blue-600 transition-colors duration-500" data-nl="Garantie" data-en="Guarantee">Garantie</h3>
+            <p class="text-base text-gray-600 mt-2" data-nl="100% resultaat" data-en="100% results">100% resultaat</p>
+          </div>
+        </div>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-2xl hover:shadow-4xl hover:-translate-y-8 transition-all duration-800 reveal" style="transition-delay: 400ms;">
+          <div class="absolute inset-0 bg-gradient-to-br from-purple-500/15 to-purple-600/15 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-800 blur-3xl"></div>
+          <div class="relative text-center">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-purple-500/25 to-purple-600/25 flex items-center justify-center group-hover:scale-140 group-hover:rotate-12 transition-all duration-800 shadow-xl">
+              <i data-lucide="clock" class="w-12 h-12 text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-800 group-hover:text-purple-600 transition-colors duration-500" data-nl="24/7" data-en="24/7">24/7</h3>
+            <p class="text-base text-gray-600 mt-2" data-nl="Altijd bereikbaar" data-en="Always available">Altijd bereikbaar</p>
+          </div>
+        </div>
+
+        <div class="group relative bg-white rounded-3xl p-8 shadow-2xl hover:shadow-4xl hover:-translate-y-8 transition-all duration-800 reveal" style="transition-delay: 500ms;">
+          <div class="absolute inset-0 bg-gradient-to-br from-rose-500/15 to-rose-600/15 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-800 blur-3xl"></div>
+          <div class="relative text-center">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-rose-500/25 to-rose-600/25 flex items-center justify-center group-hover:scale-140 group-hover:rotate-12 transition-all duration-800 shadow-xl">
+              <i data-lucide="thumbs-up" class="w-12 h-12 text-rose-600"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-800 group-hover:text-rose-600 transition-colors duration-500" data-nl="5 sterren" data-en="5 stars">5 sterren</h3>
+            <p class="text-base text-gray-600 mt-2" data-nl="Klantbeoordelingen" data-en="Customer reviews">Klantbeoordelingen</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIENSTEN GRID -->
-  <section class="py-20 bg-white">
+  <!-- SERVICES TEASER -->
+  <section class="py-28 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-[#252c30] mb-6" data-nl="Onze specialisaties" data-en="Our specializations">Onze specialisaties</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-nl="Van ratten in de kruipruimte tot wespennesten op zolder – wij lossen het op." data-en="From rats in the crawl space to wasp nests in the attic – we solve it.">Van ratten in de kruipruimte tot wespennesten op zolder – wij lossen het op.</p>
+      <div class="text-center mb-24 reveal">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-[#252c30] mb-8" data-nl="Onze specialisaties" data-en="Our specializations">Onze specialisaties</h2>
+        <p class="text-2xl text-gray-600 max-w-4xl mx-auto" data-nl="Van ratten in de kruipruimte tot wespennesten op zolder – wij lossen het op." data-en="From rats in the crawl space to wasp nests in the attic – we solve it.">
+          Van ratten in de kruipruimte tot wespennesten op zolder – wij lossen het op.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <a href="ratten.html" class="img-hover bg-white rounded-2xl shadow-xl overflow-hidden group fade-in">
-          <img src="rattenbestrijding.jpeg" alt="Rattenbestrijding Amsterdam" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-bold text-[#252c30] mb-3 group-hover:text-[#a0514f] transition" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</h3>
-            <p class="text-gray-600 mb-4" data-nl="Snelle en effectieve verwijdering van rattenplagen" data-en="Fast and effective removal of rat infestations">Snelle en effectieve verwijdering van rattenplagen</p>
-            <span class="text-[#252c30] font-semibold flex items-center gap-2 group-hover:gap-4 transition" data-nl="Meer informatie" data-en="More information">Meer informatie <i data-lucide="arrow-right" class="w-5 h-5"></i></span>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <a href="ratten.html" class="group relative card-img-hover bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-1000 hover:shadow-5xl hover:-translate-y-12 reveal">
+          <div class="card-overlay"></div>
+          <img src="rattenbestrijding.jpeg" alt="Rattenbestrijding Amsterdam" class="w-full h-80 object-cover">
+          <div class="relative p-12">
+            <h3 class="text-3xl font-black text-[#252c30] mb-6 group-hover:text-white transition duration-700" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</h3>
+            <p class="text-lg text-gray-600 mb-8 group-hover:text-gray-200 transition duration-700">Snelle en effectieve verwijdering van rattenplagen</p>
+            <span class="text-[#252c30] font-bold text-xl flex items-center gap-4 group-hover:gap-12 group-hover:text-white transition-all duration-700">
+              <span data-nl="Meer informatie" data-en="More information">Meer informatie</span>
+              <i data-lucide="arrow-right" class="w-8 h-8 transition-transform group-hover:translate-x-8"></i>
+            </span>
           </div>
         </a>
 
-        <a href="muizen.html" class="img-hover bg-white rounded-2xl shadow-xl overflow-hidden group fade-in">
-          <img src="muizenbestrijding.webp" alt="Muizenbestrijding Amstelveen" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-bold text-[#252c30] mb-3 group-hover:text-[#a0514f] transition" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</h3>
-            <p class="text-gray-600 mb-4" data-nl="Definitieve oplossing tegen muizen in huis" data-en="Permanent solution against mice in the house">Definitieve oplossing tegen muizen in huis</p>
-            <span class="text-[#252c30] font-semibold flex items-center gap-2 group-hover:gap-4 transition" data-nl="Meer informatie" data-en="More information">Meer informatie <i data-lucide="arrow-right" class="w-5 h-5"></i></span>
+        <a href="muizen.html" class="group relative card-img-hover bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-1000 hover:shadow-5xl hover:-translate-y-12 reveal" style="transition-delay: 200ms;">
+          <div class="card-overlay"></div>
+          <img src="muizenbestrijding.webp" alt="Muizenbestrijding Amstelveen" class="w-full h-80 object-cover">
+          <div class="relative p-12">
+            <h3 class="text-3xl font-black text-[#252c30] mb-6 group-hover:text-white transition duration-700" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</h3>
+            <p class="text-lg text-gray-600 mb-8 group-hover:text-gray-200 transition duration-700">Definitieve oplossing tegen muizen in huis</p>
+            <span class="text-[#252c30] font-bold text-xl flex items-center gap-4 group-hover:gap-12 group-hover:text-white transition-all duration-700">
+              <span data-nl="Meer informatie" data-en="More information">Meer informatie</span>
+              <i data-lucide="arrow-right" class="w-8 h-8 transition-transform group-hover:translate-x-8"></i>
+            </span>
           </div>
         </a>
 
-        <a href="wespen.html" class="img-hover bg-white rounded-2xl shadow-xl overflow-hidden group fade-in">
-          <img src="wespennest.jpg" alt="Wespenbestrijding Amsterdam" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-bold text-[#252c30] mb-3 group-hover:text-[#a0514f] transition" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</h3>
-            <p class="text-gray-600 mb-4" data-nl="Veilige verwijdering van wespennesten" data-en="Safe removal of wasp nests">Veilige verwijdering van wespennesten</p>
-            <span class="text-[#252c30] font-semibold flex items-center gap-2 group-hover:gap-4 transition" data-nl="Meer informatie" data-en="More information">Meer informatie <i data-lucide="arrow-right" class="w-5 h-5"></i></span>
+        <a href="wespen.html" class="group relative card-img-hover bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-1000 hover:shadow-5xl hover:-translate-y-12 reveal" style="transition-delay: 400ms;">
+          <div class="card-overlay"></div>
+          <img src="wespennest.jpg" alt="Wespenbestrijding Amsterdam" class="w-full h-80 object-cover">
+          <div class="relative p-12">
+            <h3 class="text-3xl font-black text-[#252c30] mb-6 group-hover:text-white transition duration-700" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</h3>
+            <p class="text-lg text-gray-600 mb-8 group-hover:text-gray-200 transition duration-700">Veilige verwijdering van wespennesten</p>
+            <span class="text-[#252c30] font-bold text-xl flex items-center gap-4 group-hover:gap-12 group-hover:text-white transition-all duration-700">
+              <span data-nl="Meer informatie" data-en="More information">Meer informatie</span>
+              <i data-lucide="arrow-right" class="w-8 h-8 transition-transform group-hover:translate-x-8"></i>
+            </span>
           </div>
         </a>
       </div>
 
-      <div class="text-center mt-16 fade-in">
-        <a href="diensten.html" class="inline-block bg-[#252c30] text-white px-12 py-6 rounded-2xl font-bold text-xl hover:bg-[#1e2226] transition shadow-xl"
-           data-nl="Bekijk al onze diensten" data-en="View all our services">Bekijk al onze diensten</a>
+      <!-- Special floating emergency CTA (no "Bekijk al onze diensten") -->
+      <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40" id="floating-cta">
+        <a href="tel:+31 020 3242326" class="btn-glow bg-[#a0514f] text-white px-10 py-5 rounded-full font-black text-xl shadow-2xl flex items-center gap-4 hover:scale-110 transition-all duration-500 animate-pulse">
+          <i data-lucide="phone" class="w-8 h-8"></i>
+          <span data-nl="Spoed? Bel nu direct!" data-en="Emergency? Call now!">Spoed? Bel nu direct!</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- LOKALE SEO SECTIE -->
-  <section class="py-20 bg-gradient-subtle">
-    <div class="max-w-4xl mx-auto px-6 text-center fade-in">
-      <h2 class="text-4xl font-extrabold text-[#252c30] mb-8" data-nl="Ongediertebestrijding in uw regio" data-en="Pest control in your region">Ongediertebestrijding in uw regio</h2>
-      <p class="text-xl text-gray-700 leading-relaxed mb-10"
-         data-nl="CeroPest is uw lokale expert in ongediertebestrijding in Amsterdam, Amstelveen en omgeving. Of het nu gaat om ratten in de kruipruimte, muizen in de keuken, een wespennest onder het dak of kakkerlakken in een bedrijfspand – wij komen snel en professioneel in actie."
-         data-en="CeroPest is your local expert in pest control in Amsterdam, Amstelveen and surrounding areas. Whether it's rats in the crawl space, mice in the kitchen, a wasp nest under the roof or cockroaches in a commercial building – we act quickly and professionally.">
+  <!-- LOKALE SEO -->
+  <section class="py-28 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-5xl mx-auto px-6 text-center reveal">
+      <h2 class="text-5xl font-extrabold text-[#252c30] mb-12" data-nl="Ongediertebestrijding in uw regio" data-en="Pest control in your region">Ongediertebestrijding in uw regio</h2>
+      <p class="text-xl text-gray-700 leading-relaxed mb-10">
         CeroPest is uw lokale expert in ongediertebestrijding in Amsterdam, Amstelveen en omgeving. Of het nu gaat om ratten in de kruipruimte, muizen in de keuken, een wespennest onder het dak of kakkerlakken in een bedrijfspand – wij komen snel en professioneel in actie.
       </p>
-      <p class="text-lg text-gray-600"
-         data-nl="Met jarenlange ervaring weten wij precies hoe we plagen in stedelijke gebieden zoals Amsterdam en Amstelveen effectief en discreet aanpakken. Altijd met respect voor uw privacy en het milieu."
-         data-en="With years of experience, we know exactly how to effectively and discreetly tackle infestations in urban areas such as Amsterdam and Amstelveen. Always with respect for your privacy and the environment.">
+      <p class="text-lg text-gray-600">
         Met jarenlange ervaring weten wij precies hoe we plagen in stedelijke gebieden zoals Amsterdam en Amstelveen effectief en discreet aanpakken. Altijd met respect voor uw privacy en het milieu.
       </p>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 bg-[#252c30] text-white">
-    <div class="max-w-5xl mx-auto px-6 text-center fade-in">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-8" data-nl="Direct een oplossing nodig?" data-en="Need a solution right away?">Direct een oplossing nodig?</h2>
-      <p class="text-xl mb-12 text-gray-200" data-nl="Vraag een gratis offerte aan of bel ons voor persoonlijk advies." data-en="Request a free quote or call us for personal advice.">Vraag een gratis offerte aan of bel ons voor persoonlijk advies.</p>
-      <!-- GEFIXT: knoppen kleiner op mobiel -->
-      <div class="flex flex-col sm:flex-row gap-8 justify-center">
-        <a href="offerte.html" class="bg-white text-[#252c30] px-10 py-5 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-gray-100 transition shadow-2xl whitespace-nowrap"
-           data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</a>
-        <a href="tel:0612345678" class="bg-[#a0514f] text-white px-10 py-5 rounded-2xl font-bold text-xl sm:text-2xl hover:bg-[#8b3e3d] transition shadow-2xl whitespace-nowrap"
-           data-nl="Bel direct: 06 - 12 34 56 78" data-en="Call now: +31 6 12 34 56 78">Bel direct: 06 - 12 34 56 78</a>
+  <!-- FINAL CTA -->
+  <section class="py-32 bg-[#252c30] text-white">
+    <div class="max-w-6xl mx-auto px-6 text-center reveal">
+      <h2 class="text-5xl md:text-6xl font-extrabold mb-10" data-nl="Direct een oplossing nodig?" data-en="Need a solution right away?">Direct een oplossing nodig?</h2>
+      <p class="text-2xl mb-16 text-gray-200" data-nl="Vraag een gratis offerte aan of bel ons voor persoonlijk advies." data-en="Request a free quote or call us for personal advice.">
+        Vraag een gratis offerte aan of bel ons voor persoonlijk advies.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-10 justify-center">
+        <a href="offerte.html" class="btn-glow bg-white text-[#252c30] px-14 py-8 rounded-3xl font-black text-2xl md:text-3xl transition-all duration-700 hover:scale-110 shadow-3xl">
+          <span data-nl="Gratis offerte aanvragen" data-en="Request free quote">Gratis offerte aanvragen</span>
+        </a>
+        <a href="tel:+31 020 3242326" class="btn-glow bg-[#a0514f] text-white px-14 py-8 rounded-3xl font-black text-2xl md:text-3xl transition-all duration-700 hover:scale-110 shadow-3xl">
+          <span data-nl="Bel direct: +31 020 3242326" data-en="Call now: +31 6 12 34 56 78">Bel direct: +31 020 3242326</span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#252c30] text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+  <footer class="bg-[#252c30] text-white pt-28 pb-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
         <div>
-          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
-            <i data-lucide="bug" class="w-6 h-6"></i>
-            <span>CeroPest</span>
+          <div class="flex items-center gap-4 mb-8">
+            <i data-lucide="bug" class="w-12 h-12 text-emerald-500"></i>
+            <span class="text-3xl font-black">CeroPest</span>
           </div>
-          <p class="text-gray-300 mb-4" data-nl="Uw betrouwbare partner in ongediertebestrijding in Amsterdam, Amstelveen en omgeving." data-en="Your reliable partner in pest control in Amsterdam, Amstelveen and surrounding areas.">Uw betrouwbare partner in ongediertebestrijding in Amsterdam, Amstelveen en omgeving.</p>
-          <div class="flex flex-col gap-2 text-gray-300">
-            <div class="flex items-center gap-2">
-              <i data-lucide="phone" class="w-4 h-4"></i>
-              <a href="tel:0612345678" class="hover:text-white">06 - 12 34 56 78</a>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="mail" class="w-4 h-4"></i>
-              <a href="mailto:info@ceropest.nl" class="hover:text-white">info@ceropest.nl</a>
-            </div>
+          <p class="text-gray-400 mb-8 leading-relaxed" data-nl="Uw betrouwbare partner in ongediertebestrijding. Professioneel, discreet en met garantie." data-en="Your reliable partner in pest control. Professional, discreet and with guarantee.">
+            Uw betrouwbare partner in ongediertebestrijding. Professioneel, discreet en met garantie.
+          </p>
+          <div class="flex gap-6">
+            <a href="#" class="w-12 h-12 rounded-full bg-gray-800 hover:bg-emerald-600 flex items-center justify-center transition-all duration-500 hover:scale-125 hover:rotate-12">
+              <i data-lucide="facebook" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-gray-800 hover:bg-emerald-600 flex items-center justify-center transition-all duration-500 hover:scale-125 hover:rotate-12">
+              <i data-lucide="instagram" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-gray-800 hover:bg-emerald-600 flex items-center justify-center transition-all duration-500 hover:scale-125 hover:rotate-12">
+              <i data-lucide="linkedin" class="w-6 h-6"></i>
+            </a>
           </div>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-4" data-nl="Particulieren" data-en="Private">Particulieren</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li><a href="ratten.html" class="hover:text-white" data-nl="Rattenbestrijding" data-en="Rat control">Rattenbestrijding</a></li>
-            <li><a href="muizen.html" class="hover:text-white" data-nl="Muizenbestrijding" data-en="Mice control">Muizenbestrijding</a></li>
-            <li><a href="wespen.html" class="hover:text-white" data-nl="Wespenbestrijding" data-en="Wasp control">Wespenbestrijding</a></li>
-            <li><a href="overige.html" class="hover:text-white" data-nl="Meer diensten" data-en="More services">Meer diensten</a></li>
+          <h3 class="text-2xl font-black mb-8" data-nl="Diensten" data-en="Services">Diensten</h3>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="ratten.html" class="hover:text-emerald-400 transition duration-300">Rattenbestrijding</a></li>
+            <li><a href="muizen.html" class="hover:text-emerald-400 transition duration-300">Muizenbestrijding</a></li>
+            <li><a href="wespen.html" class="hover:text-emerald-400 transition duration-300">Wespenbestrijding</a></li>
+            <li><a href="kakkerlakken.html" class="hover:text-emerald-400 transition duration-300">Kakkerlakkenbestrijding</a></li>
+            <li><a href="bedrijven.html" class="hover:text-emerald-400 transition duration-300" data-nl="Bedrijfsoplossingen" data-en="Business solutions">Bedrijfsoplossingen</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-4" data-nl="Bedrijven" data-en="Business">Bedrijven</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li><a href="bedrijven.html" class="hover:text-white" data-nl="HACCP & preventie" data-en="HACCP & prevention">HACCP & preventie</a></li>
-            <li><a href="bedrijven.html" class="hover:text-white" data-nl="Periodieke controles" data-en="Periodic checks">Periodieke controles</a></li>
+          <h3 class="text-2xl font-black mb-8" data-nl="Informatie" data-en="Information">Informatie</h3>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="overons.html" class="hover:text-emerald-400 transition duration-300" data-nl="Over ons" data-en="About us">Over ons</a></li>
+            <li><a href="werkwijze.html" class="hover:text-emerald-400 transition duration-300" data-nl="Werkwijze" data-en="How it works">Werkwijze</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition duration-300" data-nl="Contact" data-en="Contact">Contact</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-lg font-semibold mb-4" data-nl="Werkgebied" data-en="Service area">Werkgebied</h3>
-          <p class="text-gray-300 text-sm mb-4">Amsterdam • Amstelveen • en omgeving</p>
-          <a href="contact.html" class="text-[#a0514f] hover:underline font-medium" data-nl="Neem contact op →" data-en="Contact us →">Neem contact op →</a>
+          <h3 class="text-2xl font-black mb-8" data-nl="Contact" data-en="Contact">Contact</h3>
+          <ul class="space-y-6">
+            <li class="flex items-start gap-4">
+              <i data-lucide="phone" class="w-6 h-6 text-emerald-500 mt-1"></i>
+              <div>
+                <p class="text-gray-400 text-sm mb-1" data-nl="24/7 bereikbaar" data-en="24/7 available">24/7 bereikbaar</p>
+                <a href="tel:+31 020 3242326" class="text-white font-bold hover:text-emerald-400 transition text-xl">+31 020 3242326</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <i data-lucide="mail" class="w-6 h-6 text-emerald-500 mt-1"></i>
+              <div>
+                <p class="text-gray-400 text-sm mb-1">Email</p>
+                <a href="mailto:info@ceropest.nl" class="text-white font-bold hover:text-emerald-400 transition text-xl">info@ceropest.nl</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <i data-lucide="map-pin" class="w-6 h-6 text-emerald-500 mt-1"></i>
+              <div>
+                <p class="text-gray-400 text-sm mb-1" data-nl="Werkgebied" data-en="Service area">Werkgebied</p>
+                <p class="text-white font-bold text-xl">Amsterdam & omgeving</p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
-        <p>© <span id="year"></span> <span data-nl="CeroPest – Ongediertebestrijding Amsterdam & omgeving. Alle rechten voorbehouden." data-en="CeroPest – Pest Control Amsterdam & surrounding areas. All rights reserved.">CeroPest – Ongediertebestrijding Amsterdam & omgeving. Alle rechten voorbehouden.</span></p>
+      <div class="border-t border-gray-800 pt-12 text-center">
+        <p class="text-gray-400 text-lg">
+          © <span id="year"></span> CeroPest. 
+          <span data-nl="Alle rechten voorbehouden." data-en="All rights reserved.">Alle rechten voorbehouden.</span>
+        </p>
       </div>
     </div>
   </footer>
 
- <script>
+  <script>
     lucide.createIcons();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ===== FIXED LANGUAGE SWITCH (works on mobile & desktop) =====
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Show floating CTA after hero
+      const floating = document.getElementById('floating-cta');
+      if (window.scrollY > window.innerHeight * 0.8) {
+        floating.classList.add('visible');
+      } else {
+        floating.classList.remove('visible');
+      }
+    });
+
+    // Language switch
     function setLanguage(lang) {
       document.documentElement.lang = lang;
-
-      // Update all text
       document.querySelectorAll('[data-nl]').forEach(el => {
         const text = el.getAttribute(`data-${lang}`);
         if (text !== null) el.textContent = text;
       });
-
-      // Update title & meta tags
       document.title = document.querySelector('title').getAttribute(`data-${lang}`);
-      document.querySelector('meta[name="description"]').setAttribute('content', 
-        document.querySelector('meta[name="description"]').getAttribute(`data-${lang}`));
-      document.querySelector('meta[name="keywords"]').setAttribute('content', 
-        document.querySelector('meta[name="keywords"]').getAttribute(`data-${lang}`));
+      document.querySelector('meta[name="description"]').setAttribute('content', document.querySelector('meta[name="description"]').getAttribute(`data-${lang}`));
+      document.querySelector('meta[name="keywords"]').setAttribute('content', document.querySelector('meta[name="keywords"]').getAttribute(`data-${lang}`));
 
-      // Update button styles (all 4 buttons)
-      document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(btn => {
-        btn.classList.toggle('bg-gray-200', lang === 'nl');
-        btn.classList.toggle('opacity-60', lang !== 'nl');
-      });
-      document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(btn => {
-        btn.classList.toggle('bg-gray-200', lang === 'en');
-        btn.classList.toggle('opacity-60', lang !== 'en');
-      });
+      document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(b => b.classList.toggle('bg-white/20', lang === 'nl'));
+      document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(b => b.classList.toggle('bg-white/20', lang === 'en'));
 
       localStorage.setItem('preferredLang', lang);
     }
 
-    // Attach click events to ALL language buttons
-    document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(btn => {
-      btn.addEventListener('click', () => setLanguage('nl'));
-    });
-    document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(btn => {
-      btn.addEventListener('click', () => setLanguage('en'));
-    });
+    document.querySelectorAll('#lang-nl-desktop, #lang-nl-mobile').forEach(b => b.addEventListener('click', () => setLanguage('nl')));
+    document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(b => b.addEventListener('click', () => setLanguage('en')));
 
-    // Load saved language or default to Dutch
-    const savedLang = localStorage.getItem('preferredLang') || 'nl';
-    setLanguage(savedLang);
+    setLanguage(localStorage.getItem('preferredLang') || 'nl');
 
-    // Fade-in on scroll
+    // Scroll reveal
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileBtn.innerHTML = isOpen ? '<i data-lucide="x" class="w-8 h-8"></i>' : '<i data-lucide="menu" class="w-8 h-8"></i>';
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('mobile-menu-btn');
+      menu.classList.toggle('hidden');
+      btn.innerHTML = menu.classList.contains('hidden') ? '<i data-lucide="menu" class="w-8 h-8"></i>' : '<i data-lucide="x" class="w-8 h-8"></i>';
       lucide.createIcons();
     });
 
     // Mobile services accordion
-    const servicesToggle = document.getElementById('mobile-services-toggle');
-    const servicesList = document.getElementById('mobile-services-list');
-    const servicesArrow = document.getElementById('mobile-services-arrow');
-    if (servicesToggle) {
-      servicesToggle.addEventListener('click', () => {
-        servicesList.classList.toggle('hidden');
-        servicesArrow.classList.toggle('rotate-180');
-      });
-    }
+    document.getElementById('mobile-services-toggle')?.addEventListener('click', () => {
+      document.getElementById('mobile-services-list').classList.toggle('hidden');
+      document.getElementById('mobile-services-arrow').classList.toggle('rotate-180');
+    });
   </script>
 </body>
 </html>
