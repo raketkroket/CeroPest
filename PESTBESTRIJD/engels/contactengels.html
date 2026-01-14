@@ -251,30 +251,87 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#252c30] text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
-            <i data-lucide="bug" class="w-6 h-6"></i>
-            <span>CeroPest</span>
-          </div>
-          <p class="text-gray-300 mb-4">
-            Your reliable partner in pest control in Amsterdam, Amstelveen and surrounding areas.
-          </p>
-          <p class="text-gray-300 text-sm">
-            Stationsstraat 3, 1182 JM Amstelveen<br>
-            Chamber of Commerce: 98284452
-          </p>
+ <!-- FOOTER -->
+<footer class="bg-[#252c30] text-white pt-28 pb-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+      <div>
+        <div class="flex items-center gap-4 mb-8">
+          <i data-lucide="bug" class="w-12 h-12 text-emerald-500"></i>
+          <span class="text-3xl font-black">CeroPest</span>
+        </div>
+        <p class="text-gray-400 mb-8 leading-relaxed">
+          Your reliable partner in pest control. Professional, discreet and with guarantee.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="w-12 h-12 rounded-full bg-gray-800 hover:bg-emerald-600 flex items-center justify-center transition-all duration-500 hover:scale-125 hover:rotate-12">
+            <i data-lucide="facebook" class="w-6 h-6"></i>
+          </a>
+          <a href="#" class="w-12 h-12 rounded-full bg-gray-800 hover:bg-emerald-600 flex items-center justify-center transition-all duration-500 hover:scale-125 hover:rotate-12">
+            <i data-lucide="instagram" class="w-6 h-6"></i>
+          </a>
+          <a href="#" class="w-12 h-12 rounded-full bg-gray-800 hover:bg-emerald-600 flex items-center justify-center transition-all duration-500 hover:scale-125 hover:rotate-12">
+            <i data-lucide="linkedin" class="w-6 h-6"></i>
+          </a>
         </div>
       </div>
 
-      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
-        <p>© <span id="year"></span> CeroPest – Pest Control Amsterdam & surrounding areas. All rights reserved.</p>
+      <div>
+        <h3 class="text-2xl font-black mb-8">Services</h3>
+        <ul class="space-y-4 text-gray-400">
+          <li><a href="ratten.html" class="hover:text-emerald-400 transition duration-300">Rat Control</a></li>
+          <li><a href="muizen.html" class="hover:text-emerald-400 transition duration-300">Mouse Control</a></li>
+          <li><a href="wespen.html" class="hover:text-emerald-400 transition duration-300">Wasp Control</a></li>
+          <li><a href="kakkerlakken.html" class="hover:text-emerald-400 transition duration-300">Cockroach Control</a></li>
+          <li><a href="bedrijven.html" class="hover:text-emerald-400 transition duration-300">Business Solutions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-2xl font-black mb-8">Information</h3>
+        <ul class="space-y-4 text-gray-400">
+          <li><a href="overons.html" class="hover:text-emerald-400 transition duration-300">About Us</a></li>
+          <li><a href="werkwijze.html" class="hover:text-emerald-400 transition duration-300">How It Works</a></li>
+          <li><a href="contact.html" class="hover:text-emerald-400 transition duration-300">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-2xl font-black mb-8">Contact</h3>
+        <ul class="space-y-6">
+          <li class="flex items-start gap-4">
+            <i data-lucide="phone" class="w-6 h-6 text-emerald-500 mt-1"></i>
+            <div>
+              <p class="text-gray-400 text-sm mb-1">24/7 available</p>
+              <a href="tel:+31 020 3242326" class="text-white font-bold hover:text-emerald-400 transition text-xl">+31 020 3242326</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <i data-lucide="mail" class="w-6 h-6 text-emerald-500 mt-1"></i>
+            <div>
+              <p class="text-gray-400 text-sm mb-1">Email</p>
+              <a href="mailto:contact@ceropest.com" class="text-white font-bold hover:text-emerald-400 transition text-xl">contact@ceropest.com</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <i data-lucide="map-pin" class="w-6 h-6 text-emerald-500 mt-1"></i>
+            <div>
+              <p class="text-gray-400 text-sm mb-1">Service Area</p>
+              <p class="text-white font-bold text-xl">Amsterdam & surrounding areas</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
-  </footer>
+
+    <div class="border-t border-gray-800 pt-12 text-center">
+      <p class="text-gray-400 text-lg">
+        © <span id="year"></span> CeroPest. 
+        All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
 
   <script>
     lucide.createIcons();
