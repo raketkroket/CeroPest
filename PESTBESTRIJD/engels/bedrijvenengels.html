@@ -80,34 +80,31 @@
 </head>
 <body class="min-h-screen flex flex-col bg-white">
 
-  <!-- HEADER -->
+   <!-- HEADER MET TAAL-SWITCH + DROPDOWN + ACCORDION -->
   <header class="bg-white shadow-md sticky top-0 z-50">
-  
+    <div class="bg-[#a0514f] text-white py-2">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
         <div class="flex items-center gap-2">
-      
-         
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <a href="tel:+31 020 3242326" class="font-semibold hover:text-gray-100">+31 020 3242326</a>
         </div>
-     
+        <div class="hidden sm:block">Available for all your questions</div>
       </div>
     </div>
 
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20">
-        <div class="flex items-center gap-6">
-          <a href="../index.html" class="flex items-center gap-3">
-            <img src="../ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
-          </a>
-          <a href="../offerte.html" class="hidden sm:block bg-[#252c30] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1e2226] transition shadow-md">
-            Request free quote
-          </a>
-        </div>
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="../ceropest.png" alt="CeroPest Logo" class="h-12 w-auto">
+        </a>
 
+        <!-- DESKTOP MENU -->
         <div class="hidden lg:flex items-center gap-8">
           <a href="../index.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Home</a>
-          <a href="../engels/overonsengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">About us</a>
-          <a href="../engels/werkwijzeengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Our method</a>
+          <a href="../overons.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">About us</a>
+          <a href="werkwijzeengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition underline decoration-4 decoration-[#e7f9fe]">Our method</a>
 
+          <!-- DROPDOWN: Private -->
           <div class="relative group">
             <button class="text-gray-700 hover:text-[#252c30] font-medium flex items-center gap-1 transition">
               Private <span class="text-xs">▾</span>
@@ -119,12 +116,14 @@
               <a href="../engels/vlooienengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Flea control</a>
               <a href="../engels/wespenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Wasp control</a>
               <a href="../engels/bijenengels.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Bee removal</a>
-              <a href="overige.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Other pests</a>
+              <a href="../engels/vliegende-insecten.html" class="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#252c30] transition">Flying insects</a>
+             
             </div>
           </div>
 
-          <a href="../engels/bedrijvenengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition underline decoration-4 decoration-[#a0514f]">Business</a>
+          <a href="../engels/bedrijvenengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Business</a>
           <a href="../engels/contactengels.html" class="text-gray-700 hover:text-[#252c30] font-medium transition">Contact</a>
+          <a href="../offerte.html" class="bg-[#252c30] text-white px-6 py-3 rounded-lg hover:bg-[#1e2226] font-semibold transition shadow-md">Request quote</a>
 
           <!-- Language buttons desktop -->
           <div class="flex items-center gap-2 ml-4">
@@ -133,7 +132,8 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-4 lg:hidden">
+        <!-- MOBIEL: taal + free quote knop + hamburger -->
+        <div class="lg:hidden flex items-center gap-4">
           <div class="flex items-center gap-2">
             <button id="lang-nl-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs opacity-60 hover:opacity-100">NL</button>
             <button id="lang-en-mobile" class="px-3 py-1 rounded border border-gray-300 font-medium text-xs bg-gray-200">EN</button>
@@ -149,12 +149,12 @@
         </div>
       </div>
 
-      <!-- MOBILE MENU -->
+      <!-- MOBILE MENU MET ACCORDION -->
       <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
         <div class="py-6 px-6 space-y-4">
           <a href="../index.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Home</a>
           <a href="../overons.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">About us</a>
-          <a href="../werkwijze.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Our method</a>
+          <a href="werkwijzeengels.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition underline">Our method</a>
 
           <div class="border-t border-gray-200 pt-4">
             <button id="mobile-services-toggle" class="w-full flex justify-between items-center text-lg font-bold text-[#252c30]">
@@ -162,26 +162,30 @@
               <i data-lucide="chevron-down" class="w-6 h-6 transition-transform duration-300" id="mobile-services-arrow"></i>
             </button>
             <div id="mobile-services-list" class="space-y-2 pl-4 hidden">
-              <a href="../rattenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Rat control</a>
-              <a href="../muizenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Mice control</a>
-              <a href="../kakkerlakkenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Cockroach control</a>
-              <a href="../vlooienengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Flea control</a>
-              <a href="../wespenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Wasp control</a>
-              <a href="../bijenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Bee removal</a>
-              <a href="../overige.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Other pests</a>
+              <a href="../engels/rattenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Rat control</a>
+              <a href="../engels/muizenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Mice control</a>
+              <a href="../engels/kakkerlakkenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Cockroach control</a>
+              <a href="../engels/vlooienengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Flea control</a>
+              <a href="../engels/wespenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Wasp control</a>
+              <a href="../engels/bijenengels.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Bee removal</a>
+              <a href="../engels/vliegende-insecten.html" class="block py-2 text-gray-700 hover:text-[#252c30] transition">Flying insects</a>
+            
             </div>
           </div>
 
-          <a href="bedrijvenengels.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition underline">Business</a>
-          <a href="../contact.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Contact</a>
+          <a href="../bedrijvenengels.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Business</a>
+          <a href="../contactengels.html" class="block text-lg font-medium text-gray-800 hover:text-[#252c30] transition">Contact</a>
+          <a href="../offerte.html" class="block mt-6 bg-[#252c30] text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-[#1e2226] transition shadow-md">Request quote</a>
         </div>
       </div>
     </nav>
   </header>
-
   <!-- HERO WITH BADGE -->
-  <section class="relative min-h-[80vh] flex items-center hero-bg">
-    <div class="absolute inset-0 bg-[#252c30]/70"></div>
+ <section class="relative min-h-[80vh] flex items-center">
+  <div class="absolute inset-0 overflow-hidden">
+    <img src="../bedrijven.png" alt="" class="w-full h-full object-cover" style="object-position: 50% 30%;">
+    <div class="absolute inset-0 bg-[#252c30]/70"></div> <!-- overlay -->
+  </div>
     <div class="relative max-w-7xl mx-auto px-6 text-center text-white fade-in">
       <div class="title-badge mx-auto mb-10">
         <h1 class="text-5xl md:text-7xl font-extrabold">For Businesses</h1>
@@ -218,7 +222,7 @@
           </p>
         </div>
         <div class="rounded-3xl overflow-hidden shadow-2xl img-hover">
-          <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional pest control in commercial premises" class="w-full h-full object-cover">
+          <img src="../DSC01151.jpg" alt="Professional pest control in commercial premises" class="w-full h-full object-cover">
         </div>
       </div>
     </div>
